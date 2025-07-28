@@ -566,7 +566,7 @@ export default function FreightBunnyHome() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
+              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
@@ -578,7 +578,7 @@ export default function FreightBunnyHome() {
             </Button>
             <Button
               size="lg"
-              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
+              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -625,7 +625,7 @@ export default function FreightBunnyHome() {
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className="flex-1 px-4 py-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400 text-sm sm:text-base"
+                className="flex-1 px-4 py-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400 text-sm sm:text-base text-center sm:text-left placeholder:text-center sm:placeholder:text-left"
               />
               <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105 cursor-pointer">
                 <Search className="h-4 w-4 mr-2" />
@@ -663,10 +663,9 @@ export default function FreightBunnyHome() {
           {/* Service 3 */}
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px]">
             <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Customs Clearance Support</h3>
-            <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
-            <div className="flex-1"></div>
-            <div className="w-full flex justify-center">
-              <a href="#contact" className="mt-auto bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Learn More</a>
+            <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+            <div className="w-full flex justify-center mt-auto">
+              <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Learn More</a>
             </div>
           </div>
         </div>
@@ -680,29 +679,29 @@ export default function FreightBunnyHome() {
             <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 px-2">
               We're passionate about connecting families and businesses across continents. With transparent pricing, real-time updates, and a personal touch, we make shipping easy and stress-free. Our team is dedicated to making international shipping simple, affordable, and reliable.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
-                <span className="text-xl sm:text-2xl mb-1">🚚</span>
-                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Fast Delivery</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8 justify-items-center">
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none">
+                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">🚚</span>
+                <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Fast Delivery</h3>
+                <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
-                <span className="text-xl sm:text-2xl mb-1">💷</span>
-                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Transparent Pricing</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">Just £9/kg, no hidden fees, and clear invoicing.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none">
+                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">💷</span>
+                <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Transparent Pricing</h3>
+                <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Just £9/kg, no hidden fees, and clear invoicing.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
-                <span className="text-xl sm:text-2xl mb-1">🤝</span>
-                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Personal Service</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">We treat your packages like our own and keep you informed every step.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none">
+                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">🤝</span>
+                <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Personal Service</h3>
+                <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">We treat your packages like our own and keep you informed every step.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
-                <span className="text-xl sm:text-2xl mb-1">📦</span>
-                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Flexible Delivery</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none">
+                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">📦</span>
+                <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Flexible Delivery</h3>
+                <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
               </div>
             </div>
-            <a href="#contact" className="inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto max-w-xs mx-auto">Contact Us</a>
+            <a href="#contact" className="inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto max-w-[200px] mx-auto">Contact Us</a>
           </div>
         </div>
       </section>
@@ -720,7 +719,7 @@ export default function FreightBunnyHome() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-md md:max-w-none">
+              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-sm md:max-w-none">
                 <div className="p-4 md:p-6 border-b text-center md:text-left">
                   <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Contact Information</h3>
                 </div>
@@ -757,7 +756,7 @@ export default function FreightBunnyHome() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-md md:max-w-none">
+              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-sm md:max-w-none">
                 <div className="p-4 md:p-6 border-b text-center md:text-left">
                   <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Follow Us</h3>
                 </div>
@@ -809,7 +808,7 @@ export default function FreightBunnyHome() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-md md:max-w-none">
+              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-sm md:max-w-none">
                 <div className="p-4 md:p-6 border-b text-center md:text-left">
                   <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Send us a Message</h3>
                 </div>
