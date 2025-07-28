@@ -562,11 +562,11 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center w-full max-w-lg sm:max-w-2xl px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center w-full max-w-lg sm:max-w-2xl px-4">
             <Button
               size="lg"
               variant="outline"
-              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 text-base font-semibold rounded-lg flex items-center justify-center w-full transition-transform duration-200 hover:scale-105"
+              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
@@ -578,7 +578,7 @@ export default function FreightBunnyHome() {
             </Button>
             <Button
               size="lg"
-              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 text-base font-semibold rounded-lg flex items-center justify-center w-full transition-transform duration-200 hover:scale-105"
+              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -619,7 +619,7 @@ export default function FreightBunnyHome() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Track Your Package</h2>
             <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 px-2">Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
@@ -647,21 +647,27 @@ export default function FreightBunnyHome() {
             <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Air Freight UK → Nigeria</h3>
             <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
             <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
-            <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-5 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 w-full sm:w-auto">Get a Quote</a>
+            <div className="w-full flex justify-center">
+              <a href="#contact" className="mt-auto bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Get a Quote</a>
+            </div>
           </div>
           {/* Service 2 */}
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px]">
             <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Air Freight Nigeria → UK</h3>
             <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
             <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
-            <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-5 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 w-full sm:w-auto">Get a Quote</a>
+            <div className="w-full flex justify-center">
+              <a href="#contact" className="mt-auto bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Get a Quote</a>
+            </div>
           </div>
           {/* Service 3 */}
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px]">
             <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Customs Clearance Support</h3>
             <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
             <div className="flex-1"></div>
-            <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-5 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 w-full sm:w-auto">Learn More</a>
+            <div className="w-full flex justify-center">
+              <a href="#contact" className="mt-auto bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Learn More</a>
+            </div>
           </div>
         </div>
       </section>
@@ -675,25 +681,25 @@ export default function FreightBunnyHome() {
               We're passionate about connecting families and businesses across continents. With transparent pricing, real-time updates, and a personal touch, we make shipping easy and stress-free. Our team is dedicated to making international shipping simple, affordable, and reliable.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-              <div className="flex flex-col items-center bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
-                <span className="text-2xl sm:text-3xl mb-2">🚚</span>
-                <h3 className="font-bold text-base sm:text-lg mb-1 text-[#002147] text-center">Fast Delivery</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-relaxed">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
+                <span className="text-xl sm:text-2xl mb-1">🚚</span>
+                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Fast Delivery</h3>
+                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
-                <span className="text-2xl sm:text-3xl mb-2">💷</span>
-                <h3 className="font-bold text-base sm:text-lg mb-1 text-[#002147] text-center">Transparent Pricing</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-relaxed">Just £9/kg, no hidden fees, and clear invoicing.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
+                <span className="text-xl sm:text-2xl mb-1">💷</span>
+                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Transparent Pricing</h3>
+                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">Just £9/kg, no hidden fees, and clear invoicing.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
-                <span className="text-2xl sm:text-3xl mb-2">🤝</span>
-                <h3 className="font-bold text-base sm:text-lg mb-1 text-[#002147] text-center">Personal Service</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-relaxed">We treat your packages like our own and keep you informed every step.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
+                <span className="text-xl sm:text-2xl mb-1">🤝</span>
+                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Personal Service</h3>
+                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">We treat your packages like our own and keep you informed every step.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
-                <span className="text-2xl sm:text-3xl mb-2">📦</span>
-                <h3 className="font-bold text-base sm:text-lg mb-1 text-[#002147] text-center">Flexible Delivery</h3>
-                <p className="text-gray-600 text-xs sm:text-sm text-center leading-relaxed">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
+                <span className="text-xl sm:text-2xl mb-1">📦</span>
+                <h3 className="font-bold text-sm sm:text-base mb-1 text-[#002147] text-center">Flexible Delivery</h3>
+                <p className="text-gray-600 text-xs sm:text-sm text-center leading-snug">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
               </div>
             </div>
             <a href="#contact" className="inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto max-w-xs mx-auto">Contact Us</a>
@@ -713,129 +719,129 @@ export default function FreightBunnyHome() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-extrabold text-gray-900">Contact Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-md md:max-w-none">
+                <div className="p-4 md:p-6 border-b text-center md:text-left">
+                  <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Contact Information</h3>
                 </div>
-                <div className="p-6 space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <Phone className="h-5 w-5 text-blue-600" />
-                      <div>
+                <div className="p-4 md:p-6 space-y-4 md:space-y-6">
+                  <div className="space-y-3 md:space-y-4">
+                    <div className="flex items-center justify-center md:justify-start space-x-3">
+                      <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-semibold text-gray-900">UK Office</p>
-                        <p className="text-base font-medium text-gray-800">+44 7392 171558</p>
+                        <p className="text-sm md:text-base font-medium text-gray-800">+44 7392 171558</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Phone className="h-5 w-5 text-green-600" />
-                      <div>
+                    <div className="flex items-center justify-center md:justify-start space-x-3">
+                      <Phone className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-semibold text-gray-900">Nigeria Office</p>
-                        <p className="text-base font-medium text-gray-800">+234 1 234 5678</p>
+                        <p className="text-sm md:text-base font-medium text-gray-800">+234 1 234 5678</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Mail className="h-5 w-5 text-purple-600" />
-                      <div>
+                    <div className="flex items-center justify-center md:justify-start space-x-3">
+                      <Mail className="h-5 w-5 text-purple-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-semibold text-gray-900">Email</p>
-                        <p className="text-base font-medium text-gray-800">hello@freightbunny.com</p>
+                        <p className="text-sm md:text-base font-medium text-gray-800">hello@freightbunny.com</p>
                       </div>
                     </div>
                   </div>
-                  <hr className="my-4" />
-                  <div>
+                  <hr className="my-3 md:my-4" />
+                  <div className="text-center md:text-left">
                     <p className="font-semibold text-gray-900 mb-2">Business Hours</p>
-                    <p className="text-sm text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM (GMT)</p>
-                    <p className="text-sm text-gray-700">Saturday: 10:00 AM - 4:00 PM (GMT)</p>
+                    <p className="text-xs md:text-sm text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM (GMT)</p>
+                    <p className="text-xs md:text-sm text-gray-700">Saturday: 10:00 AM - 4:00 PM (GMT)</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-extrabold text-gray-900">Follow Us</h3>
+              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-md md:max-w-none">
+                <div className="p-4 md:p-6 border-b text-center md:text-left">
+                  <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Follow Us</h3>
                 </div>
-                <div className="p-6 space-y-4">
-                  <div className="space-y-3">
-                    <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Facebook className="h-5 w-5 text-blue-600" />
-                      <div>
+                <div className="p-4 md:p-6 space-y-3 md:space-y-4">
+                  <div className="space-y-2 md:space-y-3">
+                    <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start space-x-3 p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Facebook className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">Facebook</p>
-                        <p className="text-sm text-gray-700">@freightbunny</p>
+                        <p className="text-xs md:text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
-                    <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Twitter className="h-5 w-5 text-blue-400" />
-                      <div>
+                    <a href="#" className="flex items-center justify-center md:justify-start space-x-3 p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Twitter className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">Twitter/X</p>
-                        <p className="text-sm text-gray-700">@freightbunny</p>
+                        <p className="text-xs md:text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
-                    <a href="https://www.linkedin.com/company/freightbunny/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Linkedin className="h-5 w-5 text-blue-700" />
-                      <div>
+                    <a href="https://www.linkedin.com/company/freightbunny/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start space-x-3 p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Linkedin className="h-5 w-5 text-blue-700 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">LinkedIn</p>
-                        <p className="text-sm text-gray-700">FreightBunny</p>
+                        <p className="text-xs md:text-sm text-gray-700">FreightBunny</p>
                       </div>
                     </a>
-                    <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Instagram className="h-5 w-5 text-pink-600" />
-                      <div>
+                    <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start space-x-3 p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Instagram className="h-5 w-5 text-pink-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">Instagram</p>
-                        <p className="text-sm text-gray-700">@shipwithbunny</p>
+                        <p className="text-xs md:text-sm text-gray-700">@shipwithbunny</p>
                       </div>
                     </a>
-                    <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <MessageCircle className="h-5 w-5 text-green-600" />
-                      <div>
+                    <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start space-x-3 p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <MessageCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">WhatsApp</p>
-                        <p className="text-sm text-gray-700">+44 7392 171558</p>
+                        <p className="text-xs md:text-sm text-gray-700">+44 7392 171558</p>
                       </div>
                     </a>
-                    <a href="https://www.tiktok.com/@freightbunny?_t=ZN-8xI2uoApuII&_r=1" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Music className="h-5 w-5 text-black" />
-                      <div>
+                    <a href="https://www.tiktok.com/@freightbunny?_t=ZN-8xI2uoApuII&_r=1" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start space-x-3 p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Music className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">TikTok</p>
-                        <p className="text-sm text-gray-700">@freightbunny</p>
+                        <p className="text-xs md:text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-extrabold text-gray-900">Send us a Message</h3>
+              <div className="bg-white rounded-lg border shadow-sm mx-auto w-full max-w-md md:max-w-none">
+                <div className="p-4 md:p-6 border-b text-center md:text-left">
+                  <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Send us a Message</h3>
                 </div>
-                <div className="p-6">
-                  <form className="space-y-6">
+                <div className="p-4 md:p-6">
+                  <form className="space-y-4 md:space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">Full Name</label>
+                      <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Full Name</label>
                       <input
                         id="name"
                         placeholder="Your name"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Email</label>
                       <input
                         id="email"
                         type="email"
                         placeholder="your@email.com"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       />
                     </div>
                     <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">Message</label>
+                      <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Message</label>
                       <textarea
                         id="message"
                         placeholder="How can we help you?"
                         rows={4}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       ></textarea>
                     </div>
-                    <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors">
+                    <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-md font-bold text-base md:text-lg hover:bg-blue-700 transition-colors">
                       Send Message
                     </button>
                   </form>
