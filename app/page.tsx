@@ -627,7 +627,7 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400 text-sm sm:text-base text-center sm:text-left placeholder:text-center sm:placeholder:text-left"
               />
-              <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105 cursor-pointer">
+              <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-transform duration-200 hover:scale-105 cursor-pointer">
                 <Search className="h-4 w-4 mr-2" />
                 Track
               </Button>
@@ -723,33 +723,37 @@ export default function FreightBunnyHome() {
                 <div className="p-4 md:p-6 border-b text-center md:text-left">
                   <h3 className="text-lg md:text-xl font-extrabold text-gray-900">Contact Information</h3>
                 </div>
-                <div className="p-4 md:p-6 space-y-4 md:space-y-6">
+                <div className="p-3 md:p-6 space-y-3 md:space-y-6">
                   <div className="space-y-3 md:space-y-4">
-                    <div className="flex items-center justify-center md:justify-start space-x-3">
-                      <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
-                        <p className="font-semibold text-gray-900">UK Office</p>
-                        <p className="text-sm md:text-base font-medium text-gray-800">+44 7392 171558</p>
+                    {/* Phone numbers side by side on mobile */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 md:gap-0 md:space-y-4">
+                      <div className="flex items-center justify-center md:justify-start space-x-2">
+                        <Phone className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
+                        <div className="text-center md:text-left">
+                          <p className="font-semibold text-gray-900 text-xs md:text-sm">UK Office</p>
+                          <p className="text-xs md:text-base font-medium text-gray-800">+44 7392 171558</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-center md:justify-start space-x-2">
+                        <Phone className="h-4 w-4 md:h-5 md:w-5 text-green-600 flex-shrink-0" />
+                        <div className="text-center md:text-left">
+                          <p className="font-semibold text-gray-900 text-xs md:text-sm">Nigeria Office</p>
+                          <p className="text-xs md:text-base font-medium text-gray-800">+234 1 234 5678</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-center justify-center md:justify-start space-x-3">
-                      <Phone className="h-5 w-5 text-green-600 flex-shrink-0" />
+                    {/* Email underneath */}
+                    <div className="flex items-center justify-center md:justify-start space-x-2 mt-2 md:mt-0">
+                      <Mail className="h-4 w-4 md:h-5 md:w-5 text-purple-600 flex-shrink-0" />
                       <div className="text-center md:text-left">
-                        <p className="font-semibold text-gray-900">Nigeria Office</p>
-                        <p className="text-sm md:text-base font-medium text-gray-800">+234 1 234 5678</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center md:justify-start space-x-3">
-                      <Mail className="h-5 w-5 text-purple-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
-                        <p className="font-semibold text-gray-900">Email</p>
-                        <p className="text-sm md:text-base font-medium text-gray-800">hello@freightbunny.com</p>
+                        <p className="font-semibold text-gray-900 text-xs md:text-sm">Email</p>
+                        <p className="text-xs md:text-base font-medium text-gray-800">hello@freightbunny.com</p>
                       </div>
                     </div>
                   </div>
-                  <hr className="my-3 md:my-4" />
+                  <hr className="my-2 md:my-4" />
                   <div className="text-center md:text-left">
-                    <p className="font-semibold text-gray-900 mb-2">Business Hours</p>
+                    <p className="font-semibold text-gray-900 mb-1 md:mb-2 text-xs md:text-sm">Business Hours</p>
                     <p className="text-xs md:text-sm text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM (GMT)</p>
                     <p className="text-xs md:text-sm text-gray-700">Saturday: 10:00 AM - 4:00 PM (GMT)</p>
                   </div>
@@ -814,33 +818,33 @@ export default function FreightBunnyHome() {
                 </div>
                 <div className="p-4 md:p-6">
                   <form className="space-y-4 md:space-y-6">
-                    <div>
+                    <div className="flex flex-col items-center md:items-start">
                       <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Full Name</label>
                       <input
                         id="name"
                         placeholder="Your name"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
+                        className="w-full max-w-xs md:max-w-none px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       />
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center md:items-start">
                       <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Email</label>
                       <input
                         id="email"
                         type="email"
                         placeholder="your@email.com"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
+                        className="w-full max-w-xs md:max-w-none px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       />
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center md:items-start">
                       <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Message</label>
                       <textarea
                         id="message"
                         placeholder="How can we help you?"
-                        rows={4}
+                        rows={6}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       ></textarea>
                     </div>
-                    <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-md font-bold text-base md:text-lg hover:bg-blue-700 transition-colors">
+                    <button className="w-full max-w-xs md:max-w-none mx-auto md:mx-0 bg-blue-600 text-white py-3 px-4 rounded-md font-bold text-base md:text-lg hover:bg-blue-700 transition-colors">
                       Send Message
                     </button>
                   </form>

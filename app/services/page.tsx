@@ -151,21 +151,21 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-3">
+      <header className="border-b bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between py-3 sm:py-4">
             <div className="flex items-center space-x-2">
               <img
                 src="/images/Headerlogo.jpg"
                 alt="FreightBunny Logo"
-                className="h-10 w-10 object-contain"
+                className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
               />
-              <span className="text-xl font-bold text-blue-900">Freight Bunny</span>
+              <span className="text-lg sm:text-xl font-bold text-blue-900">Freight Bunny</span>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none cursor-pointer"
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -181,7 +181,7 @@ export default function ServicesPage() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold transition-colors pb-1 flex items-center cursor-pointer ${
+                  className={`font-bold transition-colors pb-1 flex items-center ${
                     (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
                       ? "text-blue-900 border-b-2 border-blue-600"
                       : "text-gray-600 hover:text-blue-600"
@@ -197,21 +197,20 @@ export default function ServicesPage() {
           {/* Mobile Navigation Dropdown */}
           <div
             className={`md:hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            } overflow-hidden`}
+              isMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+            } overflow-hidden bg-white border-t border-gray-100`}
           >
-            <nav className="py-4 flex flex-col items-center space-y-4">
+            <nav className="py-4 flex flex-col items-center space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold transition-colors pb-1 flex items-center cursor-pointer ${
+                  className={`font-semibold transition-colors px-4 py-2 rounded-lg w-full max-w-xs text-center ${
                     (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
-                      ? "text-blue-900 border-b-2 border-blue-600"
-                      : "text-gray-600 hover:text-blue-600"
+                      ? "text-blue-900 bg-blue-50 border border-blue-200"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
-                  style={{ fontSize: '1rem', paddingBottom: '2px' }}
                 >
                   {link.label}
                 </a>
@@ -223,30 +222,30 @@ export default function ServicesPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
           <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
           <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
           
           <div className="container mx-auto text-center relative z-10">
-            <div className="mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#e0eaff] to-[#c7e0ff] text-[#002147] text-base font-semibold shadow-md">
-                <Plane className="w-5 h-5 mr-2 text-[#002147]" />
+            <div className="mb-4 sm:mb-6">
+              <span className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-[#e0eaff] to-[#c7e0ff] text-[#002147] text-sm sm:text-base font-semibold shadow-md">
+                <Plane className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-[#002147]" />
                 Professional Shipping Services
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold text-[#111827] mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] mb-4 sm:mb-6 leading-tight px-2">
               Our <span className="text-[#002147]">Shipping Services</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
               From express air freight to personal shopping, we offer comprehensive shipping solutions tailored to your needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <Calculator className="mr-2 h-6 w-6" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-lg mx-auto sm:max-w-none">
+              <button className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0">
+                <Calculator className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
                 Get Free Quote
               </button>
-              <button className="bg-white hover:bg-gray-100 border-2 border-[#002147] text-[#002147] shadow-lg px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <Phone className="mr-2 h-6 w-6" />
+              <button className="bg-white hover:bg-gray-100 border-2 border-[#002147] text-[#002147] shadow-lg px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0">
+                <Phone className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
                 Contact Us
               </button>
             </div>
@@ -254,11 +253,11 @@ export default function ServicesPage() {
         </section>
 
         {/* Services Section */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
           <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">Choose Your Service</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#111827] mb-3 sm:mb-4">Choose Your Service</h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                 We offer flexible shipping options to meet your timeline and budget requirements
               </p>
             </div>

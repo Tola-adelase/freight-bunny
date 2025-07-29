@@ -143,21 +143,21 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-3">
+      <header className="border-b bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between py-3 sm:py-4">
             <div className="flex items-center space-x-2">
               <img
                 src="/images/Headerlogo.jpg"
                 alt="FreightBunny Logo"
-                className="h-10 w-10 object-contain"
+                className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
               />
-              <span className="text-xl font-bold text-blue-900">Freight Bunny</span>
+              <span className="text-lg sm:text-xl font-bold text-blue-900">Freight Bunny</span>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none cursor-pointer"
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -173,7 +173,7 @@ export default function AboutPage() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold transition-colors pb-1 flex items-center cursor-pointer ${
+                  className={`font-bold transition-colors pb-1 flex items-center ${
                     (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
                       ? "text-blue-900 border-b-2 border-blue-600"
                       : "text-gray-600 hover:text-blue-600"
@@ -189,21 +189,20 @@ export default function AboutPage() {
           {/* Mobile Navigation Dropdown */}
           <div
             className={`md:hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            } overflow-hidden`}
+              isMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+            } overflow-hidden bg-white border-t border-gray-100`}
           >
-            <nav className="py-4 flex flex-col items-center space-y-4">
+            <nav className="py-4 flex flex-col items-center space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold transition-colors pb-1 flex items-center cursor-pointer ${
+                  className={`font-semibold transition-colors px-4 py-2 rounded-lg w-full max-w-xs text-center ${
                     (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
-                      ? "text-blue-900 border-b-2 border-blue-600"
-                      : "text-gray-600 hover:text-blue-600"
+                      ? "text-blue-900 bg-blue-50 border border-blue-200"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
-                  style={{ fontSize: '1rem', paddingBottom: '2px' }}
                 >
                   {link.label}
                 </a>
@@ -215,25 +214,25 @@ export default function AboutPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
           <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
           <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
           
           <div className="container mx-auto text-center relative z-10">
-            <h1 className="text-5xl md:text-6xl font-extrabold text-[#111827] mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] mb-4 sm:mb-6 leading-tight px-2">
               About <span className="text-[#002147]">Freight Bunny</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
               Connecting hearts, homes, and businesses between the UK and Nigeria through reliable, fast, and affordable shipping solutions.
             </p>
-            <div className="flex flex-wrap justify-center gap-8 mt-12">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-12">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="bg-white rounded-2xl shadow-lg p-6 mb-4 w-32 h-32 flex flex-col items-center justify-center">
-                    <stat.icon className="w-8 h-8 text-[#002147] mb-2" />
-                    <div className="text-2xl font-bold text-[#002147]">{stat.number}</div>
+                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-3 sm:mb-4 w-24 h-24 sm:w-32 sm:h-32 flex flex-col items-center justify-center mx-auto">
+                    <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#002147] mb-1 sm:mb-2" />
+                    <div className="text-lg sm:text-2xl font-bold text-[#002147]">{stat.number}</div>
                   </div>
-                  <p className="text-gray-600 font-semibold">{stat.label}</p>
+                  <p className="text-gray-600 font-semibold text-xs sm:text-sm">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -241,30 +240,30 @@ export default function AboutPage() {
         </section>
 
         {/* Our Story Section */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
           <div className="container mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold text-[#111827] mb-6">Our Story</h2>
-                <p className="text-lg text-gray-700 mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#111827] mb-4 sm:mb-6">Our Story</h2>
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                   Freight Bunny was born from a simple yet powerful idea: to make shipping between the UK and Nigeria as easy as sending a message to a friend. Founded by Obafunke Ogunbanjo, who experienced firsthand the challenges of sending packages home to Nigeria, we understood the pain points that many faced.
                 </p>
-                <p className="text-lg text-gray-700 mb-6">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                   What started as a personal mission to help friends and family has grown into a trusted shipping partner for thousands of customers. We've built our reputation on reliability, transparency, and genuine care for every package we handle.
                 </p>
-                <p className="text-lg text-gray-700">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
                   Today, we're proud to be the bridge that connects communities, enabling people to share love, support businesses, and maintain relationships across continents.
                 </p>
               </div>
-              <div className="relative">
+              <div className="relative mt-6 md:mt-0">
                 <img
                   src="/images/Freight_Bunny_Hero_Image.jpg"
                   alt="Freight Bunny Story"
-                  className="w-full h-96 object-cover rounded-2xl shadow-lg"
+                  className="w-full h-64 sm:h-80 md:h-96 object-cover rounded-2xl shadow-lg"
                 />
-                <div className="absolute -bottom-6 -right-6 bg-[#002147] text-white p-6 rounded-2xl shadow-xl">
-                  <div className="text-2xl font-bold">2020</div>
-                  <div className="text-sm">Founded</div>
+                <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-[#002147] text-white p-4 sm:p-6 rounded-2xl shadow-xl">
+                  <div className="text-xl sm:text-2xl font-bold">2020</div>
+                  <div className="text-xs sm:text-sm">Founded</div>
                 </div>
               </div>
             </div>
@@ -272,11 +271,11 @@ export default function AboutPage() {
         </section>
 
         {/* Mission & Vision Section */}
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-gray-50">
           <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">Our Mission & Vision</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#111827] mb-3 sm:mb-4">Our Mission & Vision</h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                 Driving our passion for connecting people and businesses across borders
               </p>
             </div>
