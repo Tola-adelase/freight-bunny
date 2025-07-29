@@ -664,8 +664,8 @@ export default function FreightBunnyHome() {
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px]">
             <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Customs Clearance Support</h3>
             <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
-            <div className="w-full flex justify-center mt-auto">
-              <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Learn More</a>
+            <div className="w-full flex justify-center">
+              <a href="#contact" className="mt-auto bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 sm:px-6 py-3 text-sm sm:text-base rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 max-w-[200px] w-full sm:w-auto text-center">Learn More</a>
             </div>
           </div>
         </div>
@@ -844,9 +844,11 @@ export default function FreightBunnyHome() {
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center md:text-left"
                       ></textarea>
                     </div>
-                    <button className="w-full max-w-xs md:max-w-none mx-auto md:mx-0 bg-blue-600 text-white py-3 px-4 rounded-md font-bold text-base md:text-lg hover:bg-blue-700 transition-colors">
-                      Send Message
-                    </button>
+                    <div className="flex justify-center md:justify-start">
+                      <button className="w-full max-w-xs md:max-w-none bg-blue-600 text-white py-3 px-4 rounded-md font-bold text-base md:text-lg hover:bg-blue-700 transition-colors">
+                        Send Message
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -973,44 +975,66 @@ export default function FreightBunnyHome() {
 
       {/* Ship Now Modal */}
       <Dialog open={isShipNowModalOpen} onOpenChange={setIsShipNowModalOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[95vh] w-[95vw] sm:w-full overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="flex items-center text-2xl">
-              <Package className="mr-3 h-6 w-6 text-blue-600" />
+            <DialogTitle className="flex items-center text-xl sm:text-2xl">
+              <Package className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
               Ship a Package
             </DialogTitle>
-            <DialogDescription>Complete the form below to ship your package from UK to Nigeria</DialogDescription>
+            <DialogDescription className="text-sm sm:text-base">Complete the form below to ship your package from UK to Nigeria</DialogDescription>
           </DialogHeader>
 
-          {/* Progress Steps */}
-          <div className="flex items-center justify-between mb-8">
-            {[
-              { number: 1, title: "Sender Details", icon: User },
-              { number: 2, title: "Recipient Details", icon: MapPin },
-              { number: 3, title: "Package Details", icon: Package },
-              { number: 4, title: "Review & Pay", icon: CreditCard },
-            ].map((step, index) => (
-              <div key={step.number} className="flex items-center">
-                <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
-                    currentStep >= step.number
-                      ? "bg-blue-600 border-blue-600 text-white"
-                      : "border-gray-300 text-gray-400"
-                  }`}
-                >
-                  {currentStep > step.number ? <CheckCircle className="h-5 w-5" /> : <step.icon className="h-5 w-5" />}
-                </div>
-                <div className="ml-3 hidden sm:block">
-                  <p className={`text-sm font-medium ${currentStep >= step.number ? "text-blue-600" : "text-gray-400"}`}>
-                    Step {step.number}
-                  </p>
-                  <p className={`text-xs ${currentStep >= step.number ? "text-gray-900" : "text-gray-400"}`}>
-                    {step.title}
-                  </p>
-                </div>
-                {index < 3 && <ArrowRight className="mx-4 h-4 w-4 text-gray-400 hidden sm:block" />}
+          {/* Progress Steps - Improved for mobile */}
+          <div className="mb-6 sm:mb-8">
+            {/* Mobile Progress - Simplified */}
+            <div className="sm:hidden">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-sm font-medium text-gray-600">Step {currentStep} of 4</span>
+                <span className="text-sm text-gray-500">
+                  {currentStep === 1 && "Sender Details"}
+                  {currentStep === 2 && "Recipient Details"}
+                  {currentStep === 3 && "Package Details"}
+                  {currentStep === 4 && "Review & Pay"}
+                </span>
               </div>
-            ))}
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div 
+                  className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                  style={{ width: `${(currentStep / 4) * 100}%` }}
+                ></div>
+              </div>
+            </div>
+
+            {/* Desktop Progress - Original */}
+            <div className="hidden sm:flex items-center justify-between">
+              {[
+                { number: 1, title: "Sender Details", icon: User },
+                { number: 2, title: "Recipient Details", icon: MapPin },
+                { number: 3, title: "Package Details", icon: Package },
+                { number: 4, title: "Review & Pay", icon: CreditCard },
+              ].map((step, index) => (
+                <div key={step.number} className="flex items-center">
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
+                      currentStep >= step.number
+                        ? "bg-blue-600 border-blue-600 text-white"
+                        : "border-gray-300 text-gray-400"
+                    }`}
+                  >
+                    {currentStep > step.number ? <CheckCircle className="h-5 w-5" /> : <step.icon className="h-5 w-5" />}
+                  </div>
+                  <div className="ml-3 hidden sm:block">
+                    <p className={`text-sm font-medium ${currentStep >= step.number ? "text-blue-600" : "text-gray-400"}`}>
+                      Step {step.number}
+                    </p>
+                    <p className={`text-xs ${currentStep >= step.number ? "text-gray-900" : "text-gray-400"}`}>
+                      {step.title}
+                    </p>
+                  </div>
+                  {index < 3 && <ArrowRight className="mx-4 h-4 w-4 text-gray-400 hidden sm:block" />}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Step 1: Sender Information */}
@@ -1448,25 +1472,25 @@ export default function FreightBunnyHome() {
             </div>
           )}
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between pt-6 border-t">
+          {/* Navigation Buttons - Improved for mobile */}
+          <div className="flex flex-col sm:flex-row justify-between pt-6 border-t gap-3 sm:gap-0">
             <Button
               variant="outline"
               onClick={prevStep}
               disabled={currentStep === 1}
-              className="flex items-center bg-transparent"
+              className="flex items-center justify-center bg-transparent order-2 sm:order-1 w-full sm:w-auto"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Previous
             </Button>
 
             {currentStep < 4 ? (
-              <Button onClick={nextStep} className="flex items-center">
+              <Button onClick={nextStep} className="flex items-center justify-center order-1 sm:order-2 w-full sm:w-auto">
                 Next
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             ) : (
-              <Button onClick={() => handleSubmitShipNow()} className="bg-green-600 hover:bg-green-700 flex items-center">
+              <Button onClick={() => handleSubmitShipNow()} className="bg-green-600 hover:bg-green-700 flex items-center justify-center order-1 sm:order-2 w-full sm:w-auto">
                 <CreditCard className="mr-2 h-4 w-4" />
                 Proceed to Payment
               </Button>
@@ -1475,14 +1499,15 @@ export default function FreightBunnyHome() {
         </DialogContent>
       </Dialog>
 
-      {/* Quote Calculator Modal */}
+      {/* Quote Calculator Modal - Improved for mobile */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2" onClick={() => {
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4" onClick={() => {
           resetQuoteForm();
           setIsQuoteModalOpen(false);
         }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-7xl mx-auto max-h-[98vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="sticky top-0 bg-white p-3 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
+            {/* Header - Improved for mobile */}
+            <div className="sticky top-0 bg-white p-3 sm:p-4 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
               <button
                 onClick={() => setIsQuoteModalOpen(false)}
                 className="text-gray-400 hover:text-gray-600 transition-colors opacity-0"
@@ -1491,36 +1516,37 @@ export default function FreightBunnyHome() {
               </button>
               <div className="text-center">
                 <div className="flex items-center justify-center">
-                  <Calculator className="mr-2 h-5 w-5 text-blue-600" />
-                  <h2 className="text-lg font-bold text-[#111827]">Get Shipping Quote</h2>
+                  <Calculator className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <h2 className="text-base sm:text-lg font-bold text-[#111827]">Get Shipping Quote</h2>
                 </div>
-                <p className="text-gray-600 mt-1 text-sm">Calculate accurate shipping costs for your package with our instant quote calculator</p>
+                <p className="text-gray-600 mt-1 text-xs sm:text-sm">Calculate accurate shipping costs for your package</p>
               </div>
-                              <button
-                  onClick={() => {
-                    resetQuoteForm();
-                    setIsQuoteModalOpen(false);
-                  }}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
-                >
+              <button
+                onClick={() => {
+                  resetQuoteForm();
+                  setIsQuoteModalOpen(false);
+                }}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-4 p-3">
+            {/* Content - Improved layout for mobile */}
+            <div className="grid lg:grid-cols-2 gap-3 sm:gap-4 p-3 sm:p-4">
               {/* Quote Form */}
               <div className="space-y-3">
                 <div className="bg-white rounded-lg border shadow-sm">
                   <div className="p-3 border-b">
-                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center">
                       <Package className="mr-2 h-4 w-4 text-blue-600" />
                       Shipping Details
                     </h3>
                   </div>
-                  <div className="p-4 space-y-3">
+                  <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                     {/* Direction */}
                     <div>
-                      <label className="text-base font-medium mb-2 block text-gray-900">Shipping Direction</label>
+                      <label className="text-sm sm:text-base font-medium mb-2 block text-gray-900">Shipping Direction</label>
                       <div className="space-y-2">
                         <label className="flex items-center space-x-2">
                           <input
@@ -1540,7 +1566,7 @@ export default function FreightBunnyHome() {
                             }}
                             className="w-4 h-4 text-blue-600"
                           />
-                          <span className="text-gray-700">UK → Nigeria</span>
+                          <span className="text-sm sm:text-base text-gray-700">UK → Nigeria</span>
                         </label>
                         <label className="flex items-center space-x-2">
                           <input
@@ -1560,7 +1586,7 @@ export default function FreightBunnyHome() {
                             }}
                             className="w-4 h-4 text-blue-600"
                           />
-                          <span className="text-gray-700">Nigeria → UK</span>
+                          <span className="text-sm sm:text-base text-gray-700">Nigeria → UK</span>
                         </label>
                       </div>
                     </div>
@@ -1568,17 +1594,17 @@ export default function FreightBunnyHome() {
                     {/* Weight */}
                     <div>
                       <label className="block text-sm font-medium text-gray-900 mb-2">Package Weight (kg) *</label>
-                                              <input
-                          type="number"
-                          step="0.1"
-                          min="0.1"
-                          value={quoteCalculatorForm.weight}
-                          onChange={(e) => handleQuoteFormChange("weight", e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
-                          placeholder="Enter weight in kg"
-                          required
-                        />
-                        <p className="text-xs text-gray-500 mt-1">Minimum weight: 1kg</p>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        value={quoteCalculatorForm.weight}
+                        onChange={(e) => handleQuoteFormChange("weight", e.target.value)}
+                        className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
+                        placeholder="Enter weight in kg"
+                        required
+                      />
+                      <p className="text-xs text-gray-500 mt-1">Minimum weight: 1kg</p>
                     </div>
 
                     {/* Destination */}
@@ -1592,7 +1618,7 @@ export default function FreightBunnyHome() {
                         <select
                           value={quoteCalculatorForm.deliveryLocation}
                           onChange={(e) => handleQuoteFormChange("deliveryLocation", e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                          className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                           required
                         >
                           <option value="">Select destination state</option>
@@ -1607,7 +1633,7 @@ export default function FreightBunnyHome() {
                           type="text"
                           value={quoteCalculatorForm.deliveryLocation}
                           onChange={(e) => handleQuoteFormChange("deliveryLocation", e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                          className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                           placeholder="Enter UK destination"
                           required
                         />
@@ -1620,7 +1646,7 @@ export default function FreightBunnyHome() {
                       <select
                         value={quoteCalculatorForm.packageType}
                         onChange={(e) => handleQuoteFormChange("packageType", e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                        className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                         required
                       >
                         <option value="">Select package type</option>
@@ -1649,7 +1675,7 @@ export default function FreightBunnyHome() {
                           type="text"
                           value={quoteCalculatorForm.customPackageType}
                           onChange={(e) => handleQuoteFormChange("customPackageType", e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                          className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                           placeholder="Please describe what you're shipping"
                           required
                         />
@@ -1669,7 +1695,7 @@ export default function FreightBunnyHome() {
                             onChange={() => handleQuoteFormChange("needsDelivery", true)}
                             className="w-4 h-4 text-blue-600"
                           />
-                          <span className="text-gray-700">Yes, deliver to my address</span>
+                          <span className="text-sm sm:text-base text-gray-700">Yes, deliver to my address</span>
                         </label>
                         <label className="flex items-center space-x-2">
                           <input
@@ -1679,7 +1705,7 @@ export default function FreightBunnyHome() {
                             onChange={() => handleQuoteFormChange("needsDelivery", false)}
                             className="w-4 h-4 text-blue-600"
                           />
-                          <span className="text-gray-700">No, I'll arrange pickup myself</span>
+                          <span className="text-sm sm:text-base text-gray-700">No, I'll arrange pickup myself</span>
                         </label>
                       </div>
                     </div>
@@ -1695,7 +1721,7 @@ export default function FreightBunnyHome() {
                         <textarea
                           value={quoteCalculatorForm.deliveryAddress}
                           onChange={(e) => handleQuoteFormChange("deliveryAddress", e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 min-h-[80px]"
+                          className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 min-h-[80px] text-base sm:text-sm"
                           placeholder={quoteCalculatorForm.from === "UK" && quoteCalculatorForm.to === "Nigeria" 
                             ? "Enter complete delivery address in Nigeria\nExample: 15 Victoria Island Road, Victoria Island, Lagos State"
                             : "Enter complete delivery address in UK\nExample: 123 High Street, London SW1A 1AA"
@@ -1704,22 +1730,22 @@ export default function FreightBunnyHome() {
                           rows={3}
                         />
                         <div className="text-xs text-gray-600 mt-1 space-y-1">
-                          <p>💡 Please include complete address with street, area/district, city, and state for accurate delivery</p>
-                          <p>💰 Delivery fees are automatically converted from NGN to GBP for your convenience</p>
+                          <p>💡 Please include complete address with street, area/district, city, and state</p>
+                          <p>💰 Delivery fees are automatically converted from NGN to GBP</p>
                         </div>
                       </div>
                     )}
 
                     {/* Restrictions for Nigeria to UK */}
                     {quoteCalculatorForm.from === "Nigeria" && quoteCalculatorForm.to === "UK" && (
-                      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
                         <div className="flex items-start">
                           <div className="flex-shrink-0">
-                            <Info className="h-5 w-5 text-red-400" />
+                            <Info className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
                           </div>
                           <div className="ml-3">
                             <h3 className="text-sm font-medium text-red-800">Shipping Restrictions:</h3>
-                            <p className="mt-1 text-sm text-red-700">
+                            <p className="mt-1 text-xs sm:text-sm text-red-700">
                               We do not ship phones, food items, or any items containing lithium from Nigeria to the UK.
                             </p>
                           </div>
@@ -1732,23 +1758,23 @@ export default function FreightBunnyHome() {
 
               {/* Quote Results */}
               <div className="space-y-3">
-                {/* Contact Information Form - Moved to top */}
+                {/* Contact Information Form - Improved for mobile */}
                 <div className="bg-white rounded-lg border shadow-sm">
                   <div className="p-3 border-b">
-                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center">
                       <User className="mr-2 h-4 w-4 text-blue-600" />
                       Contact Information
                     </h3>
                     <p className="text-xs text-gray-600 mt-1">Required to generate and email your quote</p>
                   </div>
-                  <div className="p-3 space-y-2">
+                  <div className="p-3 space-y-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-900 mb-1">Full Name *</label>
                       <input
                         type="text"
                         value={quoteCalculatorForm.senderName}
                         onChange={(e) => handleQuoteFormChange("senderName", e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                        className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                         placeholder="Your full name"
                         required
                       />
@@ -1759,7 +1785,7 @@ export default function FreightBunnyHome() {
                         type="email"
                         value={quoteCalculatorForm.senderEmail}
                         onChange={(e) => handleQuoteFormChange("senderEmail", e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                        className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                         placeholder="your@email.com"
                         required
                       />
@@ -1770,7 +1796,7 @@ export default function FreightBunnyHome() {
                         type="tel"
                         value={quoteCalculatorForm.senderPhone}
                         onChange={(e) => handleQuoteFormChange("senderPhone", e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                        className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-base sm:text-sm"
                         placeholder="+44 7XXX XXXXXX"
                         required
                       />
@@ -1781,27 +1807,27 @@ export default function FreightBunnyHome() {
                 {calculatedQuote && (
                   <div className="bg-white rounded-lg border-2 border-blue-200 shadow-sm">
                     <div className="p-3 border-b">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center">
                         <Calculator className="mr-2 h-4 w-4 text-blue-600" />
                         Your Quote
                       </h3>
                     </div>
                     <div className="p-3 space-y-3">
                       <div className="space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-700">Shipping Cost ({Math.max(parseFloat(quoteCalculatorForm.weight) || 0, 1)}kg @ £9/kg):</span>
-                          <span className="font-medium text-gray-900">£{calculatedQuote.shippingCost.toFixed(2)}</span>
+                        <div className="flex justify-between items-start sm:items-center">
+                          <span className="text-xs sm:text-sm text-gray-700 flex-1 mr-2">Shipping Cost ({Math.max(parseFloat(quoteCalculatorForm.weight) || 0, 1)}kg @ £9/kg):</span>
+                          <span className="font-medium text-sm sm:text-base text-gray-900">£{calculatedQuote.shippingCost.toFixed(2)}</span>
                         </div>
 
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-700">Handling Fee:</span>
-                          <span className="font-medium text-gray-900">£{calculatedQuote.handlingFee.toFixed(2)}</span>
+                          <span className="text-xs sm:text-sm text-gray-700">Handling Fee:</span>
+                          <span className="font-medium text-sm sm:text-base text-gray-900">£{calculatedQuote.handlingFee.toFixed(2)}</span>
                         </div>
 
                         {calculatedQuote.needsDelivery && (
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-700">Delivery Fee:</span>
-                            <span className="font-medium text-gray-900">
+                          <div className="flex justify-between items-start sm:items-center">
+                            <span className="text-xs sm:text-sm text-gray-700 flex-1 mr-2">Delivery Fee:</span>
+                            <span className="font-medium text-sm sm:text-base text-gray-900">
                               {calculatedQuote.deliveryFeeCurrency === "GBP"
                                 ? `£${calculatedQuote.deliveryFee.toFixed(2)}`
                                 : calculatedQuote.deliveryFeeCurrency === "ARRANGE"
@@ -1812,7 +1838,7 @@ export default function FreightBunnyHome() {
                         )}
 
                         <div className="border-t pt-3">
-                          <div className="flex justify-between items-center text-lg font-bold">
+                          <div className="flex justify-between items-center text-base sm:text-lg font-bold">
                             <span className="text-gray-900">Total Cost:</span>
                             <span className="text-green-600">
                               £{calculatedQuote.totalGBP.toFixed(2)}
@@ -1820,39 +1846,39 @@ export default function FreightBunnyHome() {
                           </div>
                           {calculatedQuote.deliveryFeeCurrency === "ARRANGE" && (
                             <p className="text-xs text-amber-600 mt-2">
-                              * Delivery cost for packages over 10kg will be determined upon arrival. You may also arrange your own delivery.
+                              * Delivery cost for packages over 10kg will be determined upon arrival.
                             </p>
                           )}
                         </div>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg space-y-2">
+                      <div className="bg-blue-50 p-3 sm:p-4 rounded-lg space-y-2">
                         <div className="flex items-center space-x-2">
                           <Clock className="h-4 w-4 text-blue-600" />
-                          <span className="font-medium text-blue-800">Delivery Time</span>
+                          <span className="font-medium text-blue-800 text-sm sm:text-base">Delivery Time</span>
                         </div>
-                        <p className="text-sm text-blue-700">10-15 days shipping + 3-5 days delivery</p>
+                        <p className="text-xs sm:text-sm text-blue-700">10-15 days shipping + 3-5 days delivery</p>
                       </div>
 
-                                            <div className="space-y-3">
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex flex-col items-center">
+                      <div className="space-y-3">
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4 flex flex-col items-center">
                           <button 
-                          onClick={handleQuoteSubmit}
-                          disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress) || isSubmittingQuote}
-                                                      className={`w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-base shadow-lg ${
+                            onClick={handleQuoteSubmit}
+                            disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress) || isSubmittingQuote}
+                            className={`w-full sm:w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-sm sm:text-base shadow-lg ${
                               calculatedQuote && quoteCalculatorForm.senderName && quoteCalculatorForm.senderEmail && quoteCalculatorForm.senderPhone && (quoteCalculatorForm.packageType !== "other" || quoteCalculatorForm.customPackageType) && quoteCalculatorForm.deliveryLocation && (!quoteCalculatorForm.needsDelivery || quoteCalculatorForm.deliveryAddress) && !isSubmittingQuote
                               ? "bg-[#002147] hover:bg-blue-900 text-white hover:scale-105"
                               : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                          }`}
-                        >
+                            }`}
+                          >
                             {isSubmittingQuote ? (
                               <>
-                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                                <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white mr-2"></div>
                                 Submitting...
                               </>
                             ) : (
                               <>
-                                <Mail className="mr-2 h-5 w-5" />
+                                <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                                 📧 Submit My Quote
                               </>
                             )}
@@ -1860,29 +1886,20 @@ export default function FreightBunnyHome() {
                           {(!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)) && (
                             <p className="text-xs text-amber-600 text-center mt-2 font-medium">
                               Complete all fields above to submit your quote
-                              {quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType && (
-                                <span className="block">Please specify what item you're shipping</span>
-                              )}
-                              {!quoteCalculatorForm.deliveryLocation && (
-                                <span className="block">Please select destination state</span>
-                              )}
-                              {quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress && (
-                                <span className="block">Please enter delivery address</span>
-                              )}
                             </p>
                           )}
                         </div>
 
                         <div className="border-t border-gray-200 pt-3 flex flex-col items-center space-y-3">
-                          <p className="text-sm text-gray-600 text-center font-medium">Ready to proceed?</p>
+                          <p className="text-xs sm:text-sm text-gray-600 text-center font-medium">Ready to proceed?</p>
                           <button 
                             onClick={() => {
                               setIsQuoteModalOpen(false);
                               setIsShipNowModalOpen(true);
                             }}
-                            className="w-auto mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center hover:scale-105 shadow-lg text-base"
+                            className="w-full sm:w-auto mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center hover:scale-105 shadow-lg text-sm sm:text-base"
                           >
-                            <Package className="mr-2 h-5 w-5" />
+                            <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                             Proceed to Ship Package
                           </button>
                           <button 
@@ -1890,16 +1907,14 @@ export default function FreightBunnyHome() {
                               const choice = confirm(`📞 Contact us for a custom quote!\n\nChoose your preferred contact:\n\n✅ Click OK for UK Office\n❌ Click Cancel for Nigeria Office`);
                               
                               if (choice) {
-                                // UK Office selected
                                 alert(`🇬🇧 UK Office Contact:\n\n📞 Phone: +44 7392 171558\n📧 Email: info@freightbunny.com\n\n🕒 Business Hours (GMT):\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed\n\n💬 WhatsApp: Available on this number`);
                               } else {
-                                // Nigeria Office selected  
                                 alert(`🇳🇬 Nigeria Office Contact:\n\n📞 Phone: +234 1 234 5678\n📧 Email: nigeria@freightbunny.com\n\n🕒 Business Hours (WAT):\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed\n\n💬 WhatsApp: Available on this number`);
                               }
                             }}
-                            className="w-auto mx-auto border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center text-base shadow-lg"
+                            className="w-full sm:w-auto mx-auto border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center text-sm sm:text-base shadow-lg"
                           >
-                            <Phone className="mr-2 h-5 w-5" />
+                            <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                             Contact Us for Custom Quote
                           </button>
                         </div>
@@ -1908,35 +1923,33 @@ export default function FreightBunnyHome() {
                   </div>
                 )}
 
-
-
-                {/* How It Works */}
+                {/* How It Works - Improved for mobile */}
                 <div className="bg-white rounded-lg border shadow-sm">
                   <div className="p-3 border-b">
-                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center">
                       <Truck className="mr-2 h-4 w-4 text-blue-600" />
                       How It Works
                     </h3>
                   </div>
-                  <div className="p-3 space-y-2 text-xs">
+                  <div className="p-3 space-y-2 text-xs sm:text-sm">
                     <div className="flex items-start space-x-2">
-                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">1</div>
+                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
                       <p className="text-gray-700">You send your item to our address</p>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">2</div>
+                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
                       <p className="text-gray-700">We weigh it, send you pictures & invoice</p>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">3</div>
+                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
                       <p className="text-gray-700">We ship after you pay the invoice</p>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">4</div>
+                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">4</div>
                       <p className="text-gray-700">Cargo pickup: Tuesdays | Ship: Fridays</p>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">5</div>
+                      <div className="bg-blue-100 text-blue-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">5</div>
                       <p className="text-gray-700">10-15 days to Lagos + 3-5 days doorstep delivery</p>
                     </div>
                     <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-4">
@@ -1952,25 +1965,25 @@ export default function FreightBunnyHome() {
         </div>
       )}
 
-      {/* Quote Details Modal */}
+      {/* Quote Details Modal - Improved for mobile */}
       {quoteDetailsModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => {
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-2 sm:p-4" onClick={() => {
           setQuoteDetailsModal(false);
           setIsQuoteModalOpen(false);
           resetQuoteForm();
         }}>
           <div 
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto max-h-[95vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-green-600 to-emerald-600 text-white p-6 rounded-t-2xl flex justify-between items-center">
+            <div className="sticky top-0 bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 sm:p-6 rounded-t-2xl flex justify-between items-center">
               <div>
-                <h2 className="text-2xl font-bold flex items-center">
-                  <CheckCircle className="mr-3 h-7 w-7" />
+                <h2 className="text-xl sm:text-2xl font-bold flex items-center">
+                  <CheckCircle className="mr-2 sm:mr-3 h-6 w-6 sm:h-7 sm:w-7" />
                   Your Quote Summary
                 </h2>
-                <p className="text-green-100 mt-1">Quote ID: FB-{Date.now().toString().slice(-6)}</p>
+                <p className="text-green-100 mt-1 text-sm">Quote ID: FB-{Date.now().toString().slice(-6)}</p>
               </div>
               <button
                 onClick={() => {
@@ -1980,26 +1993,26 @@ export default function FreightBunnyHome() {
                 }}
                 className="text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6" />
               </button>
             </div>
             
             {/* Content */}
-            <div className="p-6 space-y-6">
+            <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
               {/* Customer Information */}
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                  <User className="mr-2 h-5 w-5 text-blue-600" />
+              <div className="bg-blue-50 rounded-xl p-3 sm:p-4">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <User className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Customer Details
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
                     <span className="font-medium text-gray-700">Name:</span>
-                    <p className="text-gray-900">{quoteCalculatorForm.senderName}</p>
+                    <p className="text-gray-900 break-words">{quoteCalculatorForm.senderName}</p>
                   </div>
                   <div>
                     <span className="font-medium text-gray-700">Email:</span>
-                    <p className="text-gray-900">{quoteCalculatorForm.senderEmail}</p>
+                    <p className="text-gray-900 break-all">{quoteCalculatorForm.senderEmail}</p>
                   </div>
                   <div className="md:col-span-2">
                     <span className="font-medium text-gray-700">Phone:</span>
@@ -2009,9 +2022,9 @@ export default function FreightBunnyHome() {
               </div>
 
               {/* Shipment Details */}
-              <div className="bg-purple-50 rounded-xl p-4">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                  <Package className="mr-2 h-5 w-5 text-purple-600" />
+              <div className="bg-purple-50 rounded-xl p-3 sm:p-4">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
                   Shipment Details
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
@@ -2023,7 +2036,7 @@ export default function FreightBunnyHome() {
                     <span className="font-medium text-gray-700">Weight:</span>
                     <p className="text-gray-900">{quoteCalculatorForm.weight}kg</p>
                   </div>
-                  <div>
+                  <div className="md:col-span-2">
                     <span className="font-medium text-gray-700">Package Type:</span>
                     <p className="text-gray-900">
                       {quoteCalculatorForm.packageType === "other" 
@@ -2031,7 +2044,7 @@ export default function FreightBunnyHome() {
                         : quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)}
                     </p>
                   </div>
-                  <div>
+                  <div className="md:col-span-2">
                     <span className="font-medium text-gray-700">
                       {quoteCalculatorForm.needsDelivery ? "Destination State:" : "Pickup State:"}
                     </span>
@@ -2040,7 +2053,7 @@ export default function FreightBunnyHome() {
                   {quoteCalculatorForm.needsDelivery && quoteCalculatorForm.deliveryAddress && (
                     <div className="md:col-span-2">
                       <span className="font-medium text-gray-700">Delivery Address:</span>
-                      <p className="text-gray-900 text-sm">{quoteCalculatorForm.deliveryAddress}</p>
+                      <p className="text-gray-900 text-sm break-words">{quoteCalculatorForm.deliveryAddress}</p>
                     </div>
                   )}
                   <div className="md:col-span-2">
@@ -2053,16 +2066,16 @@ export default function FreightBunnyHome() {
               </div>
 
               {/* Cost Breakdown */}
-              <div className="bg-green-50 rounded-xl p-4">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                  <Calculator className="mr-2 h-5 w-5 text-green-600" />
+              <div className="bg-green-50 rounded-xl p-3 sm:p-4">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <Calculator className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
                   Cost Breakdown
                 </h3>
                 <div className="space-y-3">
                   {calculatedQuote ? (
                     <>
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-gray-700">Shipping Cost ({Math.max(parseFloat(quoteCalculatorForm.weight) || 0, 1)}kg @ £9/kg):</span>
+                      <div className="flex justify-between items-start text-sm">
+                        <span className="text-gray-700 flex-1 mr-2">Shipping Cost ({Math.max(parseFloat(quoteCalculatorForm.weight) || 0, 1)}kg @ £9/kg):</span>
                         <span className="font-semibold text-gray-900">£{calculatedQuote.shippingCost.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between items-center text-sm">
@@ -2070,8 +2083,8 @@ export default function FreightBunnyHome() {
                         <span className="font-semibold text-gray-900">£{calculatedQuote.handlingFee.toFixed(2)}</span>
                       </div>
                       {calculatedQuote.needsDelivery && calculatedQuote.deliveryFee > 0 && (
-                        <div className="flex justify-between items-center text-sm">
-                          <span className="text-gray-700">Delivery Fee:</span>
+                        <div className="flex justify-between items-start text-sm">
+                          <span className="text-gray-700 flex-1 mr-2">Delivery Fee:</span>
                           <span className="font-semibold text-gray-900">
                             {calculatedQuote.deliveryFeeCurrency === "GBP"
                               ? `£${calculatedQuote.deliveryFee.toFixed(2)}`
@@ -2082,15 +2095,15 @@ export default function FreightBunnyHome() {
                         </div>
                       )}
                       <div className="border-t pt-3 flex justify-between items-center">
-                        <span className="text-lg font-bold text-green-700">Total Cost:</span>
-                        <span className="text-xl font-bold text-green-700">
+                        <span className="text-base sm:text-lg font-bold text-green-700">Total Cost:</span>
+                        <span className="text-lg sm:text-xl font-bold text-green-700">
                           £{calculatedQuote.totalGBP.toFixed(2)}
                         </span>
                       </div>
                     </>
                   ) : (
                     <div className="text-center py-4">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-2"></div>
+                      <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-green-600 mx-auto mb-2"></div>
                       <p className="text-sm text-gray-600">Recalculating quote...</p>
                     </div>
                   )}
@@ -2098,110 +2111,106 @@ export default function FreightBunnyHome() {
               </div>
 
               {/* Delivery Time */}
-              <div className="bg-blue-100 rounded-xl p-4 text-center">
+              <div className="bg-blue-100 rounded-xl p-3 sm:p-4 text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Clock className="h-5 w-5 text-blue-600 mr-2" />
-                  <span className="font-semibold text-blue-900">Estimated Delivery Time</span>
+                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 mr-2" />
+                  <span className="font-semibold text-blue-900 text-sm sm:text-base">Estimated Delivery Time</span>
                 </div>
-                <p className="text-blue-800 font-medium">10-15 days shipping + 3-5 days delivery</p>
-                <p className="text-sm text-blue-700 mt-2">We'll follow up within 2 hours to finalize your booking!</p>
+                <p className="text-blue-800 font-medium text-sm sm:text-base">10-15 days shipping + 3-5 days delivery</p>
+                <p className="text-xs sm:text-sm text-blue-700 mt-2">We'll follow up within 2 hours to finalize your booking!</p>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                                  <button
-                    onClick={() => {
-                      setQuoteDetailsModal(false);
-                      setIsQuoteModalOpen(false);
-                      resetQuoteForm();
-                    }}
-                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors"
-                  >
-                    Close Quote
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (!calculatedQuote) {
-                        alert("⏳ Please wait for the quote to finish calculating before proceeding.");
-                        return;
-                      }
+              {/* Action Buttons - Improved for mobile */}
+              <div className="flex flex-col gap-3 pt-4">
+                <button
+                  onClick={() => {
+                    if (!calculatedQuote) {
+                      alert("⏳ Please wait for the quote to finish calculating before proceeding.");
+                      return;
+                    }
+                    
+                    // Pre-fill Ship Now form with comprehensive quote data
+                    const updatedShipNowForm = {
+                      // Sender information from quote
+                      senderName: quoteCalculatorForm.senderName,
+                      senderEmail: quoteCalculatorForm.senderEmail,
+                      senderPhone: quoteCalculatorForm.senderPhone,
+                      senderCountry: quoteCalculatorForm.from === "UK" ? "United Kingdom" : "Nigeria",
+                      senderAddress: "", // User will fill this
+                      senderCity: "",
+                      senderPostcode: "",
                       
-                      console.log("Proceed to Ship button clicked - transferring data to Ship Now modal");
+                      // Recipient information based on quote
+                      recipientName: "", // User will fill this
+                      recipientEmail: "", // User will fill this
+                      recipientPhone: "", // User will fill this
+                      recipientAddress: quoteCalculatorForm.needsDelivery ? quoteCalculatorForm.deliveryAddress : "",
+                      recipientCity: "", // Will be extracted from address if possible
+                      recipientState: quoteCalculatorForm.deliveryLocation,
+                      recipientCountry: quoteCalculatorForm.to === "Nigeria" ? "Nigeria" : "United Kingdom",
                       
-                      // Pre-fill Ship Now form with comprehensive quote data
-                      const updatedShipNowForm = {
-                        // Sender information from quote
-                        senderName: quoteCalculatorForm.senderName,
-                        senderEmail: quoteCalculatorForm.senderEmail,
-                        senderPhone: quoteCalculatorForm.senderPhone,
-                        senderCountry: quoteCalculatorForm.from === "UK" ? "United Kingdom" : "Nigeria",
-                        senderAddress: "", // User will fill this
-                        senderCity: "",
-                        senderPostcode: "",
-                        
-                        // Recipient information based on quote
-                        recipientName: "", // User will fill this
-                        recipientEmail: "", // User will fill this
-                        recipientPhone: "", // User will fill this
-                        recipientAddress: quoteCalculatorForm.needsDelivery ? quoteCalculatorForm.deliveryAddress : "",
-                        recipientCity: "", // Will be extracted from address if possible
-                        recipientState: quoteCalculatorForm.deliveryLocation,
-                        recipientCountry: quoteCalculatorForm.to === "Nigeria" ? "Nigeria" : "United Kingdom",
-                        
-                        // Package information from quote
-                        packageType: quoteCalculatorForm.packageType === "other" ? "other" : quoteCalculatorForm.packageType,
-                        weight: quoteCalculatorForm.weight,
-                        length: "", // User will specify
-                        width: "", // User will specify
-                        height: "", // User will specify
-                        value: "", // User will specify
-                        description: quoteCalculatorForm.packageType === "other" 
-                          ? `${quoteCalculatorForm.customPackageType} - ${quoteCalculatorForm.weight}kg package`
-                          : `${quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)} package - ${quoteCalculatorForm.weight}kg`,
-                        
-                        // Shipping preferences
-                        shippingService: "standard", // Based on quote (standard = £9/kg)
-                        insurance: true, // Recommended and free
-                        signature: false, // Optional £5 service
-                        tracking: true   // Free SMS updates
-                      };
+                      // Package information from quote
+                      packageType: quoteCalculatorForm.packageType === "other" ? "other" : quoteCalculatorForm.packageType,
+                      weight: quoteCalculatorForm.weight,
+                      length: "", // User will specify
+                      width: "", // User will specify
+                      height: "", // User will specify
+                      value: "", // User will specify
+                      description: quoteCalculatorForm.packageType === "other" 
+                        ? `${quoteCalculatorForm.customPackageType} - ${quoteCalculatorForm.weight}kg package`
+                        : `${quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)} package - ${quoteCalculatorForm.weight}kg`,
                       
-                      // Update the ship now form
-                      setShipNowForm(updatedShipNowForm);
-                      
-                      // Calculate initial estimate based on transferred data
-                      if (updatedShipNowForm.weight && updatedShipNowForm.shippingService) {
-                        const weight = parseFloat(updatedShipNowForm.weight);
-                        const baseRate = updatedShipNowForm.shippingService === "express" ? 15 : 9;
-                        const baseCost = weight * baseRate;
-                        const signatureCost = updatedShipNowForm.signature ? 5 : 0;
-                        setEstimatedCost(baseCost + signatureCost);
-                      }
-                      
-                      // Start from step 1 of shipping process
-                      setCurrentStep(1);
-                      
-                      // Close quote modal and open ship now modal
-                      console.log("Closing quote modal and opening Ship Now modal");
-                      setQuoteDetailsModal(false);
-                      setIsShipNowModalOpen(true);
-                      console.log("Ship Now modal should now be open");
-                      
-                      // Show success message
-                      setTimeout(() => {
-                        alert("✅ Great! Your quote information has been transferred to the shipping form. Please review and complete the remaining details to finalize your booking.");
-                      }, 300);
-                    }}
-                    disabled={!calculatedQuote}
-                    className={`flex-1 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center ${
-                      calculatedQuote 
-                        ? "bg-green-600 hover:bg-green-700 text-white" 
-                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    }`}
-                  >
-                    <Package className="mr-2 h-5 w-5" />
-                    Proceed to Ship
-                  </button>
+                      // Shipping preferences
+                      shippingService: "standard", // Based on quote (standard = £9/kg)
+                      insurance: true, // Recommended and free
+                      signature: false, // Optional £5 service
+                      tracking: true   // Free SMS updates
+                    };
+                    
+                    // Update the ship now form
+                    setShipNowForm(updatedShipNowForm);
+                    
+                    // Calculate initial estimate based on transferred data
+                    if (updatedShipNowForm.weight && updatedShipNowForm.shippingService) {
+                      const weight = parseFloat(updatedShipNowForm.weight);
+                      const baseRate = updatedShipNowForm.shippingService === "express" ? 15 : 9;
+                      const baseCost = weight * baseRate;
+                      const signatureCost = updatedShipNowForm.signature ? 5 : 0;
+                      setEstimatedCost(baseCost + signatureCost);
+                    }
+                    
+                    // Start from step 1 of shipping process
+                    setCurrentStep(1);
+                    
+                    // Close quote modal and open ship now modal
+                    setQuoteDetailsModal(false);
+                    setIsShipNowModalOpen(true);
+                    
+                    // Show success message
+                    setTimeout(() => {
+                      alert("✅ Great! Your quote information has been transferred to the shipping form. Please review and complete the remaining details to finalize your booking.");
+                    }, 300);
+                  }}
+                  disabled={!calculatedQuote}
+                  className={`w-full font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center text-sm sm:text-base ${
+                    calculatedQuote 
+                      ? "bg-green-600 hover:bg-green-700 text-white" 
+                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  }`}
+                >
+                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  Proceed to Ship Package
+                </button>
+                <button
+                  onClick={() => {
+                    setQuoteDetailsModal(false);
+                    setIsQuoteModalOpen(false);
+                    resetQuoteForm();
+                  }}
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors text-sm sm:text-base"
+                >
+                  Close Quote
+                </button>
               </div>
             </div>
           </div>
