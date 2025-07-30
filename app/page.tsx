@@ -619,7 +619,7 @@ export default function FreightBunnyHome() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Track Your Package</h2>
             <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 px-2">Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
@@ -627,7 +627,10 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400 text-sm sm:text-base text-center sm:text-left placeholder:text-center sm:placeholder:text-left"
               />
-              <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-transform duration-200 hover:scale-105 cursor-pointer">
+              <Button 
+                variant="default"
+                className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-transform duration-200 hover:scale-105 cursor-pointer !bg-[#002147] !hover:bg-[#001634]"
+                style={{ backgroundColor: '#002147' }}>
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
               </Button>
