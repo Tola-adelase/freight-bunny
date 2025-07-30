@@ -520,65 +520,66 @@ export default function FreightBunnyHome() {
 
         <div className="container mx-auto flex flex-col justify-center items-center h-full min-h-[60vh] relative z-10 py-8">
           {/* Badge */}
-          <div className="mb-6 sm:mb-7">
-            <span className="inline-flex items-center px-3 py-1.5 sm:px-4 rounded-full bg-gradient-to-r from-[#e0eaff] to-[#c7e0ff] text-[#002147] text-sm sm:text-base font-semibold shadow-md">
+          <div className="mb-8 sm:mb-7">
+            <span className="inline-flex items-center px-4 py-2 sm:px-4 rounded-full bg-gradient-to-r from-[#e0eaff] to-[#c7e0ff] text-[#002147] text-sm sm:text-base font-semibold shadow-lg border border-blue-200">
               <Plane className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-[#002147]" />
               Fast, Reliable Air Freight
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-1 leading-tight px-2">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-tight px-2">
             UK ↔ Nigeria Shipping
           </h1>
-          <div className="relative flex justify-center mb-4 sm:mb-6">
-            <span className="block text-[#002147] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative">
+          <div className="relative flex justify-center mb-6 sm:mb-6">
+            <span className="block text-[#002147] text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative">
               Made Easy
-              <span className="absolute left-1/2 -bottom-1 w-3/4 h-1.5 sm:h-2 bg-blue-100 rounded-full -translate-x-1/2 z-[-1]"></span>
+              <span className="absolute left-1/2 -bottom-1 w-3/4 h-1.5 sm:h-2 bg-gradient-to-r from-blue-200 to-blue-300 rounded-full -translate-x-1/2 z-[-1]"></span>
             </span>
           </div>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-medium text-center mb-2 px-4">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-medium text-center mb-3 px-6 leading-relaxed">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-gray-500 text-center mb-6 sm:mb-8 px-4">
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 text-center mb-8 sm:mb-8 px-6 leading-relaxed">
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
           {/* Pricing Card */}
-          <div className="mb-6 sm:mb-8 flex justify-center w-full px-4">
-            <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 max-w-sm sm:max-w-md w-full border border-gray-100 flex flex-col items-center">
-              <div className="flex items-center justify-center mb-2">
+          <div className="mb-8 sm:mb-8 flex justify-center w-full px-6">
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl p-5 sm:p-6 max-w-sm sm:max-w-md w-full border border-blue-100 flex flex-col items-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-100 to-transparent rounded-full blur-2xl opacity-60"></div>
+              <div className="flex items-center justify-center mb-3 relative z-10">
                 <Package className="w-5 h-5 sm:w-6 sm:h-6 text-[#002147] mr-2" />
-                <p className="text-gray-500 font-semibold text-sm sm:text-base">Prices starting from</p>
+                <p className="text-gray-600 font-semibold text-sm sm:text-base">Prices starting from</p>
               </div>
-              <div className="mb-1">
+              <div className="mb-2 relative z-10">
                 <span className="text-3xl sm:text-4xl font-extrabold text-[#002147]">£9</span>
                 <span className="text-base sm:text-lg font-medium text-gray-700">/kg</span>
               </div>
-              <p className="text-xs sm:text-sm text-gray-500 text-center">Delivery: 7–10 days after shipment (may vary)</p>
+              <p className="text-xs sm:text-sm text-gray-500 text-center relative z-10">Delivery: 7–10 days after shipment (may vary)</p>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center w-full max-w-lg sm:max-w-2xl px-4">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 mb-8 sm:mb-8 justify-center w-full max-w-lg sm:max-w-2xl px-6">
             <Button
               size="lg"
               variant="outline"
-              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
+              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-4 py-3 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
                 setIsQuoteModalOpen(true);
               }}
             >
-              <Calculator className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
+              <Calculator className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-6 sm:w-6" />
               Get Free Quote
             </Button>
             <Button
               size="lg"
-              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
+              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-4 py-3 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -586,28 +587,28 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
+              <Package className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-6 sm:w-6" />
               Ship Now
             </Button>
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-3 sm:gap-6 mb-8 sm:mb-10 px-4">
-            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-6 mb-10 sm:mb-12 px-6">
+            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm bg-green-50 px-3 py-2 rounded-full border border-green-100">
               <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 flex-shrink-0" />
-              <span>Fully Insured</span>
+              <span className="font-medium">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm">
+            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm bg-blue-50 px-3 py-2 rounded-full border border-blue-100">
               <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500 flex-shrink-0" />
-              <span>Real-time Tracking</span>
+              <span className="font-medium">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm">
+            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm bg-yellow-50 px-3 py-2 rounded-full border border-yellow-100">
               <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 flex-shrink-0" />
-              <span>5-Star Service</span>
+              <span className="font-medium">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm">
+            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm bg-green-50 px-3 py-2 rounded-full border border-green-100">
               <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-400 flex-shrink-0" />
-              <span>No Hidden Fees</span>
+              <span className="font-medium">No Hidden Fees</span>
             </div>
           </div>
         </div>
