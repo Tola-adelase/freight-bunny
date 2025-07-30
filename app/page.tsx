@@ -643,34 +643,34 @@ export default function FreightBunnyHome() {
         </div>
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Service 1 */}
-          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Air Freight UK → Nigeria</h3>
+          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
+            <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Air Freight UK → Nigeria</h3>
+            <div className="flex-1 flex flex-col justify-center">
               <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
               <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
             </div>
-            <div className="w-full flex justify-center mt-auto">
+            <div className="w-full flex justify-center">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-none sm:max-w-[200px] md:max-w-none text-center">Get a Quote</a>
             </div>
           </div>
           {/* Service 2 */}
-          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Air Freight Nigeria → UK</h3>
+          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
+            <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Air Freight Nigeria → UK</h3>
+            <div className="flex-1 flex flex-col justify-center">
               <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
               <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
             </div>
-            <div className="w-full flex justify-center mt-auto">
+            <div className="w-full flex justify-center">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-none sm:max-w-[200px] md:max-w-none text-center">Get a Quote</a>
             </div>
           </div>
           {/* Service 3 */}
-          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Customs Clearance Support</h3>
+          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
+            <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Customs Clearance Support</h3>
+            <div className="flex-1 flex flex-col justify-center">
               <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
             </div>
-            <div className="w-full flex justify-center mt-auto">
+            <div className="w-full flex justify-center">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-none sm:max-w-[200px] md:max-w-none text-center">Learn More</a>
             </div>
           </div>
