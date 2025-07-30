@@ -668,7 +668,8 @@ export default function FreightBunnyHome() {
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
             <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center">Customs Clearance Support</h3>
             <div className="flex-1 flex flex-col justify-center">
-              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+              <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Support: Available throughout the entire shipping process. Professional guidance at every step.</p>
             </div>
             <div className="w-full flex justify-center">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-none sm:max-w-[200px] md:max-w-none text-center">Learn More</a>
