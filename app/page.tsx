@@ -566,7 +566,7 @@ export default function FreightBunnyHome() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
+              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
@@ -578,7 +578,7 @@ export default function FreightBunnyHome() {
             </Button>
             <Button
               size="lg"
-              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
+              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-4 sm:py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none transition-transform duration-200 hover:scale-105 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -592,7 +592,7 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-3 sm:gap-6 mb-8 sm:mb-10 px-4">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-3 sm:gap-6 mb-8 sm:mb-10 mt-6 sm:mt-4 px-4">
             <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm">
               <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 flex-shrink-0" />
               <span>Fully Insured</span>
