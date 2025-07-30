@@ -541,24 +541,24 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-2 px-4 leading-relaxed">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-1 px-4 leading-tight">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-base sm:text-base md:text-lg text-gray-600 text-center mb-6 sm:mb-8 px-4 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-4 sm:mb-8 px-4 leading-relaxed">
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
           {/* Pricing Card */}
-          <div className="mb-6 sm:mb-8 flex justify-center w-full px-4">
-            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl p-5 sm:p-6 max-w-sm sm:max-w-md w-full border border-blue-100/50 flex flex-col items-center relative overflow-hidden backdrop-blur-sm">
+          <div className="mb-4 sm:mb-8 flex justify-center w-full px-4">
+            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl p-4 sm:p-6 max-w-sm sm:max-w-md w-full border border-blue-100/50 flex flex-col items-center relative overflow-hidden backdrop-blur-sm">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
-              <div className="relative z-10 flex items-center justify-center mb-3">
+              <div className="relative z-10 flex items-center justify-center mb-2">
                 <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg">
                   <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
               </div>
-              <div className="relative z-10 mb-2 flex items-baseline">
+              <div className="relative z-10 mb-1 flex items-baseline">
                 <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm">£9</span>
                 <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1">/kg</span>
               </div>
@@ -569,23 +569,24 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-6 justify-center w-full max-w-lg sm:max-w-2xl px-4">
+          <div className="flex flex-row gap-2 sm:gap-4 mb-4 sm:mb-6 justify-center w-full max-w-lg sm:max-w-2xl px-4">
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-6 py-4 sm:py-3 text-base font-bold rounded-xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 backdrop-blur-sm"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:py-3 text-sm sm:text-base font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 backdrop-blur-sm"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
                 setIsQuoteModalOpen(true);
               }}
             >
-              <Calculator className="mr-2 h-6 w-6 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
-              Get Free Quote
+              <Calculator className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
+              <span className="hidden xs:inline">Get Free Quote</span>
+              <span className="xs:hidden">Quote</span>
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-6 py-4 sm:py-3 text-base font-bold rounded-xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:py-3 text-sm sm:text-base font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -593,36 +594,36 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-2 h-6 w-6 sm:h-6 sm:w-6 text-white flex-shrink-0" />
+              <Package className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-white flex-shrink-0" />
               Ship Now
             </Button>
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-2 sm:gap-6 mb-4 sm:mb-8 mt-3 sm:mt-4 px-4">
-            <div className="flex items-center gap-2 bg-green-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-1 sm:gap-6 mb-4 sm:mb-8 mt-2 sm:mt-4 px-4">
+            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm text-center justify-center">
               <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
                 <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
-              <span className="text-green-700 text-xs sm:text-sm font-semibold">Fully Insured</span>
+              <span className="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-2 bg-blue-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm">
+            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm text-center justify-center">
               <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
                 <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
-              <span className="text-blue-700 text-xs sm:text-sm font-semibold">Real-time Tracking</span>
+              <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-2 bg-yellow-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm">
+            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm text-center justify-center">
               <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full">
                 <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
-              <span className="text-yellow-700 text-xs sm:text-sm font-semibold">5-Star Service</span>
+              <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-2 bg-emerald-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm">
+            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm text-center justify-center">
               <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full">
                 <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
-              <span className="text-emerald-700 text-xs sm:text-sm font-semibold">No Hidden Fees</span>
+              <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">No Hidden Fees</span>
             </div>
           </div>
         </div>
