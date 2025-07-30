@@ -582,7 +582,7 @@ export default function FreightBunnyHome() {
             >
               <Calculator className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
               <span className="hidden xs:inline">Get Free Quote</span>
-              <span className="xs:hidden">Quote</span>
+              <span className="xs:hidden">Get Quote</span>
             </Button>
             <Button
               size="lg"
@@ -600,7 +600,7 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-1 sm:gap-6 mb-4 sm:mb-8 mt-2 sm:mt-4 px-4">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-1 sm:gap-6 mb-4 sm:mb-8 mt-2 sm:mt-2 px-4">
             <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm text-center justify-center">
               <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
                 <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
