@@ -513,14 +513,14 @@ export default function FreightBunnyHome() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+      <section className="relative min-h-[85vh] sm:min-h-[calc(100vh-64px)] flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
         {/* Abstract Shape for Visual Interest */}
         <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
 
-        <div className="container mx-auto flex flex-col justify-center items-center h-full min-h-[60vh] relative z-10 py-8">
+        <div className="container mx-auto flex flex-col justify-start items-center h-full relative z-10 pt-8 pb-4 sm:py-8">
           {/* Badge */}
-          <div className="mb-8 sm:mb-7">
+          <div className="mb-6 sm:mb-7">
             <span className="inline-flex items-center px-4 py-2 sm:px-4 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
               <div className="bg-[#002147] p-1 rounded-full mr-3">
                 <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -533,7 +533,7 @@ export default function FreightBunnyHome() {
           <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-[1.1] px-2">
             UK ↔ Nigeria Shipping
           </h1>
-          <div className="relative flex justify-center mb-6 sm:mb-6">
+          <div className="relative flex justify-center mb-4 sm:mb-6">
             <span className="block text-[#002147] text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative">
               Made Easy
               <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 rounded-full -translate-x-1/2 z-[-1] shadow-sm"></span>
@@ -541,16 +541,16 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Subheading */}
-          <p className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-3 px-4 leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-2 px-4 leading-relaxed">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-base sm:text-base md:text-lg text-gray-600 text-center mb-8 sm:mb-8 px-4 leading-relaxed">
+          <p className="text-base sm:text-base md:text-lg text-gray-600 text-center mb-6 sm:mb-8 px-4 leading-relaxed">
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
           {/* Pricing Card */}
-          <div className="mb-8 sm:mb-8 flex justify-center w-full px-4">
-            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl p-6 sm:p-6 max-w-sm sm:max-w-md w-full border border-blue-100/50 flex flex-col items-center relative overflow-hidden backdrop-blur-sm">
+          <div className="mb-6 sm:mb-8 flex justify-center w-full px-4">
+            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl p-5 sm:p-6 max-w-sm sm:max-w-md w-full border border-blue-100/50 flex flex-col items-center relative overflow-hidden backdrop-blur-sm">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
               <div className="relative z-10 flex items-center justify-center mb-3">
                 <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg">
@@ -559,8 +559,8 @@ export default function FreightBunnyHome() {
                 <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
               </div>
               <div className="relative z-10 mb-2 flex items-baseline">
-                <span className="text-4xl sm:text-5xl font-black text-[#002147] drop-shadow-sm">£9</span>
-                <span className="text-lg sm:text-xl font-semibold text-gray-600 ml-1">/kg</span>
+                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm">£9</span>
+                <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1">/kg</span>
               </div>
               <div className="relative z-10 bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100">
                 <p className="text-sm sm:text-sm text-gray-700 text-center font-medium">Delivery: 7–10 days after shipment</p>
@@ -569,7 +569,7 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center w-full max-w-lg sm:max-w-2xl px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-6 justify-center w-full max-w-lg sm:max-w-2xl px-4">
             <Button
               size="lg"
               variant="outline"
@@ -599,27 +599,27 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-6 mb-10 sm:mb-10 mt-8 sm:mt-4 px-4">
-            <div className="flex items-center gap-3 bg-green-50/80 backdrop-blur-sm px-3 py-2 rounded-full border border-green-100/50 shadow-sm">
-              <div className="bg-green-500 p-1 rounded-full">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-2 sm:gap-6 mb-4 sm:mb-8 mt-3 sm:mt-4 px-4">
+            <div className="flex items-center gap-2 bg-green-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm">
+              <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
                 <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-green-700 text-xs sm:text-sm font-semibold">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-3 bg-blue-50/80 backdrop-blur-sm px-3 py-2 rounded-full border border-blue-100/50 shadow-sm">
-              <div className="bg-blue-500 p-1 rounded-full">
+            <div className="flex items-center gap-2 bg-blue-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm">
+              <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
                 <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-blue-700 text-xs sm:text-sm font-semibold">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-3 bg-yellow-50/80 backdrop-blur-sm px-3 py-2 rounded-full border border-yellow-100/50 shadow-sm">
-              <div className="bg-yellow-500 p-1 rounded-full">
+            <div className="flex items-center gap-2 bg-yellow-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm">
+              <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full">
                 <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-yellow-700 text-xs sm:text-sm font-semibold">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-3 bg-emerald-50/80 backdrop-blur-sm px-3 py-2 rounded-full border border-emerald-100/50 shadow-sm">
-              <div className="bg-emerald-500 p-1 rounded-full">
+            <div className="flex items-center gap-2 bg-emerald-50/80 backdrop-blur-sm px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm">
+              <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full">
                 <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-emerald-700 text-xs sm:text-sm font-semibold">No Hidden Fees</span>
