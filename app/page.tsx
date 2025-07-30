@@ -573,7 +573,7 @@ export default function FreightBunnyHome() {
                 setIsQuoteModalOpen(true);
               }}
             >
-              <Calculator className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
+              <Calculator className="mr-2 h-6 w-6 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
               Get Free Quote
             </Button>
             <Button
@@ -586,7 +586,7 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
+              <Package className="mr-2 h-6 w-6 sm:h-6 sm:w-6 text-white flex-shrink-0" />
               Ship Now
             </Button>
           </div>
@@ -627,8 +627,8 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400 text-sm sm:text-base text-center sm:text-left placeholder:text-center sm:placeholder:text-left"
               />
-              <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full max-w-xs sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-transform duration-200 hover:scale-105 cursor-pointer">
-                <Search className="h-4 w-4 mr-2" />
+              <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-4 sm:py-3 text-base rounded-lg shadow-lg flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-transform duration-200 hover:scale-105 cursor-pointer">
+                <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
               </Button>
             </div>
