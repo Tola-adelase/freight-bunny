@@ -89,13 +89,13 @@ export default function FreightBunnyHome() {
 
     // Package Information
     packageType: "",
+    customPackageType: "",
     weight: "",
     length: "",
     width: "",
     height: "",
     value: "",
     description: "",
-    shippingService: "",
 
     // Additional Options
     insurance: true,
@@ -380,15 +380,26 @@ export default function FreightBunnyHome() {
 
   const calculateEstimate = () => {
     const weight = Number.parseFloat(shipNowForm.weight) || 0
-    const baseRate = shipNowForm.shippingService === "express" ? 25 : 15
-    const cost = weight * baseRate
+    // Fixed rate of £15 per kg for all shipments
+    const baseRate = 15
+    let cost = weight * baseRate
+    
+    // Add handling fees based on package type
+    if (shipNowForm.packageType === "phones" || shipNowForm.packageType === "ipads") {
+      cost += 20
+    } else if (shipNowForm.packageType === "laptops") {
+      cost += 30
+    } else if (shipNowForm.packageType === "general") {
+      cost += shipNowForm.direction === "uk-nigeria" ? 30 : 5
+    }
+    
     setEstimatedCost(cost)
   }
 
   const nextStep = () => {
-    if (currentStep < 4) {
+    if (currentStep < 5) {
       setCurrentStep(currentStep + 1)
-      if (currentStep === 3) {
+      if (currentStep === 4) {
         calculateEstimate()
       }
     }
@@ -434,13 +445,13 @@ export default function FreightBunnyHome() {
 
       // Package Information
       packageType: "",
+      customPackageType: "",
       weight: "",
       length: "",
       width: "",
       height: "",
       value: "",
       description: "",
-      shippingService: "",
 
       // Additional Options
       insurance: true,
@@ -600,6 +611,7 @@ export default function FreightBunnyHome() {
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
+                setCurrentStep(1); // Always start from step 1
                 setIsShipNowModalOpen(true);
                 console.log("Ship Now modal state set to true");
               }}
@@ -1245,12 +1257,43 @@ export default function FreightBunnyHome() {
                             className="mt-1 bg-white border-gray-300 text-gray-900"
                           >
                             <option value="">Select state</option>
-                            <option value="Lagos">Lagos</option>
-                            <option value="Abuja">Abuja (FCT)</option>
+                            <option value="Abia">Abia</option>
+                            <option value="Adamawa">Adamawa</option>
+                            <option value="Akwa Ibom">Akwa Ibom</option>
+                            <option value="Anambra">Anambra</option>
+                            <option value="Bauchi">Bauchi</option>
+                            <option value="Bayelsa">Bayelsa</option>
+                            <option value="Benue">Benue</option>
+                            <option value="Borno">Borno</option>
+                            <option value="Cross River">Cross River</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Ebonyi">Ebonyi</option>
+                            <option value="Edo">Edo</option>
+                            <option value="Ekiti">Ekiti</option>
+                            <option value="Enugu">Enugu</option>
+                            <option value="FCT - Abuja">FCT - Abuja</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Imo">Imo</option>
+                            <option value="Jigawa">Jigawa</option>
+                            <option value="Kaduna">Kaduna</option>
                             <option value="Kano">Kano</option>
-                            <option value="Rivers">Rivers</option>
+                            <option value="Katsina">Katsina</option>
+                            <option value="Kebbi">Kebbi</option>
+                            <option value="Kogi">Kogi</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Nasarawa">Nasarawa</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Osun">Osun</option>
                             <option value="Oyo">Oyo</option>
-                            <option value="Other">Other</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Sokoto">Sokoto</option>
+                            <option value="Taraba">Taraba</option>
+                            <option value="Yobe">Yobe</option>
+                            <option value="Zamfara">Zamfara</option>
                           </SimpleSelect>
                         )}
                       </div>
@@ -1351,12 +1394,43 @@ export default function FreightBunnyHome() {
                             className="mt-1 bg-white border-gray-300 text-gray-900"
                           >
                             <option value="">Select state</option>
-                            <option value="Lagos">Lagos</option>
-                            <option value="Abuja">Abuja (FCT)</option>
+                            <option value="Abia">Abia</option>
+                            <option value="Adamawa">Adamawa</option>
+                            <option value="Akwa Ibom">Akwa Ibom</option>
+                            <option value="Anambra">Anambra</option>
+                            <option value="Bauchi">Bauchi</option>
+                            <option value="Bayelsa">Bayelsa</option>
+                            <option value="Benue">Benue</option>
+                            <option value="Borno">Borno</option>
+                            <option value="Cross River">Cross River</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Ebonyi">Ebonyi</option>
+                            <option value="Edo">Edo</option>
+                            <option value="Ekiti">Ekiti</option>
+                            <option value="Enugu">Enugu</option>
+                            <option value="FCT - Abuja">FCT - Abuja</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Imo">Imo</option>
+                            <option value="Jigawa">Jigawa</option>
+                            <option value="Kaduna">Kaduna</option>
                             <option value="Kano">Kano</option>
-                            <option value="Rivers">Rivers</option>
+                            <option value="Katsina">Katsina</option>
+                            <option value="Kebbi">Kebbi</option>
+                            <option value="Kogi">Kogi</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Nasarawa">Nasarawa</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Osun">Osun</option>
                             <option value="Oyo">Oyo</option>
-                            <option value="Other">Other</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Sokoto">Sokoto</option>
+                            <option value="Taraba">Taraba</option>
+                            <option value="Yobe">Yobe</option>
+                            <option value="Zamfara">Zamfara</option>
                           </SimpleSelect>
                         ) : (
                           <Input
@@ -1384,35 +1458,58 @@ export default function FreightBunnyHome() {
                     <p className="text-sm text-gray-600 mt-1">Provide details about your package</p>
                   </div>
                   <div className="p-4 space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="packageType" className="text-sm font-medium text-gray-900">Package Type *</Label>
+                      <SimpleSelect 
+                        value={shipNowForm.packageType} 
+                        onValueChange={(value) => handleShipNowFormChange("packageType", value)}
+                        className="mt-1 bg-white border-gray-300 text-gray-900"
+                      >
+                        <option value="">Select package type</option>
+                        {shipNowForm.direction === "uk-nigeria" && (
+                          <>
+                            <option value="phones">Phones (£20 handling fee)</option>
+                            <option value="ipads">iPads (£20 handling fee)</option>
+                            <option value="laptops">Laptops (£30 handling fee)</option>
+                          </>
+                        )}
+                        <option value="general">General Items (£{shipNowForm.direction === "uk-nigeria" ? "30" : "5"} handling fee)</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="documents">Documents</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="medical">Medical Supplies</option>
+                        <option value="gifts">Gifts</option>
+                        <option value="other">Other</option>
+                      </SimpleSelect>
+                    </div>
+
+                    {/* Custom Package Type - appears when "Other" is selected */}
+                    {shipNowForm.packageType === "other" && (
                       <div>
-                        <Label htmlFor="packageType" className="text-sm font-medium text-gray-900">Package Type *</Label>
-                        <SimpleSelect 
-                          value={shipNowForm.packageType} 
-                          onValueChange={(value) => handleShipNowFormChange("packageType", value)}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
-                        >
-                          <option value="">Select package type</option>
-                          <option value="documents">Documents</option>
-                          <option value="electronics">Electronics</option>
-                          <option value="clothing">Clothing</option>
-                          <option value="food">Food Items</option>
-                          <option value="gifts">Gifts</option>
-                          <option value="other">Other</option>
-                        </SimpleSelect>
-                      </div>
-                      <div>
-                        <Label htmlFor="weight" className="text-sm font-medium text-gray-900">Weight (kg) *</Label>
+                        <Label htmlFor="customPackageType" className="text-sm font-medium text-gray-900">Specify Item Type *</Label>
                         <Input
-                          id="weight"
-                          type="number"
-                          step="0.1"
-                          value={shipNowForm.weight}
-                          onChange={(e) => handleShipNowFormChange("weight", e.target.value)}
-                          placeholder="2.5"
+                          id="customPackageType"
+                          value={shipNowForm.customPackageType || ""}
+                          onChange={(e) => handleShipNowFormChange("customPackageType", e.target.value)}
+                          placeholder="Please specify the type of item"
                           className="mt-1 bg-white border-gray-300 text-gray-900"
                         />
                       </div>
+                    )}
+
+                    <div>
+                      <Label htmlFor="weight" className="text-sm font-medium text-gray-900">Weight (kg) *</Label>
+                      <Input
+                        id="weight"
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        value={shipNowForm.weight}
+                        onChange={(e) => handleShipNowFormChange("weight", e.target.value)}
+                        placeholder="2.5"
+                        className="mt-1 bg-white border-gray-300 text-gray-900"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">Minimum weight: 1kg</p>
                     </div>
 
                     <div>
@@ -1454,31 +1551,17 @@ export default function FreightBunnyHome() {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="value" className="text-sm font-medium text-gray-900">Declared Value (£) *</Label>
-                        <Input
-                          id="value"
-                          type="number"
-                          step="0.01"
-                          value={shipNowForm.value}
-                          onChange={(e) => handleShipNowFormChange("value", e.target.value)}
-                          placeholder="100.00"
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="shippingService" className="text-sm font-medium text-gray-900">Shipping Service *</Label>
-                        <SimpleSelect
-                          value={shipNowForm.shippingService}
-                          onValueChange={(value) => handleShipNowFormChange("shippingService", value)}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
-                        >
-                          <option value="">Select service</option>
-                          <option value="standard">Standard (7-10 days) - £9/kg</option>
-                          <option value="express">Express (3-5 days) - £15/kg</option>
-                        </SimpleSelect>
-                      </div>
+                    <div>
+                      <Label htmlFor="value" className="text-sm font-medium text-gray-900">Declared Value (£) *</Label>
+                      <Input
+                        id="value"
+                        type="number"
+                        step="0.01"
+                        value={shipNowForm.value}
+                        onChange={(e) => handleShipNowFormChange("value", e.target.value)}
+                        placeholder="100.00"
+                        className="mt-1 bg-white border-gray-300 text-gray-900"
+                      />
                     </div>
 
                     <div>
@@ -1548,12 +1631,6 @@ export default function FreightBunnyHome() {
                           <span className="text-gray-900">Route:</span>
                           <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
                             {shipNowForm.direction === "uk-nigeria" ? "🇬🇧 UK → Nigeria 🇳🇬" : "🇳🇬 Nigeria → UK 🇬🇧"}
-                          </Badge>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900">Service:</span>
-                          <Badge variant="outline">
-                            {shipNowForm.shippingService === "express" ? "Express (3-5 days)" : "Standard (7-10 days)"}
                           </Badge>
                         </div>
                         <div className="flex justify-between items-center">
@@ -1652,7 +1729,7 @@ export default function FreightBunnyHome() {
                   variant="outline"
                   onClick={prevStep}
                   disabled={currentStep === 1}
-                  className="flex items-center justify-center bg-white text-gray-700 border-gray-300 hover:bg-gray-50 order-2 sm:order-1 w-full sm:w-auto"
+                  className="flex items-center justify-center bg-white text-gray-700 border-gray-300 hover:bg-gray-50 order-2 sm:order-1 w-full sm:w-auto cursor-pointer"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Previous
@@ -1661,7 +1738,7 @@ export default function FreightBunnyHome() {
                 {currentStep < 5 ? (
                   <Button 
                     onClick={nextStep} 
-                    className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white order-1 sm:order-2 w-full sm:w-auto"
+                    className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white order-1 sm:order-2 w-full sm:w-auto cursor-pointer"
                   >
                     Next
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -1669,7 +1746,7 @@ export default function FreightBunnyHome() {
                 ) : (
                   <Button 
                     onClick={() => handleSubmitShipNow()} 
-                    className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center order-1 sm:order-2 w-full sm:w-auto"
+                    className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center order-1 sm:order-2 w-full sm:w-auto cursor-pointer"
                   >
                     <CreditCard className="mr-2 h-4 w-4" />
                     Proceed to Payment
@@ -2077,6 +2154,7 @@ export default function FreightBunnyHome() {
                           <button 
                             onClick={() => {
                               setIsQuoteModalOpen(false);
+                              setCurrentStep(1); // Always start from step 1
                               setIsShipNowModalOpen(true);
                             }}
                             className="w-full sm:w-auto mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center hover:scale-105 shadow-lg text-sm sm:text-base"
@@ -2338,6 +2416,7 @@ export default function FreightBunnyHome() {
                       
                       // Package information from quote
                       packageType: quoteCalculatorForm.packageType === "other" ? "other" : quoteCalculatorForm.packageType,
+                      customPackageType: quoteCalculatorForm.packageType === "other" ? quoteCalculatorForm.customPackageType : "",
                       weight: quoteCalculatorForm.weight,
                       length: "", // User will specify
                       width: "", // User will specify
@@ -2348,7 +2427,6 @@ export default function FreightBunnyHome() {
                         : `${quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)} package - ${quoteCalculatorForm.weight}kg`,
                       
                       // Shipping preferences
-                      shippingService: "standard", // Based on quote (standard = £9/kg)
                       insurance: true, // Recommended and free
                       signature: false, // Optional £5 service
                       tracking: true   // Free SMS updates
@@ -2358,10 +2436,20 @@ export default function FreightBunnyHome() {
                     setShipNowForm(updatedShipNowForm);
                     
                     // Calculate initial estimate based on transferred data
-                    if (updatedShipNowForm.weight && updatedShipNowForm.shippingService) {
+                    if (updatedShipNowForm.weight) {
                       const weight = parseFloat(updatedShipNowForm.weight);
-                      const baseRate = updatedShipNowForm.shippingService === "express" ? 15 : 9;
-                      const baseCost = weight * baseRate;
+                      const baseRate = 15; // Fixed rate of £15 per kg
+                      let baseCost = weight * baseRate;
+                      
+                      // Add handling fees based on package type
+                      if (updatedShipNowForm.packageType === "phones" || updatedShipNowForm.packageType === "ipads") {
+                        baseCost += 20;
+                      } else if (updatedShipNowForm.packageType === "laptops") {
+                        baseCost += 30;
+                      } else if (updatedShipNowForm.packageType === "general") {
+                        baseCost += updatedShipNowForm.direction === "uk-nigeria" ? 30 : 5;
+                      }
+                      
                       const signatureCost = updatedShipNowForm.signature ? 5 : 0;
                       setEstimatedCost(baseCost + signatureCost);
                     }
