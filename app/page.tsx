@@ -999,15 +999,34 @@ export default function FreightBunnyHome() {
       </footer>
 
       {/* Ship Now Modal */}
-      <Dialog open={isShipNowModalOpen} onOpenChange={setIsShipNowModalOpen}>
-        <DialogContent className="max-w-4xl max-h-[95vh] w-[95vw] sm:w-full overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center text-xl sm:text-2xl">
-              <Package className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
-              Ship a Package
-            </DialogTitle>
-            <DialogDescription className="text-sm sm:text-base">Complete the form below to ship your package from UK to Nigeria</DialogDescription>
-          </DialogHeader>
+      {isShipNowModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4" onClick={() => setIsShipNowModalOpen(false)}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl mx-auto max-h-[98vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            {/* Header - Improved for mobile */}
+            <div className="sticky top-0 bg-white p-3 sm:p-4 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
+              <button
+                onClick={() => setIsShipNowModalOpen(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors opacity-0"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <div className="text-center">
+                <div className="flex items-center justify-center">
+                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <h2 className="text-base sm:text-lg font-bold text-[#111827]">Ship Your Package</h2>
+                </div>
+                <p className="text-gray-600 mt-1 text-xs sm:text-sm">Complete the form below to ship your package from UK to Nigeria</p>
+              </div>
+              <button
+                onClick={() => setIsShipNowModalOpen(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div className="p-3 sm:p-4">
 
           {/* Progress Steps - Improved for mobile */}
           <div className="mb-6 sm:mb-8">
@@ -1521,8 +1540,10 @@ export default function FreightBunnyHome() {
               </Button>
             )}
           </div>
-        </DialogContent>
-      </Dialog>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Quote Calculator Modal - Improved for mobile */}
       {isQuoteModalOpen && (
