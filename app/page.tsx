@@ -89,13 +89,13 @@ export default function FreightBunnyHome() {
 
     // Package Information
     packageType: "",
-    customPackageType: "",
     weight: "",
     length: "",
     width: "",
     height: "",
     value: "",
     description: "",
+    shippingService: "",
 
     // Additional Options
     insurance: true,
@@ -380,26 +380,15 @@ export default function FreightBunnyHome() {
 
   const calculateEstimate = () => {
     const weight = Number.parseFloat(shipNowForm.weight) || 0
-    // Fixed rate of £15 per kg for all shipments
-    const baseRate = 15
-    let cost = weight * baseRate
-    
-    // Add handling fees based on package type
-    if (shipNowForm.packageType === "phones" || shipNowForm.packageType === "ipads") {
-      cost += 20
-    } else if (shipNowForm.packageType === "laptops") {
-      cost += 30
-    } else if (shipNowForm.packageType === "general") {
-      cost += shipNowForm.direction === "uk-nigeria" ? 30 : 5
-    }
-    
+    const baseRate = shipNowForm.shippingService === "express" ? 25 : 15
+    const cost = weight * baseRate
     setEstimatedCost(cost)
   }
 
   const nextStep = () => {
-    if (currentStep < 5) {
+    if (currentStep < 4) {
       setCurrentStep(currentStep + 1)
-      if (currentStep === 4) {
+      if (currentStep === 3) {
         calculateEstimate()
       }
     }
@@ -445,13 +434,13 @@ export default function FreightBunnyHome() {
 
       // Package Information
       packageType: "",
-      customPackageType: "",
       weight: "",
       length: "",
       width: "",
       height: "",
       value: "",
       description: "",
+      shippingService: "",
 
       // Additional Options
       insurance: true,
@@ -576,7 +565,7 @@ export default function FreightBunnyHome() {
               <div className="relative z-10 flex items-center justify-center mb-2">
                 <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg">
                   <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
+                </div>
                 <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
               </div>
               <div className="relative z-10 mb-1 flex items-baseline">
@@ -611,7 +600,6 @@ export default function FreightBunnyHome() {
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
-                setCurrentStep(1); // Always start from step 1
                 setIsShipNowModalOpen(true);
                 console.log("Ship Now modal state set to true");
               }}
@@ -626,13 +614,13 @@ export default function FreightBunnyHome() {
             <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm text-center justify-center">
               <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
                 <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
-            </div>
+              </div>
               <span className="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
             <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm text-center justify-center">
               <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
                 <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
-            </div>
+              </div>
               <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
             <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm text-center justify-center">
@@ -687,8 +675,8 @@ export default function FreightBunnyHome() {
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
             <div className="flex-1 flex flex-col items-center justify-start pt-4">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight UK → Nigeria</h3>
-            <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
-            <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
+              <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
             </div>
             <div className="w-full flex justify-center mt-auto">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center">Get a Quote</a>
@@ -698,8 +686,8 @@ export default function FreightBunnyHome() {
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
             <div className="flex-1 flex flex-col items-center justify-start pt-4">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight Nigeria → UK</h3>
-            <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
-            <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
+              <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
             </div>
             <div className="w-full flex justify-center mt-auto">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center">Get a Quote</a>
@@ -709,7 +697,7 @@ export default function FreightBunnyHome() {
           <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
             <div className="flex-1 flex flex-col items-center justify-start pt-4">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Customs Clearance Support</h3>
-            <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
             </div>
             <div className="w-full flex justify-center mt-auto">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-3 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center">Learn More</a>
@@ -1025,28 +1013,25 @@ export default function FreightBunnyHome() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4" onClick={() => setIsShipNowModalOpen(false)}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl mx-auto max-h-[98vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header - Improved for mobile */}
-            <div className="sticky top-0 bg-white p-2 sm:p-4 border-b border-gray-200 rounded-t-xl flex justify-between items-center min-h-[60px] sm:min-h-[80px]">
+            <div className="sticky top-0 bg-white p-3 sm:p-4 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
               <button
                 onClick={() => setIsShipNowModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors opacity-0 flex-shrink-0"
+                className="text-gray-400 hover:text-gray-600 transition-colors opacity-0"
               >
-                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                <X className="h-5 w-5" />
               </button>
-              <div className="text-center flex-1 px-2">
+              <div className="text-center">
                 <div className="flex items-center justify-center">
-                  <Package className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600 flex-shrink-0" />
-                  <h2 className="text-sm sm:text-base md:text-lg font-bold text-[#111827] truncate">
-                    <span className="hidden sm:inline">Ship Your Package</span>
-                    <span className="sm:hidden">Ship Package</span>
-                  </h2>
+                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <h2 className="text-base sm:text-lg font-bold text-[#111827]">Ship Your Package</h2>
                 </div>
-                <p className="text-gray-600 mt-0.5 sm:mt-1 text-xs sm:text-sm hidden sm:block">Complete the form below to ship your package</p>
+                <p className="text-gray-600 mt-1 text-xs sm:text-sm">Complete the form below to ship your package</p>
               </div>
               <button
                 onClick={() => setIsShipNowModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-1"
+                className="text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                <X className="h-5 w-5" />
               </button>
             </div>
             
@@ -1054,67 +1039,67 @@ export default function FreightBunnyHome() {
             <div className="p-3 sm:p-4">
               
               {/* Progress Steps - Improved for mobile with clickable icons */}
-          <div className="mb-6 sm:mb-8">
-            {/* Mobile Progress - Simplified */}
-            <div className="sm:hidden">
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-6 sm:mb-8">
+                {/* Mobile Progress - Simplified */}
+                <div className="sm:hidden">
+                  <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-medium text-gray-600">Step {currentStep} of 5</span>
-                <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500">
                       {currentStep === 1 && "Shipping Direction"}
                       {currentStep === 2 && "Sender Details"}
                       {currentStep === 3 && "Recipient Details"}
                       {currentStep === 4 && "Package Details"}
                       {currentStep === 5 && "Review & Pay"}
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
                       style={{ width: `${(currentStep / 5) * 100}%` }}
-                ></div>
-              </div>
-            </div>
+                    ></div>
+                  </div>
+                </div>
 
                 {/* Desktop Progress - Clickable */}
-            <div className="hidden sm:flex items-center justify-between">
-              {[
+                <div className="hidden sm:flex items-center justify-between">
+                  {[
                     { number: 1, title: "Shipping Direction", icon: ArrowRight },
                     { number: 2, title: "Sender Details", icon: User },
                     { number: 3, title: "Recipient Details", icon: MapPin },
                     { number: 4, title: "Package Details", icon: Package },
                     { number: 5, title: "Review & Pay", icon: CreditCard },
-              ].map((step, index) => (
-                <div key={step.number} className="flex items-center">
-                  <div
+                  ].map((step, index) => (
+                    <div key={step.number} className="flex items-center">
+                      <div
                         className={`flex items-center justify-center w-10 h-10 rounded-full border-2 cursor-pointer transition-all duration-200 hover:scale-105 ${
-                      currentStep >= step.number
-                        ? "bg-blue-600 border-blue-600 text-white"
+                          currentStep >= step.number
+                            ? "bg-blue-600 border-blue-600 text-white"
                             : "border-gray-300 text-gray-400 hover:border-blue-300 hover:text-blue-500"
-                    }`}
+                        }`}
                         onClick={() => {
                           if (step.number <= currentStep || step.number === currentStep + 1) {
                             setCurrentStep(step.number);
                           }
                         }}
-                  >
-                    {currentStep > step.number ? <CheckCircle className="h-5 w-5" /> : <step.icon className="h-5 w-5" />}
-                  </div>
-                  <div className="ml-3 hidden sm:block">
-                    <p className={`text-sm font-medium ${currentStep >= step.number ? "text-blue-600" : "text-gray-400"}`}>
-                      Step {step.number}
-                    </p>
-                    <p className={`text-xs ${currentStep >= step.number ? "text-gray-900" : "text-gray-400"}`}>
-                      {step.title}
-                    </p>
-                  </div>
+                      >
+                        {currentStep > step.number ? <CheckCircle className="h-5 w-5" /> : <step.icon className="h-5 w-5" />}
+                      </div>
+                      <div className="ml-3 hidden sm:block">
+                        <p className={`text-sm font-medium ${currentStep >= step.number ? "text-blue-600" : "text-gray-400"}`}>
+                          Step {step.number}
+                        </p>
+                        <p className={`text-xs ${currentStep >= step.number ? "text-gray-900" : "text-gray-400"}`}>
+                          {step.title}
+                        </p>
+                      </div>
                       {index < 4 && <ArrowRight className="mx-4 h-4 w-4 text-gray-400 hidden sm:block" />}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
               {/* Step 1: Shipping Direction */}
-          {currentStep === 1 && (
+              {currentStep === 1 && (
                 <div className="bg-white rounded-lg border shadow-sm">
                   <div className="p-4 border-b">
                     <h3 className="text-lg font-semibold text-gray-900 flex items-center">
@@ -1168,89 +1153,89 @@ export default function FreightBunnyHome() {
                   <div className="p-4 border-b">
                     <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                       <User className="mr-2 h-5 w-5 text-blue-600" />
-                  Sender Information
+                      Sender Information
                     </h3>
                     <p className="text-sm text-gray-600 mt-1">Enter your details as the sender</p>
                   </div>
                   <div className="p-4 space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
                         <Label htmlFor="senderName" className="text-sm font-medium text-gray-900">Full Name *</Label>
-                    <Input
-                      id="senderName"
-                      value={shipNowForm.senderName}
-                      onChange={(e) => handleShipNowFormChange("senderName", e.target.value)}
-                      placeholder="John Smith"
+                        <Input
+                          id="senderName"
+                          value={shipNowForm.senderName}
+                          onChange={(e) => handleShipNowFormChange("senderName", e.target.value)}
+                          placeholder="John Smith"
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                  <div>
+                        />
+                      </div>
+                      <div>
                         <Label htmlFor="senderEmail" className="text-sm font-medium text-gray-900">Email Address *</Label>
-                    <Input
-                      id="senderEmail"
-                      type="email"
-                      value={shipNowForm.senderEmail}
-                      onChange={(e) => handleShipNowFormChange("senderEmail", e.target.value)}
-                      placeholder="john@example.com"
+                        <Input
+                          id="senderEmail"
+                          type="email"
+                          value={shipNowForm.senderEmail}
+                          onChange={(e) => handleShipNowFormChange("senderEmail", e.target.value)}
+                          placeholder="john@example.com"
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                        />
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
                         <Label htmlFor="senderPhone" className="text-sm font-medium text-gray-900">Phone Number *</Label>
-                    <Input
-                      id="senderPhone"
-                      value={shipNowForm.senderPhone}
-                      onChange={(e) => handleShipNowFormChange("senderPhone", e.target.value)}
+                        <Input
+                          id="senderPhone"
+                          value={shipNowForm.senderPhone}
+                          onChange={(e) => handleShipNowFormChange("senderPhone", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "+44 20 1234 5678" : "+234 1 234 5678"}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                  <div>
+                        />
+                      </div>
+                      <div>
                         <Label htmlFor="senderCountry" className="text-sm font-medium text-gray-900">Country</Label>
-                    <SimpleSelect
-                      value={shipNowForm.senderCountry}
-                      onValueChange={(value) => handleShipNowFormChange("senderCountry", value)}
+                        <SimpleSelect
+                          value={shipNowForm.senderCountry}
+                          onValueChange={(value) => handleShipNowFormChange("senderCountry", value)}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    >
+                        >
                           <option value={shipNowForm.direction === "uk-nigeria" ? "United Kingdom" : "Nigeria"}>
                             {shipNowForm.direction === "uk-nigeria" ? "United Kingdom" : "Nigeria"}
                           </option>
-                    </SimpleSelect>
-                  </div>
-                </div>
-                <div>
+                        </SimpleSelect>
+                      </div>
+                    </div>
+                    <div>
                       <Label htmlFor="senderAddress" className="text-sm font-medium text-gray-900">Address *</Label>
-                  <Input
-                    id="senderAddress"
-                    value={shipNowForm.senderAddress}
-                    onChange={(e) => handleShipNowFormChange("senderAddress", e.target.value)}
+                      <Input
+                        id="senderAddress"
+                        value={shipNowForm.senderAddress}
+                        onChange={(e) => handleShipNowFormChange("senderAddress", e.target.value)}
                         placeholder={shipNowForm.direction === "uk-nigeria" ? "123 High Street" : "15 Victoria Island Road"}
                         className="mt-1 bg-white border-gray-300 text-gray-900"
-                  />
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                      />
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
                         <Label htmlFor="senderCity" className="text-sm font-medium text-gray-900">City *</Label>
-                    <Input
-                      id="senderCity"
-                      value={shipNowForm.senderCity}
-                      onChange={(e) => handleShipNowFormChange("senderCity", e.target.value)}
+                        <Input
+                          id="senderCity"
+                          value={shipNowForm.senderCity}
+                          onChange={(e) => handleShipNowFormChange("senderCity", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "London" : "Lagos"}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                  <div>
+                        />
+                      </div>
+                      <div>
                         <Label htmlFor="senderPostcode" className="text-sm font-medium text-gray-900">
                           {shipNowForm.direction === "uk-nigeria" ? "Postcode *" : "State *"}
                         </Label>
                         {shipNowForm.direction === "uk-nigeria" ? (
-                    <Input
-                      id="senderPostcode"
-                      value={shipNowForm.senderPostcode}
-                      onChange={(e) => handleShipNowFormChange("senderPostcode", e.target.value)}
-                      placeholder="SW1A 1AA"
+                          <Input
+                            id="senderPostcode"
+                            value={shipNowForm.senderPostcode}
+                            onChange={(e) => handleShipNowFormChange("senderPostcode", e.target.value)}
+                            placeholder="SW1A 1AA"
                             className="mt-1 bg-white border-gray-300 text-gray-900"
                           />
                         ) : (
@@ -1260,47 +1245,16 @@ export default function FreightBunnyHome() {
                             className="mt-1 bg-white border-gray-300 text-gray-900"
                           >
                             <option value="">Select state</option>
-                            <option value="Abia">Abia</option>
-                            <option value="Adamawa">Adamawa</option>
-                            <option value="Akwa Ibom">Akwa Ibom</option>
-                            <option value="Anambra">Anambra</option>
-                            <option value="Bauchi">Bauchi</option>
-                            <option value="Bayelsa">Bayelsa</option>
-                            <option value="Benue">Benue</option>
-                            <option value="Borno">Borno</option>
-                            <option value="Cross River">Cross River</option>
-                            <option value="Delta">Delta</option>
-                            <option value="Ebonyi">Ebonyi</option>
-                            <option value="Edo">Edo</option>
-                            <option value="Ekiti">Ekiti</option>
-                            <option value="Enugu">Enugu</option>
-                            <option value="FCT - Abuja">FCT - Abuja</option>
-                            <option value="Gombe">Gombe</option>
-                            <option value="Imo">Imo</option>
-                            <option value="Jigawa">Jigawa</option>
-                            <option value="Kaduna">Kaduna</option>
-                            <option value="Kano">Kano</option>
-                            <option value="Katsina">Katsina</option>
-                            <option value="Kebbi">Kebbi</option>
-                            <option value="Kogi">Kogi</option>
-                            <option value="Kwara">Kwara</option>
                             <option value="Lagos">Lagos</option>
-                            <option value="Nasarawa">Nasarawa</option>
-                            <option value="Niger">Niger</option>
-                            <option value="Ogun">Ogun</option>
-                            <option value="Ondo">Ondo</option>
-                            <option value="Osun">Osun</option>
-                            <option value="Oyo">Oyo</option>
-                            <option value="Plateau">Plateau</option>
+                            <option value="Abuja">Abuja (FCT)</option>
+                            <option value="Kano">Kano</option>
                             <option value="Rivers">Rivers</option>
-                            <option value="Sokoto">Sokoto</option>
-                            <option value="Taraba">Taraba</option>
-                            <option value="Yobe">Yobe</option>
-                            <option value="Zamfara">Zamfara</option>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Other">Other</option>
                           </SimpleSelect>
                         )}
-                  </div>
-                </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -1311,130 +1265,99 @@ export default function FreightBunnyHome() {
                   <div className="p-4 border-b">
                     <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                       <MapPin className="mr-2 h-5 w-5 text-blue-600" />
-                  Recipient Information
+                      Recipient Information
                     </h3>
                     <p className="text-sm text-gray-600 mt-1">
                       Enter the recipient's details in {shipNowForm.direction === "uk-nigeria" ? "Nigeria" : "United Kingdom"}
                     </p>
                   </div>
                   <div className="p-4 space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
                         <Label htmlFor="recipientName" className="text-sm font-medium text-gray-900">Full Name *</Label>
-                    <Input
-                      id="recipientName"
-                      value={shipNowForm.recipientName}
-                      onChange={(e) => handleShipNowFormChange("recipientName", e.target.value)}
+                        <Input
+                          id="recipientName"
+                          value={shipNowForm.recipientName}
+                          onChange={(e) => handleShipNowFormChange("recipientName", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "Adebayo Johnson" : "John Smith"}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                  <div>
+                        />
+                      </div>
+                      <div>
                         <Label htmlFor="recipientEmail" className="text-sm font-medium text-gray-900">Email Address</Label>
-                    <Input
-                      id="recipientEmail"
-                      type="email"
-                      value={shipNowForm.recipientEmail}
-                      onChange={(e) => handleShipNowFormChange("recipientEmail", e.target.value)}
+                        <Input
+                          id="recipientEmail"
+                          type="email"
+                          value={shipNowForm.recipientEmail}
+                          onChange={(e) => handleShipNowFormChange("recipientEmail", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "adebayo@example.com" : "john@example.com"}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                        />
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
                         <Label htmlFor="recipientPhone" className="text-sm font-medium text-gray-900">Phone Number *</Label>
-                    <Input
-                      id="recipientPhone"
-                      value={shipNowForm.recipientPhone}
-                      onChange={(e) => handleShipNowFormChange("recipientPhone", e.target.value)}
+                        <Input
+                          id="recipientPhone"
+                          value={shipNowForm.recipientPhone}
+                          onChange={(e) => handleShipNowFormChange("recipientPhone", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "+234 1 234 5678" : "+44 20 1234 5678"}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                  <div>
+                        />
+                      </div>
+                      <div>
                         <Label htmlFor="recipientCountry" className="text-sm font-medium text-gray-900">Country</Label>
-                    <SimpleSelect
-                      value={shipNowForm.recipientCountry}
-                      onValueChange={(value) => handleShipNowFormChange("recipientCountry", value)}
+                        <SimpleSelect
+                          value={shipNowForm.recipientCountry}
+                          onValueChange={(value) => handleShipNowFormChange("recipientCountry", value)}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    >
+                        >
                           <option value={shipNowForm.direction === "uk-nigeria" ? "Nigeria" : "United Kingdom"}>
                             {shipNowForm.direction === "uk-nigeria" ? "Nigeria" : "United Kingdom"}
                           </option>
-                    </SimpleSelect>
-                  </div>
-                </div>
-                <div>
+                        </SimpleSelect>
+                      </div>
+                    </div>
+                    <div>
                       <Label htmlFor="recipientAddress" className="text-sm font-medium text-gray-900">Address *</Label>
-                  <Input
-                    id="recipientAddress"
-                    value={shipNowForm.recipientAddress}
-                    onChange={(e) => handleShipNowFormChange("recipientAddress", e.target.value)}
+                      <Input
+                        id="recipientAddress"
+                        value={shipNowForm.recipientAddress}
+                        onChange={(e) => handleShipNowFormChange("recipientAddress", e.target.value)}
                         placeholder={shipNowForm.direction === "uk-nigeria" ? "15 Victoria Island Road" : "123 High Street"}
                         className="mt-1 bg-white border-gray-300 text-gray-900"
-                  />
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                      />
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
                         <Label htmlFor="recipientCity" className="text-sm font-medium text-gray-900">City *</Label>
-                    <Input
-                      id="recipientCity"
-                      value={shipNowForm.recipientCity}
-                      onChange={(e) => handleShipNowFormChange("recipientCity", e.target.value)}
+                        <Input
+                          id="recipientCity"
+                          value={shipNowForm.recipientCity}
+                          onChange={(e) => handleShipNowFormChange("recipientCity", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "Lagos" : "London"}
                           className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                  </div>
-                  <div>
+                        />
+                      </div>
+                      <div>
                         <Label htmlFor="recipientState" className="text-sm font-medium text-gray-900">
                           {shipNowForm.direction === "uk-nigeria" ? "State *" : "Postcode *"}
                         </Label>
                         {shipNowForm.direction === "uk-nigeria" ? (
-                    <SimpleSelect
-                      value={shipNowForm.recipientState}
-                      onValueChange={(value) => handleShipNowFormChange("recipientState", value)}
+                          <SimpleSelect
+                            value={shipNowForm.recipientState}
+                            onValueChange={(value) => handleShipNowFormChange("recipientState", value)}
                             className="mt-1 bg-white border-gray-300 text-gray-900"
-                    >
-                      <option value="">Select state</option>
-                            <option value="Abia">Abia</option>
-                            <option value="Adamawa">Adamawa</option>
-                            <option value="Akwa Ibom">Akwa Ibom</option>
-                            <option value="Anambra">Anambra</option>
-                            <option value="Bauchi">Bauchi</option>
-                            <option value="Bayelsa">Bayelsa</option>
-                            <option value="Benue">Benue</option>
-                            <option value="Borno">Borno</option>
-                            <option value="Cross River">Cross River</option>
-                            <option value="Delta">Delta</option>
-                            <option value="Ebonyi">Ebonyi</option>
-                            <option value="Edo">Edo</option>
-                            <option value="Ekiti">Ekiti</option>
-                            <option value="Enugu">Enugu</option>
-                            <option value="FCT - Abuja">FCT - Abuja</option>
-                            <option value="Gombe">Gombe</option>
-                            <option value="Imo">Imo</option>
-                            <option value="Jigawa">Jigawa</option>
-                            <option value="Kaduna">Kaduna</option>
-                      <option value="Kano">Kano</option>
-                            <option value="Katsina">Katsina</option>
-                            <option value="Kebbi">Kebbi</option>
-                            <option value="Kogi">Kogi</option>
-                            <option value="Kwara">Kwara</option>
+                          >
+                            <option value="">Select state</option>
                             <option value="Lagos">Lagos</option>
-                            <option value="Nasarawa">Nasarawa</option>
-                            <option value="Niger">Niger</option>
-                            <option value="Ogun">Ogun</option>
-                            <option value="Ondo">Ondo</option>
-                            <option value="Osun">Osun</option>
-                      <option value="Oyo">Oyo</option>
-                            <option value="Plateau">Plateau</option>
+                            <option value="Abuja">Abuja (FCT)</option>
+                            <option value="Kano">Kano</option>
                             <option value="Rivers">Rivers</option>
-                            <option value="Sokoto">Sokoto</option>
-                            <option value="Taraba">Taraba</option>
-                            <option value="Yobe">Yobe</option>
-                            <option value="Zamfara">Zamfara</option>
-                    </SimpleSelect>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Other">Other</option>
+                          </SimpleSelect>
                         ) : (
                           <Input
                             id="recipientPostcode"
@@ -1444,8 +1367,8 @@ export default function FreightBunnyHome() {
                             className="mt-1 bg-white border-gray-300 text-gray-900"
                           />
                         )}
-                  </div>
-                </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -1456,218 +1379,203 @@ export default function FreightBunnyHome() {
                   <div className="p-4 border-b">
                     <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                       <Package className="mr-2 h-5 w-5 text-blue-600" />
-                  Package Information
+                      Package Information
                     </h3>
                     <p className="text-sm text-gray-600 mt-1">Provide details about your package</p>
                   </div>
                   <div className="p-4 space-y-6">
-                  <div>
-                      <Label htmlFor="packageType" className="text-sm font-medium text-gray-900">Package Type *</Label>
-                    <SimpleSelect 
-                      value={shipNowForm.packageType} 
-                      onValueChange={(value) => handleShipNowFormChange("packageType", value)}
-                        className="mt-1 bg-white border-gray-300 text-gray-900"
-                    >
-                      <option value="">Select package type</option>
-                        {shipNowForm.direction === "uk-nigeria" && (
-                          <>
-                            <option value="phones">Phones (£20 handling fee)</option>
-                            <option value="ipads">iPads (£20 handling fee)</option>
-                            <option value="laptops">Laptops (£30 handling fee)</option>
-                          </>
-                        )}
-                        <option value="general">General Items (£{shipNowForm.direction === "uk-nigeria" ? "30" : "5"} handling fee)</option>
-                      <option value="electronics">Electronics</option>
-                        <option value="documents">Documents</option>
-                      <option value="clothing">Clothing</option>
-                        <option value="medical">Medical Supplies</option>
-                      <option value="gifts">Gifts</option>
-                      <option value="other">Other</option>
-                    </SimpleSelect>
-                  </div>
-
-                    {/* Custom Package Type - appears when "Other" is selected */}
-                    {shipNowForm.packageType === "other" && (
-                  <div>
-                        <Label htmlFor="customPackageType" className="text-sm font-medium text-gray-900">Specify Item Type *</Label>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="packageType" className="text-sm font-medium text-gray-900">Package Type *</Label>
+                        <SimpleSelect 
+                          value={shipNowForm.packageType} 
+                          onValueChange={(value) => handleShipNowFormChange("packageType", value)}
+                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                        >
+                          <option value="">Select package type</option>
+                          <option value="documents">Documents</option>
+                          <option value="electronics">Electronics</option>
+                          <option value="clothing">Clothing</option>
+                          <option value="food">Food Items</option>
+                          <option value="gifts">Gifts</option>
+                          <option value="other">Other</option>
+                        </SimpleSelect>
+                      </div>
+                      <div>
+                        <Label htmlFor="weight" className="text-sm font-medium text-gray-900">Weight (kg) *</Label>
                         <Input
-                          id="customPackageType"
-                          value={shipNowForm.customPackageType || ""}
-                          onChange={(e) => handleShipNowFormChange("customPackageType", e.target.value)}
-                          placeholder="Please specify the type of item"
+                          id="weight"
+                          type="number"
+                          step="0.1"
+                          value={shipNowForm.weight}
+                          onChange={(e) => handleShipNowFormChange("weight", e.target.value)}
+                          placeholder="2.5"
                           className="mt-1 bg-white border-gray-300 text-gray-900"
                         />
                       </div>
-                    )}
+                    </div>
 
                     <div>
-                      <Label htmlFor="weight" className="text-sm font-medium text-gray-900">Weight (kg) *</Label>
-                    <Input
-                      id="weight"
-                      type="number"
-                      step="0.1"
-                        min="0.1"
-                      value={shipNowForm.weight}
-                      onChange={(e) => handleShipNowFormChange("weight", e.target.value)}
-                      placeholder="2.5"
-                        className="mt-1 bg-white border-gray-300 text-gray-900"
-                    />
-                      <p className="text-xs text-gray-500 mt-1">Minimum weight: 1kg</p>
-                </div>
-
-                <div>
                       <Label className="text-base font-medium text-gray-900">Dimensions (cm) *</Label>
-                  <div className="grid grid-cols-3 gap-4 mt-2">
-                    <div>
+                      <div className="grid grid-cols-3 gap-4 mt-2">
+                        <div>
                           <Label htmlFor="length" className="text-sm text-gray-700">Length</Label>
-                      <Input
-                        id="length"
-                        type="number"
-                        value={shipNowForm.length}
-                        onChange={(e) => handleShipNowFormChange("length", e.target.value)}
-                        placeholder="30"
+                          <Input
+                            id="length"
+                            type="number"
+                            value={shipNowForm.length}
+                            onChange={(e) => handleShipNowFormChange("length", e.target.value)}
+                            placeholder="30"
                             className="mt-1 bg-white border-gray-300 text-gray-900"
-                      />
-                    </div>
-                    <div>
+                          />
+                        </div>
+                        <div>
                           <Label htmlFor="width" className="text-sm text-gray-700">Width</Label>
-                      <Input
-                        id="width"
-                        type="number"
-                        value={shipNowForm.width}
-                        onChange={(e) => handleShipNowFormChange("width", e.target.value)}
-                        placeholder="20"
+                          <Input
+                            id="width"
+                            type="number"
+                            value={shipNowForm.width}
+                            onChange={(e) => handleShipNowFormChange("width", e.target.value)}
+                            placeholder="20"
                             className="mt-1 bg-white border-gray-300 text-gray-900"
-                      />
-                    </div>
-                    <div>
+                          />
+                        </div>
+                        <div>
                           <Label htmlFor="height" className="text-sm text-gray-700">Height</Label>
-                      <Input
-                        id="height"
-                        type="number"
-                        value={shipNowForm.height}
-                        onChange={(e) => handleShipNowFormChange("height", e.target.value)}
-                        placeholder="15"
+                          <Input
+                            id="height"
+                            type="number"
+                            value={shipNowForm.height}
+                            onChange={(e) => handleShipNowFormChange("height", e.target.value)}
+                            placeholder="15"
                             className="mt-1 bg-white border-gray-300 text-gray-900"
-                      />
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                  <div>
-                      <Label htmlFor="value" className="text-sm font-medium text-gray-900">Declared Value (£) *</Label>
-                    <Input
-                      id="value"
-                      type="number"
-                      step="0.01"
-                      value={shipNowForm.value}
-                      onChange={(e) => handleShipNowFormChange("value", e.target.value)}
-                      placeholder="100.00"
-                        className="mt-1 bg-white border-gray-300 text-gray-900"
-                      />
-                </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="value" className="text-sm font-medium text-gray-900">Declared Value (£) *</Label>
+                        <Input
+                          id="value"
+                          type="number"
+                          step="0.01"
+                          value={shipNowForm.value}
+                          onChange={(e) => handleShipNowFormChange("value", e.target.value)}
+                          placeholder="100.00"
+                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="shippingService" className="text-sm font-medium text-gray-900">Shipping Service *</Label>
+                        <SimpleSelect
+                          value={shipNowForm.shippingService}
+                          onValueChange={(value) => handleShipNowFormChange("shippingService", value)}
+                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                        >
+                          <option value="">Select service</option>
+                          <option value="standard">Standard (7-10 days) - £9/kg</option>
+                          <option value="express">Express (3-5 days) - £15/kg</option>
+                        </SimpleSelect>
+                      </div>
+                    </div>
 
-                <div>
+                    <div>
                       <Label htmlFor="description" className="text-sm font-medium text-gray-900">Package Description *</Label>
-                  <Textarea
-                    id="description"
-                    value={shipNowForm.description}
-                    onChange={(e) => handleShipNowFormChange("description", e.target.value)}
-                    placeholder="Describe the contents of your package in detail"
-                    rows={3}
+                      <Textarea
+                        id="description"
+                        value={shipNowForm.description}
+                        onChange={(e) => handleShipNowFormChange("description", e.target.value)}
+                        placeholder="Describe the contents of your package in detail"
+                        rows={3}
                         className="mt-1 bg-white border-gray-300 text-gray-900"
-                  />
-                </div>
+                      />
+                    </div>
 
-                <div className="space-y-3">
+                    <div className="space-y-3">
                       <Label className="text-base font-medium text-gray-900">Additional Services</Label>
-                      <div className="space-y-3">
-                        <div className="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors">
-                      <Checkbox
-                        id="insurance"
-                        checked={shipNowForm.insurance}
-                        onCheckedChange={(checked) => handleShipNowFormChange("insurance", checked as boolean)}
-                            className="mt-0.5"
-                      />
-                          <div className="flex-1">
-                            <Label htmlFor="insurance" className="text-sm font-medium text-gray-900 cursor-pointer">
-                              Insurance Coverage (Recommended)
-                      </Label>
-                            <p className="text-xs text-green-600 mt-0.5">Free - Protects your package value</p>
-                    </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="insurance"
+                            checked={shipNowForm.insurance}
+                            onCheckedChange={(checked) => handleShipNowFormChange("insurance", checked as boolean)}
+                          />
+                          <Label htmlFor="insurance" className="text-sm text-gray-900">
+                            Insurance Coverage (Recommended) - Free
+                          </Label>
                         </div>
-                        <div className="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors">
-                      <Checkbox
-                        id="signature"
-                        checked={shipNowForm.signature}
-                        onCheckedChange={(checked) => handleShipNowFormChange("signature", checked as boolean)}
-                            className="mt-0.5"
-                      />
-                          <div className="flex-1">
-                            <Label htmlFor="signature" className="text-sm font-medium text-gray-900 cursor-pointer">
-                              Signature Required
-                      </Label>
-                            <p className="text-xs text-gray-600 mt-0.5">£5 - Requires signature on delivery</p>
-                    </div>
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="signature"
+                            checked={shipNowForm.signature}
+                            onCheckedChange={(checked) => handleShipNowFormChange("signature", checked as boolean)}
+                          />
+                          <Label htmlFor="signature" className="text-sm text-gray-900">
+                            Signature Required - £5
+                          </Label>
                         </div>
-                        <div className="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors">
-                      <Checkbox
-                        id="tracking"
-                        checked={shipNowForm.tracking}
-                        onCheckedChange={(checked) => handleShipNowFormChange("tracking", checked as boolean)}
-                            className="mt-0.5"
-                      />
-                          <div className="flex-1">
-                            <Label htmlFor="tracking" className="text-sm font-medium text-gray-900 cursor-pointer">
-                              SMS Tracking Updates
-                      </Label>
-                            <p className="text-xs text-green-600 mt-0.5">Free - Get delivery updates via SMS</p>
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="tracking"
+                            checked={shipNowForm.tracking}
+                            onCheckedChange={(checked) => handleShipNowFormChange("tracking", checked as boolean)}
+                          />
+                          <Label htmlFor="tracking" className="text-sm text-gray-900">
+                            SMS Tracking Updates - Free
+                          </Label>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                    </div>
-                  </div>
-                </div>
-          )}
+              )}
 
               {/* Step 5: Review & Payment */}
               {currentStep === 5 && (
-            <div className="space-y-6">
+                <div className="space-y-6">
                   <div className="bg-white rounded-lg border shadow-sm">
                     <div className="p-4 border-b">
                       <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                         <Calculator className="mr-2 h-5 w-5 text-blue-600" />
-                    Shipping Summary
+                        Shipping Summary
                       </h3>
                     </div>
                     <div className="p-4">
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center">
                           <span className="text-gray-900">Route:</span>
                           <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
                             {shipNowForm.direction === "uk-nigeria" ? "🇬🇧 UK → Nigeria 🇳🇬" : "🇳🇬 Nigeria → UK 🇬🇧"}
-                      </Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
+                          </Badge>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900">Service:</span>
+                          <Badge variant="outline">
+                            {shipNowForm.shippingService === "express" ? "Express (3-5 days)" : "Standard (7-10 days)"}
+                          </Badge>
+                        </div>
+                        <div className="flex justify-between items-center">
                           <span className="text-gray-900">Weight:</span>
                           <span className="text-gray-900">{shipNowForm.weight} kg</span>
-                    </div>
-                    <div className="flex justify-between items-center">
+                        </div>
+                        <div className="flex justify-between items-center">
                           <span className="text-gray-900">Base Cost:</span>
                           <span className="text-gray-900">£{estimatedCost?.toFixed(2)}</span>
-                    </div>
-                    {shipNowForm.signature && (
-                      <div className="flex justify-between items-center">
+                        </div>
+                        {shipNowForm.signature && (
+                          <div className="flex justify-between items-center">
                             <span className="text-gray-900">Signature Required:</span>
                             <span className="text-gray-900">£5.00</span>
-                      </div>
-                    )}
-                    <Separator />
-                    <div className="flex justify-between items-center font-bold text-lg">
+                          </div>
+                        )}
+                        <Separator />
+                        <div className="flex justify-between items-center font-bold text-lg">
                           <span className="text-gray-900">Total:</span>
                           <span className="text-blue-600">£{((estimatedCost || 0) + (shipNowForm.signature ? 5 : 0)).toFixed(2)}</span>
-                    </div>
-                  </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -1676,42 +1584,42 @@ export default function FreightBunnyHome() {
                       <h3 className="text-lg font-semibold text-gray-900">Shipping Details</h3>
                     </div>
                     <div className="p-4 space-y-4">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
                           <h4 className="font-medium mb-2 text-gray-900">From:</h4>
-                      <p className="text-sm text-gray-600">
-                        {shipNowForm.senderName}
-                        <br />
-                        {shipNowForm.senderAddress}
-                        <br />
+                          <p className="text-sm text-gray-600">
+                            {shipNowForm.senderName}
+                            <br />
+                            {shipNowForm.senderAddress}
+                            <br />
                             {shipNowForm.senderCity}, {shipNowForm.senderPostcode || shipNowForm.senderState}
-                        <br />
-                        {shipNowForm.senderCountry}
-                      </p>
-                    </div>
-                    <div>
+                            <br />
+                            {shipNowForm.senderCountry}
+                          </p>
+                        </div>
+                        <div>
                           <h4 className="font-medium mb-2 text-gray-900">To:</h4>
-                      <p className="text-sm text-gray-600">
-                        {shipNowForm.recipientName}
-                        <br />
-                        {shipNowForm.recipientAddress}
-                        <br />
+                          <p className="text-sm text-gray-600">
+                            {shipNowForm.recipientName}
+                            <br />
+                            {shipNowForm.recipientAddress}
+                            <br />
                             {shipNowForm.recipientCity}, {shipNowForm.recipientState || shipNowForm.recipientPostcode}
-                        <br />
-                        {shipNowForm.recipientCountry}
-                      </p>
-                    </div>
-                  </div>
-                  <div>
+                            <br />
+                            {shipNowForm.recipientCountry}
+                          </p>
+                        </div>
+                      </div>
+                      <div>
                         <h4 className="font-medium mb-2 text-gray-900">Package:</h4>
-                    <p className="text-sm text-gray-600">
-                      {shipNowForm.packageType} - {shipNowForm.weight}kg
-                      <br />
-                      Dimensions: {shipNowForm.length} × {shipNowForm.width} × {shipNowForm.height} cm
-                      <br />
-                      Value: £{shipNowForm.value}
-                    </p>
-                  </div>
+                        <p className="text-sm text-gray-600">
+                          {shipNowForm.packageType} - {shipNowForm.weight}kg
+                          <br />
+                          Dimensions: {shipNowForm.length} × {shipNowForm.width} × {shipNowForm.height} cm
+                          <br />
+                          Value: £{shipNowForm.value}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -1719,55 +1627,55 @@ export default function FreightBunnyHome() {
                     <div className="p-4 border-b">
                       <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                         <CreditCard className="mr-2 h-5 w-5 text-blue-600" />
-                    Payment Information
+                        Payment Information
                       </h3>
                     </div>
                     <div className="p-4">
-                  <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                    <div className="flex items-center space-x-2 text-blue-800">
-                      <Shield className="h-5 w-5" />
-                      <span className="font-medium">Secure Payment</span>
+                      <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div className="flex items-center space-x-2 text-blue-800">
+                          <Shield className="h-5 w-5" />
+                          <span className="font-medium">Secure Payment</span>
+                        </div>
+                        <p className="text-sm text-blue-700 mt-1">Your payment information is encrypted and secure</p>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        You will be redirected to our secure payment processor to complete your transaction.
+                      </p>
                     </div>
-                    <p className="text-sm text-blue-700 mt-1">Your payment information is encrypted and secure</p>
                   </div>
-                  <p className="text-sm text-gray-600">
-                    You will be redirected to our secure payment processor to complete your transaction.
-                  </p>
-                    </div>
-                  </div>
-            </div>
-          )}
+                </div>
+              )}
 
-          {/* Navigation Buttons - Improved for mobile */}
-          <div className="flex flex-col sm:flex-row justify-between pt-6 border-t gap-3 sm:gap-0">
-            <Button
-              variant="outline"
-              onClick={prevStep}
-              disabled={currentStep === 1}
-                  className="flex items-center justify-center bg-white text-gray-700 border-gray-300 hover:bg-gray-50 order-2 sm:order-1 w-full max-w-[120px] sm:w-auto sm:max-w-none cursor-pointer"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Previous
-            </Button>
+              {/* Navigation Buttons - Improved for mobile */}
+              <div className="flex flex-col sm:flex-row justify-between pt-6 border-t gap-3 sm:gap-0">
+                <Button
+                  variant="outline"
+                  onClick={prevStep}
+                  disabled={currentStep === 1}
+                  className="flex items-center justify-center bg-white text-gray-700 border-gray-300 hover:bg-gray-50 order-2 sm:order-1 w-full sm:w-auto"
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Previous
+                </Button>
 
                 {currentStep < 5 ? (
                   <Button 
                     onClick={nextStep} 
-                    className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white order-1 sm:order-2 w-full max-w-[120px] sm:w-auto sm:max-w-none cursor-pointer"
+                    className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white order-1 sm:order-2 w-full sm:w-auto"
                   >
-                Next
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            ) : (
+                    Next
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                ) : (
                   <Button 
                     onClick={() => handleSubmitShipNow()} 
-                    className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center order-1 sm:order-2 w-full max-w-[160px] sm:w-auto sm:max-w-none cursor-pointer text-sm"
+                    className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center order-1 sm:order-2 w-full sm:w-auto"
                   >
-                <CreditCard className="mr-2 h-4 w-4" />
-                Proceed to Payment
-              </Button>
-            )}
-          </div>
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    Proceed to Payment
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -1781,31 +1689,28 @@ export default function FreightBunnyHome() {
         }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-7xl mx-auto max-h-[98vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header - Improved for mobile */}
-            <div className="sticky top-0 bg-white p-2 sm:p-4 border-b border-gray-200 rounded-t-xl flex justify-between items-center min-h-[60px] sm:min-h-[80px]">
+            <div className="sticky top-0 bg-white p-3 sm:p-4 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
               <button
                 onClick={() => setIsQuoteModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors opacity-0 flex-shrink-0"
+                className="text-gray-400 hover:text-gray-600 transition-colors opacity-0"
               >
-                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                <X className="h-5 w-5" />
               </button>
-              <div className="text-center flex-1 px-2">
+              <div className="text-center">
                 <div className="flex items-center justify-center">
-                  <Calculator className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600 flex-shrink-0" />
-                  <h2 className="text-sm sm:text-base md:text-lg font-bold text-[#111827] truncate">
-                    <span className="hidden sm:inline">Get Shipping Quote</span>
-                    <span className="sm:hidden">Get Quote</span>
-                  </h2>
+                  <Calculator className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <h2 className="text-base sm:text-lg font-bold text-[#111827]">Get Shipping Quote</h2>
                 </div>
-                <p className="text-gray-600 mt-0.5 sm:mt-1 text-xs sm:text-sm hidden sm:block">Calculate accurate shipping costs for your package</p>
+                <p className="text-gray-600 mt-1 text-xs sm:text-sm">Calculate accurate shipping costs for your package</p>
               </div>
               <button
                 onClick={() => {
                   resetQuoteForm();
                   setIsQuoteModalOpen(false);
                 }}
-                className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-1"
+                className="text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                <X className="h-5 w-5" />
               </button>
             </div>
             
@@ -2172,7 +2077,6 @@ export default function FreightBunnyHome() {
                           <button 
                             onClick={() => {
                               setIsQuoteModalOpen(false);
-                              setCurrentStep(1); // Always start from step 1
                               setIsShipNowModalOpen(true);
                             }}
                             className="w-full sm:w-auto mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center hover:scale-105 shadow-lg text-sm sm:text-base"
@@ -2434,7 +2338,6 @@ export default function FreightBunnyHome() {
                       
                       // Package information from quote
                       packageType: quoteCalculatorForm.packageType === "other" ? "other" : quoteCalculatorForm.packageType,
-                      customPackageType: quoteCalculatorForm.packageType === "other" ? quoteCalculatorForm.customPackageType : "",
                       weight: quoteCalculatorForm.weight,
                       length: "", // User will specify
                       width: "", // User will specify
@@ -2445,6 +2348,7 @@ export default function FreightBunnyHome() {
                         : `${quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)} package - ${quoteCalculatorForm.weight}kg`,
                       
                       // Shipping preferences
+                      shippingService: "standard", // Based on quote (standard = £9/kg)
                       insurance: true, // Recommended and free
                       signature: false, // Optional £5 service
                       tracking: true   // Free SMS updates
@@ -2454,20 +2358,10 @@ export default function FreightBunnyHome() {
                     setShipNowForm(updatedShipNowForm);
                     
                     // Calculate initial estimate based on transferred data
-                    if (updatedShipNowForm.weight) {
+                    if (updatedShipNowForm.weight && updatedShipNowForm.shippingService) {
                       const weight = parseFloat(updatedShipNowForm.weight);
-                      const baseRate = 15; // Fixed rate of £15 per kg
-                      let baseCost = weight * baseRate;
-                      
-                      // Add handling fees based on package type
-                      if (updatedShipNowForm.packageType === "phones" || updatedShipNowForm.packageType === "ipads") {
-                        baseCost += 20;
-                      } else if (updatedShipNowForm.packageType === "laptops") {
-                        baseCost += 30;
-                      } else if (updatedShipNowForm.packageType === "general") {
-                        baseCost += updatedShipNowForm.direction === "uk-nigeria" ? 30 : 5;
-                      }
-                      
+                      const baseRate = updatedShipNowForm.shippingService === "express" ? 15 : 9;
+                      const baseCost = weight * baseRate;
                       const signatureCost = updatedShipNowForm.signature ? 5 : 0;
                       setEstimatedCost(baseCost + signatureCost);
                     }
