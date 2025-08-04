@@ -40,12 +40,19 @@ import { SimpleSelect } from "../components/ui/select"
 import { Checkbox } from "../components/ui/checkbox"
 import { Separator } from "../components/ui/separator"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../components/ui/dialog"
+import { useToast } from "../components/ui/toast"
+import { LoadingButton, LoadingSpinner } from "../components/ui/loading-spinner"
+import { validateForm, commonRules, validationPatterns } from "../lib/validation"
+import { PackageTracker } from "../components/ui/package-tracker"
 
 export default function FreightBunnyHome() {
   const pathname = usePathname()
+  const { addToast } = useToast()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isShipNowModalOpen, setIsShipNowModalOpen] = useState(false)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const [isCalculating, setIsCalculating] = useState(false)
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -55,6 +62,8 @@ export default function FreightBunnyHome() {
     { href: "#contact", label: "Contact Us" },
   ]
   const [trackingNumber, setTrackingNumber] = useState("")
+  const [showTrackingResult, setShowTrackingResult] = useState(false)
+  const [isTracking, setIsTracking] = useState(false)
   const [quoteForm, setQuoteForm] = useState({
     weight: "",
     dimensions: "",
@@ -204,6 +213,8 @@ export default function FreightBunnyHome() {
       return;
     }
 
+    setIsCalculating(true);
+
     const actualWeight = Math.max(weight, 1); // Minimum 1kg
     let shippingCost = actualWeight * 9; // £9 per kg base rate
     let handlingFee = 0;
@@ -287,6 +298,11 @@ export default function FreightBunnyHome() {
       deliveryLocation: formData.deliveryLocation,
       needsDelivery: formData.needsDelivery
     });
+    
+    // Simulate calculation time for better UX
+    setTimeout(() => {
+      setIsCalculating(false);
+    }, 300);
   };
 
   const handleQuoteSubmit = async (e?: React.FormEvent) => {
@@ -336,12 +352,22 @@ export default function FreightBunnyHome() {
       if (result.success) {
         // Success message after showing quote
         setTimeout(() => {
-          alert("✅ Quote submitted successfully! Your quote has been saved and you'll receive a follow-up within 2 hours.");
+          addToast({
+            type: "success",
+            title: "Quote Submitted Successfully!",
+            description: "Your quote has been saved and you'll receive a follow-up within 2 hours.",
+            duration: 6000
+          });
         }, 500);
       } else {
         // Show success message even if submission fails
         setTimeout(() => {
-          alert("✅ Quote generated successfully! Note: We're experiencing technical issues with our system, but your quote is displayed in the popup. Please save this information and contact us directly to proceed.");
+          addToast({
+            type: "info",
+            title: "Quote Generated Successfully!",
+            description: "We're experiencing technical issues with our system, but your quote is displayed in the popup. Please save this information and contact us directly to proceed.",
+            duration: 8000
+          });
         }, 500);
       }
       
@@ -350,7 +376,12 @@ export default function FreightBunnyHome() {
       // Show quote details modal even if API fails
       setQuoteDetailsModal(true);
       setTimeout(() => {
-        alert("✅ Quote generated successfully! Note: We're experiencing technical issues with our system, but your quote is displayed in the popup. Please save this information and contact us directly to proceed.");
+        addToast({
+          type: "info",
+          title: "Quote Generated Successfully!",
+          description: "We're experiencing technical issues with our system, but your quote is displayed in the popup. Please save this information and contact us directly to proceed.",
+          duration: 8000
+        });
       }, 500);
     } finally {
       setIsSubmittingQuote(false);
@@ -404,7 +435,14 @@ export default function FreightBunnyHome() {
     if (e) e.preventDefault();
     // Here you would typically send the form data to your backend
     console.log("Ship Now form submitted:", shipNowForm);
-    alert("Thank you! Your shipping request has been submitted. We'll contact you within 2 hours to arrange pickup and payment.");
+    
+    addToast({
+      type: "success",
+      title: "Shipping Request Submitted!",
+      description: "Thank you! We'll contact you within 2 hours to arrange pickup and payment.",
+      duration: 6000
+    });
+    
     setIsShipNowModalOpen(false);
     setCurrentStep(1);
     // Reset form
@@ -448,6 +486,45 @@ export default function FreightBunnyHome() {
       tracking: true,
     });
     setEstimatedCost(null);
+  };
+
+  const handleTrackPackage = async () => {
+    if (!trackingNumber.trim()) {
+      addToast({
+        type: "error",
+        title: "Tracking Number Required",
+        description: "Please enter a tracking number to search for your package.",
+        duration: 4000
+      });
+      return;
+    }
+
+    setIsTracking(true);
+
+    // Simulate API call delay
+    setTimeout(() => {
+      setIsTracking(false);
+      
+      // Check if tracking number is valid format (FB followed by 9 digits)
+      const trackingPattern = /^FB\d{9}$/i;
+      if (trackingPattern.test(trackingNumber.trim())) {
+        setShowTrackingResult(true);
+        addToast({
+          type: "success",
+          title: "Package Found!",
+          description: "Your package tracking information is displayed below.",
+          duration: 4000
+        });
+      } else {
+        addToast({
+          type: "error",
+          title: "Package Not Found",
+          description: "Please check your tracking number and try again. Tracking numbers start with 'FB' followed by 9 digits.",
+          duration: 6000
+        });
+        setShowTrackingResult(false);
+      }
+    }, 1500);
   };
 
   return (
@@ -524,17 +601,15 @@ export default function FreightBunnyHome() {
 
       {/* Hero Section */}
       <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-[calc(100vh-64px)] flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
-        {/* Enhanced Abstract Shapes for Visual Interest */}
-        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0 animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0 animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/4 w-[200px] h-[200px] bg-gradient-to-r from-emerald-100 to-blue-100 rounded-full blur-2xl opacity-30 z-0 animate-bounce"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-[150px] h-[150px] bg-gradient-to-l from-purple-100 to-pink-100 rounded-full blur-xl opacity-40 z-0 animate-pulse"></div>
+        {/* Abstract Shape for Visual Interest */}
+        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
 
         <div className="container mx-auto flex flex-col justify-start items-center h-full relative z-10 pt-8 pb-4 sm:py-8 md:py-12">
           {/* Badge */}
           <div className="mb-6 sm:mb-7 md:mb-8">
-            <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-2xl border border-blue-200/50 backdrop-blur-sm animate-pulse hover:shadow-3xl hover:scale-105 transition-all duration-300 cursor-default">
-              <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-1 rounded-full mr-3 shadow-lg animate-spin-slow">
+            <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
+              <div className="bg-[#002147] p-1 rounded-full mr-3">
                 <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               Fast, Reliable Air Freight
@@ -560,24 +635,21 @@ export default function FreightBunnyHome() {
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
-          {/* Enhanced Pricing Card */}
+          {/* Pricing Card */}
           <div className="mb-4 sm:mb-8 md:mb-10 flex justify-center w-full px-4">
-            <div className="bg-gradient-to-br from-white via-blue-50/20 to-blue-100/30 rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 flex flex-col items-center relative overflow-hidden backdrop-blur-sm hover:shadow-3xl hover:scale-105 transition-all duration-500 animate-float">
+            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl hover:shadow-3xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 hover:border-blue-300/70 flex flex-col items-center relative overflow-hidden backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
-              <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-              <div className="absolute -bottom-2 -left-2 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full blur-lg opacity-40 animate-pulse"></div>
-              
               <div className="relative z-10 flex items-center justify-center mb-2">
-                <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg animate-pulse-glow">
-                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-bounce" />
+                <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg">
+                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
               </div>
               <div className="relative z-10 mb-1 flex items-baseline">
-                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-lg bg-gradient-to-r from-[#002147] to-[#003366] bg-clip-text text-transparent animate-gradient-x">£9</span>
+                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm">£9</span>
                 <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1">/kg</span>
               </div>
-              <div className="relative z-10 bg-gradient-to-r from-blue-50/80 to-emerald-50/80 px-4 py-2 rounded-full border border-blue-100 shadow-lg">
+              <div className="relative z-10 bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100">
                 <p className="text-sm sm:text-sm text-gray-700 text-center font-medium">Delivery: 7–10 days after shipment</p>
               </div>
             </div>
@@ -588,21 +660,20 @@ export default function FreightBunnyHome() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white via-blue-50/20 to-blue-50/30 hover:from-blue-50 hover:via-blue-100/30 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-2xl px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-1 mx-auto sm:mx-0 backdrop-blur-sm min-h-[44px] md:min-h-[48px] relative overflow-hidden group"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 backdrop-blur-sm min-h-[44px] md:min-h-[48px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
                 setIsQuoteModalOpen(true);
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-              <Calculator className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0 relative z-10" />
-              <span className="hidden xs:inline relative z-10">Get Free Quote</span>
-              <span className="xs:hidden relative z-10">Get Quote</span>
+              <Calculator className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
+              <span className="hidden xs:inline">Get Free Quote</span>
+              <span className="xs:hidden">Get Quote</span>
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] hover:from-[#001634] hover:via-[#002147] hover:to-[#001634] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-1 mx-auto sm:mx-0 min-h-[44px] md:min-h-[48px] relative overflow-hidden group animate-pulse-glow"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 min-h-[44px] md:min-h-[48px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -610,34 +681,33 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-              <Package className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-white flex-shrink-0 relative z-10" />
-              <span className="relative z-10">Ship Now</span>
+              <Package className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-white flex-shrink-0" />
+              Ship Now
             </Button>
           </div>
 
           {/* Trust Indicators Row */}
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-8 md:mb-10 mt-3 sm:mt-0 px-4 max-w-4xl mx-auto">
-            <div className="flex items-center gap-1 bg-gradient-to-r from-green-50/80 to-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-lg text-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default">
-              <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-0.5 sm:p-1 rounded-full animate-pulse">
+            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm text-center justify-center">
+              <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
                 <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-1 bg-gradient-to-r from-blue-50/80 to-sky-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-lg text-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default">
-              <div className="bg-gradient-to-r from-blue-500 to-sky-500 p-0.5 sm:p-1 rounded-full animate-spin-slow">
+            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm text-center justify-center">
+              <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
                 <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-50/80 to-amber-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-lg text-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default">
-              <div className="bg-gradient-to-r from-yellow-500 to-amber-500 p-0.5 sm:p-1 rounded-full animate-pulse">
-                <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0 animate-bounce" />
+            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm text-center justify-center">
+              <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full">
+                <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-1 bg-gradient-to-r from-emerald-50/80 to-teal-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-lg text-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default">
-              <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-0.5 sm:p-1 rounded-full animate-pulse">
+            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm text-center justify-center">
+              <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full">
                 <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">No Hidden Fees</span>
@@ -660,16 +730,26 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white/70 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-center sm:text-left placeholder:text-center sm:placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[44px] md:min-h-[48px]"
               />
-              <Button 
-                variant="default"
+              <LoadingButton
+                loading={isTracking}
+                onClick={handleTrackPackage}
                 className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[44px] md:min-h-[48px]"
-                style={{ backgroundColor: '#002147' }}>
+              >
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
-              </Button>
+              </LoadingButton>
             </div>
           </div>
         </div>
+        
+        {/* Package Tracking Results */}
+        {showTrackingResult && (
+          <div className="container mx-auto px-4 sm:px-6 mt-8 animate-in fade-in duration-500">
+            <div className="max-w-2xl mx-auto">
+              <PackageTracker trackingNumber={trackingNumber} />
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Our Shipping Services Section */}
@@ -679,7 +759,7 @@ export default function FreightBunnyHome() {
         </div>
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
           {/* Service 1 */}
-          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
             <div className="flex-1 flex flex-col items-center justify-start pt-4">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight UK → Nigeria</h3>
               <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
@@ -690,7 +770,7 @@ export default function FreightBunnyHome() {
             </div>
           </div>
           {/* Service 2 */}
-          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
             <div className="flex-1 flex flex-col items-center justify-start pt-4">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight Nigeria → UK</h3>
               <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
@@ -701,7 +781,7 @@ export default function FreightBunnyHome() {
             </div>
           </div>
           {/* Service 3 */}
-          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px]">
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
             <div className="flex-1 flex flex-col items-center justify-start pt-4">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Customs Clearance Support</h3>
               <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
@@ -722,22 +802,22 @@ export default function FreightBunnyHome() {
               We're passionate about connecting families and businesses across continents. With transparent pricing, real-time updates, and a personal touch, we make shipping easy and stress-free. Our team is dedicated to making international shipping simple, affordable, and reliable.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 justify-items-center">
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none md:max-w-[280px]">
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
                 <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">🚚</span>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Fast Delivery</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none md:max-w-[280px]">
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
                 <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">💷</span>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Transparent Pricing</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Just £9/kg, no hidden fees, and clear invoicing.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none md:max-w-[280px]">
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
                 <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">🤝</span>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Personal Service</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">We treat your packages like our own and keep you informed every step.</p>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border border-gray-100 w-full max-w-xs sm:max-w-none md:max-w-[280px]">
+              <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
                 <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">📦</span>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Flexible Delivery</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
@@ -1993,8 +2073,25 @@ export default function FreightBunnyHome() {
                   </div>
                 </div>
 
-                {calculatedQuote && (
+                {isCalculating && (
                   <div className="bg-white rounded-lg border-2 border-blue-200 shadow-sm">
+                    <div className="p-3 border-b">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center">
+                        <LoadingSpinner size="sm" className="mr-2 text-blue-600" />
+                        Calculating Quote...
+                      </h3>
+                    </div>
+                    <div className="p-6 flex items-center justify-center">
+                      <div className="text-center space-y-3">
+                        <LoadingSpinner size="lg" className="text-blue-600 mx-auto" />
+                        <p className="text-sm text-gray-600">Please wait while we calculate your shipping cost</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!isCalculating && calculatedQuote && (
+                  <div className="bg-white rounded-lg border-2 border-blue-200 shadow-sm animate-in fade-in duration-300">
                     <div className="p-3 border-b">
                       <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center">
                         <Calculator className="mr-2 h-4 w-4 text-blue-600" />
@@ -2051,27 +2148,19 @@ export default function FreightBunnyHome() {
 
                       <div className="space-y-3">
                         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4 flex flex-col items-center">
-                          <button 
+                          <LoadingButton
+                            loading={isSubmittingQuote}
                             onClick={handleQuoteSubmit}
-                            disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress) || isSubmittingQuote}
-                            className={`w-full sm:w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-sm sm:text-base shadow-lg ${
+                            disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)}
+                            className={`w-full sm:w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-sm sm:text-base shadow-lg min-h-[44px] ${
                               calculatedQuote && quoteCalculatorForm.senderName && quoteCalculatorForm.senderEmail && quoteCalculatorForm.senderPhone && (quoteCalculatorForm.packageType !== "other" || quoteCalculatorForm.customPackageType) && quoteCalculatorForm.deliveryLocation && (!quoteCalculatorForm.needsDelivery || quoteCalculatorForm.deliveryAddress) && !isSubmittingQuote
                               ? "bg-[#002147] hover:bg-blue-900 text-white hover:scale-105"
                               : "bg-gray-300 text-gray-500 cursor-not-allowed"
                             }`}
                           >
-                            {isSubmittingQuote ? (
-                              <>
-                                <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white mr-2"></div>
-                                Submitting...
-                              </>
-                            ) : (
-                              <>
-                                <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                                📧 Submit My Quote
-                              </>
-                            )}
-                          </button>
+                            <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                            📧 Submit My Quote
+                          </LoadingButton>
                           {(!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)) && (
                             <p className="text-xs text-amber-600 text-center mt-2 font-medium">
                               Complete all fields above to submit your quote
