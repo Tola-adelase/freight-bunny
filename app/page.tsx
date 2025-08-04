@@ -40,9 +40,13 @@ import { SimpleSelect } from "../components/ui/select"
 import { Checkbox } from "../components/ui/checkbox"
 import { Separator } from "../components/ui/separator"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../components/ui/dialog"
+import { LoadingSpinner } from "../components/ui/loading-spinner"
+import { StepProgress } from "../components/ui/progress"
+import { ToastProvider, useToast, toast } from "../components/ui/toast"
 
-export default function FreightBunnyHome() {
+function FreightBunnyHome() {
   const pathname = usePathname()
+  const { addToast } = useToast()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isShipNowModalOpen, setIsShipNowModalOpen] = useState(false)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
@@ -143,6 +147,9 @@ export default function FreightBunnyHome() {
   } | null>(null)
   const [isSubmittingQuote, setIsSubmittingQuote] = useState(false)
   const [quoteDetailsModal, setQuoteDetailsModal] = useState(false)
+  const [isCalculatingQuote, setIsCalculatingQuote] = useState(false)
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const [isTrackingPackage, setIsTrackingPackage] = useState(false)
 
   // Nigerian states by delivery zones
   const nigerianZones = {
@@ -197,12 +204,17 @@ export default function FreightBunnyHome() {
     }
   };
 
-  const calculateQuote = (formData: typeof quoteCalculatorForm) => {
+  const calculateQuote = async (formData: typeof quoteCalculatorForm) => {
     const weight = parseFloat(formData.weight);
     if (!weight || weight <= 0) {
       setCalculatedQuote(null);
       return;
     }
+    
+    setIsCalculatingQuote(true);
+    
+    // Simulate realistic loading time for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
 
     const actualWeight = Math.max(weight, 1); // Minimum 1kg
     let shippingCost = actualWeight * 9; // £9 per kg base rate
@@ -274,19 +286,35 @@ export default function FreightBunnyHome() {
 
     const totalGBP = shippingCost + handlingFee + (deliveryFeeCurrency === "GBP" ? deliveryFee : 0);
     
-    setCalculatedQuote({
-      weight: actualWeight,
-      shippingCost,
-      handlingFee,
-      deliveryFee,
-      deliveryFeeCurrency,
-      totalGBP,
-      from: formData.from,
-      to: formData.to,
-      packageType: formData.packageType,
-      deliveryLocation: formData.deliveryLocation,
-      needsDelivery: formData.needsDelivery
-    });
+    try {
+      setCalculatedQuote({
+        weight: actualWeight,
+        shippingCost,
+        handlingFee,
+        deliveryFee,
+        deliveryFeeCurrency,
+        totalGBP,
+        from: formData.from,
+        to: formData.to,
+        packageType: formData.packageType,
+        deliveryLocation: formData.deliveryLocation,
+        needsDelivery: formData.needsDelivery
+      });
+      
+      // Show success notification for quote calculation
+      addToast(toast.success(
+        "Quote Calculated!", 
+        `Total cost: £${totalGBP.toFixed(2)} for ${actualWeight}kg`
+      ));
+      
+    } catch (error) {
+      addToast(toast.error(
+        "Quote Calculation Failed", 
+        "Please check your inputs and try again."
+      ));
+    } finally {
+      setIsCalculatingQuote(false);
+    }
   };
 
   const handleQuoteSubmit = async (e?: React.FormEvent) => {
@@ -334,24 +362,32 @@ export default function FreightBunnyHome() {
       const result = await response.json();
       
       if (result.success) {
-        // Success message after showing quote
-        setTimeout(() => {
-          alert("✅ Quote submitted successfully! Your quote has been saved and you'll receive a follow-up within 2 hours.");
-        }, 500);
+        // Success notification
+        addToast(toast.success(
+          "Quote Submitted Successfully!", 
+          "You'll receive a follow-up within 2 hours.",
+          6000
+        ));
       } else {
-        // Show success message even if submission fails
-        setTimeout(() => {
-          alert("✅ Quote generated successfully! Note: We're experiencing technical issues with our system, but your quote is displayed in the popup. Please save this information and contact us directly to proceed.");
-        }, 500);
+        // Warning notification for API issues
+        addToast(toast.warning(
+          "Quote Generated!", 
+          "We're experiencing technical issues, but your quote is displayed. Please save this information.",
+          8000
+        ));
       }
       
     } catch (error) {
       console.error('Error submitting quote:', error);
       // Show quote details modal even if API fails
       setQuoteDetailsModal(true);
-      setTimeout(() => {
-        alert("✅ Quote generated successfully! Note: We're experiencing technical issues with our system, but your quote is displayed in the popup. Please save this information and contact us directly to proceed.");
-      }, 500);
+      
+      // Error notification with helpful message
+      addToast(toast.warning(
+        "Quote Generated!", 
+        "We're experiencing technical issues, but your quote is displayed. Please save this information and contact us directly.",
+        8000
+      ));
     } finally {
       setIsSubmittingQuote(false);
     }
@@ -400,54 +436,79 @@ export default function FreightBunnyHome() {
     }
   }
 
-  const handleSubmitShipNow = (e?: React.FormEvent) => {
+  const handleSubmitShipNow = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Ship Now form submitted:", shipNowForm);
-    alert("Thank you! Your shipping request has been submitted. We'll contact you within 2 hours to arrange pickup and payment.");
-    setIsShipNowModalOpen(false);
-    setCurrentStep(1);
-    // Reset form
-    setShipNowForm({
-      // Shipping Direction
-      direction: "uk-nigeria",
+    
+    setIsSubmittingQuote(true); // Reuse loading state
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      console.log("Ship Now form submitted:", shipNowForm);
+      
+      // Success notification
+      addToast(toast.success(
+        "Shipping Request Submitted!", 
+        "We'll contact you within 2 hours to arrange pickup and payment.",
+        6000
+      ));
+      
+      setIsShipNowModalOpen(false);
+      setCurrentStep(1);
+      
+      // Reset form
+      setShipNowForm({
+        // Shipping Direction
+        direction: "uk-nigeria",
 
-      // Sender Information
-      senderName: "",
-      senderEmail: "",
-      senderPhone: "",
-      senderAddress: "",
-      senderCity: "",
-      senderPostcode: "",
-      senderState: "",
-      senderCountry: "United Kingdom",
+        // Sender Information
+        senderName: "",
+        senderEmail: "",
+        senderPhone: "",
+        senderAddress: "",
+        senderCity: "",
+        senderPostcode: "",
+        senderState: "",
+        senderCountry: "United Kingdom",
 
-      // Recipient Information
-      recipientName: "",
-      recipientEmail: "",
-      recipientPhone: "",
-      recipientAddress: "",
-      recipientCity: "",
-      recipientState: "",
-      recipientPostcode: "",
-      recipientCountry: "Nigeria",
+        // Recipient Information
+        recipientName: "",
+        recipientEmail: "",
+        recipientPhone: "",
+        recipientAddress: "",
+        recipientCity: "",
+        recipientState: "",
+        recipientPostcode: "",
+        recipientCountry: "Nigeria",
 
-      // Package Information
-      packageType: "",
-      weight: "",
-      length: "",
-      width: "",
-      height: "",
-      value: "",
-      description: "",
-      shippingService: "",
+        // Package Information
+        packageType: "",
+        weight: "",
+        length: "",
+        width: "",
+        height: "",
+        value: "",
+        description: "",
+        shippingService: "",
 
-      // Additional Options
-      insurance: true,
-      signature: false,
-      tracking: true,
-    });
-    setEstimatedCost(null);
+        // Additional Options
+        insurance: true,
+        signature: false,
+        tracking: true,
+      });
+      setEstimatedCost(null);
+      
+    } catch (error) {
+      console.error('Error submitting shipping request:', error);
+      addToast(toast.error(
+        "Submission Failed", 
+        "There was an error submitting your request. Please try again.",
+        5000
+      ));
+    } finally {
+      setIsSubmittingQuote(false);
+    }
   };
 
   return (
@@ -583,11 +644,12 @@ export default function FreightBunnyHome() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 backdrop-blur-sm min-h-[44px] md:min-h-[48px]"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 backdrop-blur-sm min-h-[44px] md:min-h-[48px] hover-lift"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
                 setIsQuoteModalOpen(true);
+                addToast(toast.info("Quote Calculator", "Fill in your details to get an instant quote"));
               }}
             >
               <Calculator className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
@@ -596,12 +658,11 @@ export default function FreightBunnyHome() {
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 min-h-[44px] md:min-h-[48px]"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 min-h-[44px] md:min-h-[48px] hover-lift pulse-glow"
               style={{ cursor: 'pointer' }}
               onClick={() => {
-                console.log("Main Ship Now button clicked");
                 setIsShipNowModalOpen(true);
-                console.log("Ship Now modal state set to true");
+                addToast(toast.info("Ship Now", "Complete our step-by-step form to schedule your shipment"));
               }}
             >
               <Package className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-white flex-shrink-0" />
@@ -655,10 +716,42 @@ export default function FreightBunnyHome() {
               />
               <Button 
                 variant="default"
+                loading={isTrackingPackage}
+                loadingText="Tracking..."
                 className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[44px] md:min-h-[48px]"
-                style={{ backgroundColor: '#002147' }}>
-                <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
-                Track
+                style={{ backgroundColor: '#002147' }}
+                onClick={async () => {
+                  if (!trackingNumber.trim()) {
+                    addToast(toast.error("Tracking Error", "Please enter a tracking number"));
+                    return;
+                  }
+                  
+                  setIsTrackingPackage(true);
+                  
+                  // Simulate tracking lookup
+                  await new Promise(resolve => setTimeout(resolve, 2000));
+                  
+                  // Mock tracking result
+                  const isValidTracking = trackingNumber.toLowerCase().startsWith('fb');
+                  
+                  if (isValidTracking) {
+                    addToast(toast.success(
+                      "Package Found!", 
+                      "Your package is in transit. Check your email for detailed updates.",
+                      6000
+                    ));
+                  } else {
+                    addToast(toast.error(
+                      "Tracking Not Found", 
+                      "Please check your tracking number and try again.",
+                      5000
+                    ));
+                  }
+                  
+                  setIsTrackingPackage(false);
+                }}>
+                {!isTrackingPackage && <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />}
+                {isTrackingPackage ? "Tracking..." : "Track"}
               </Button>
             </div>
           </div>
@@ -1038,64 +1131,20 @@ export default function FreightBunnyHome() {
             {/* Content - Improved layout for mobile and tablet */}
             <div className="p-3 sm:p-4 md:p-6">
               
-              {/* Progress Steps - Improved for mobile with clickable icons */}
+              {/* Progress Steps - Enhanced with visual progress */}
               <div className="mb-6 sm:mb-8">
-                {/* Mobile Progress - Simplified */}
-                <div className="sm:hidden">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-gray-600">Step {currentStep} of 5</span>
-                    <span className="text-sm text-gray-500">
-                      {currentStep === 1 && "Shipping Direction"}
-                      {currentStep === 2 && "Sender Details"}
-                      {currentStep === 3 && "Recipient Details"}
-                      {currentStep === 4 && "Package Details"}
-                      {currentStep === 5 && "Review & Pay"}
-                    </span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
-                      style={{ width: `${(currentStep / 5) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-
-                {/* Desktop Progress - Clickable */}
-                <div className="hidden sm:flex items-center justify-between">
-                  {[
-                    { number: 1, title: "Shipping Direction", icon: ArrowRight },
-                    { number: 2, title: "Sender Details", icon: User },
-                    { number: 3, title: "Recipient Details", icon: MapPin },
-                    { number: 4, title: "Package Details", icon: Package },
-                    { number: 5, title: "Review & Pay", icon: CreditCard },
-                  ].map((step, index) => (
-                    <div key={step.number} className="flex items-center">
-                      <div
-                        className={`flex items-center justify-center w-10 h-10 rounded-full border-2 cursor-pointer transition-all duration-200 hover:scale-105 ${
-                          currentStep >= step.number
-                            ? "bg-blue-600 border-blue-600 text-white"
-                            : "border-gray-300 text-gray-400 hover:border-blue-300 hover:text-blue-500"
-                        }`}
-                        onClick={() => {
-                          if (step.number <= currentStep || step.number === currentStep + 1) {
-                            setCurrentStep(step.number);
-                          }
-                        }}
-                      >
-                        {currentStep > step.number ? <CheckCircle className="h-5 w-5" /> : <step.icon className="h-5 w-5" />}
-                      </div>
-                      <div className="ml-3 hidden sm:block">
-                        <p className={`text-sm font-medium ${currentStep >= step.number ? "text-blue-600" : "text-gray-400"}`}>
-                          Step {step.number}
-                        </p>
-                        <p className={`text-xs ${currentStep >= step.number ? "text-gray-900" : "text-gray-400"}`}>
-                          {step.title}
-                        </p>
-                      </div>
-                      {index < 4 && <ArrowRight className="mx-4 h-4 w-4 text-gray-400 hidden sm:block" />}
-                    </div>
-                  ))}
-                </div>
+                <StepProgress 
+                  currentStep={currentStep}
+                  totalSteps={5}
+                  steps={[
+                    "Shipping Direction",
+                    "Sender Details", 
+                    "Recipient Details",
+                    "Package Details",
+                    "Review & Pay"
+                  ]}
+                  className="mb-6"
+                />
               </div>
 
               {/* Step 1: Shipping Direction */}
@@ -1669,10 +1718,12 @@ export default function FreightBunnyHome() {
                 ) : (
                   <Button 
                     onClick={() => handleSubmitShipNow()} 
+                    loading={isSubmittingQuote}
+                    loadingText="Processing..."
                     className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center order-1 sm:order-2 w-full sm:w-auto"
                   >
-                    <CreditCard className="mr-2 h-4 w-4" />
-                    Proceed to Payment
+                    {!isSubmittingQuote && <CreditCard className="mr-2 h-4 w-4" />}
+                    {isSubmittingQuote ? "Processing..." : "Proceed to Payment"}
                   </Button>
                 )}
               </div>
@@ -2044,27 +2095,17 @@ export default function FreightBunnyHome() {
 
                       <div className="space-y-3">
                         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4 flex flex-col items-center">
-                          <button 
+                          <Button
                             onClick={handleQuoteSubmit}
-                            disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress) || isSubmittingQuote}
-                            className={`w-full sm:w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-sm sm:text-base shadow-lg ${
-                              calculatedQuote && quoteCalculatorForm.senderName && quoteCalculatorForm.senderEmail && quoteCalculatorForm.senderPhone && (quoteCalculatorForm.packageType !== "other" || quoteCalculatorForm.customPackageType) && quoteCalculatorForm.deliveryLocation && (!quoteCalculatorForm.needsDelivery || quoteCalculatorForm.deliveryAddress) && !isSubmittingQuote
-                              ? "bg-[#002147] hover:bg-blue-900 text-white hover:scale-105"
-                              : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                            }`}
+                            disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)}
+                            loading={isSubmittingQuote}
+                            loadingText="Submitting Quote..."
+                            className="w-full sm:w-auto mx-auto bg-[#002147] hover:bg-blue-900 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:scale-105 transition-all duration-200 hover-lift pulse-glow"
+                            size="lg"
                           >
-                            {isSubmittingQuote ? (
-                              <>
-                                <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white mr-2"></div>
-                                Submitting...
-                              </>
-                            ) : (
-                              <>
-                                <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                                📧 Submit My Quote
-                              </>
-                            )}
-                          </button>
+                            <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                            📧 Submit My Quote
+                          </Button>
                           {(!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)) && (
                             <p className="text-xs text-amber-600 text-center mt-2 font-medium">
                               Complete all fields above to submit your quote
@@ -2404,5 +2445,14 @@ export default function FreightBunnyHome() {
         </div>
       )}
     </div>
+  )
+}
+
+// Wrap with ToastProvider to enable notifications
+export default function FreightBunnyHomeWithToast() {
+  return (
+    <ToastProvider>
+      <FreightBunnyHome />
+    </ToastProvider>
   )
 }
