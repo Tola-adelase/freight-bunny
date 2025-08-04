@@ -558,7 +558,18 @@ export default function AboutPage() {
 
               {/* Ship Package Modal */}
         {isShipModalOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setIsShipModalOpen(false)}>
+          <div 
+            className="fixed inset-0 flex items-center justify-center z-50 p-4" 
+            style={{
+              backgroundImage: 'url(/images/Freight_Bunny_Hero_Image.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+            onClick={() => setIsShipModalOpen(false)}
+          >
+            {/* Subtle overlay for better text readability */}
+            <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
               <div className="sticky top-0 bg-white p-6 border-b border-gray-200 rounded-t-2xl flex justify-between items-center">
                 <h2 className="text-3xl font-bold text-[#111827]">Ship a Package</h2>

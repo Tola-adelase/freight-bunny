@@ -287,19 +287,19 @@ function FreightBunnyHome() {
     const totalGBP = shippingCost + handlingFee + (deliveryFeeCurrency === "GBP" ? deliveryFee : 0);
     
     try {
-      setCalculatedQuote({
-        weight: actualWeight,
-        shippingCost,
-        handlingFee,
-        deliveryFee,
-        deliveryFeeCurrency,
-        totalGBP,
-        from: formData.from,
-        to: formData.to,
-        packageType: formData.packageType,
-        deliveryLocation: formData.deliveryLocation,
-        needsDelivery: formData.needsDelivery
-      });
+    setCalculatedQuote({
+      weight: actualWeight,
+      shippingCost,
+      handlingFee,
+      deliveryFee,
+      deliveryFeeCurrency,
+      totalGBP,
+      from: formData.from,
+      to: formData.to,
+      packageType: formData.packageType,
+      deliveryLocation: formData.deliveryLocation,
+      needsDelivery: formData.needsDelivery
+    });
       
       // Show success notification for quote calculation
       addToast(toast.success(
@@ -445,7 +445,7 @@ function FreightBunnyHome() {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      console.log("Ship Now form submitted:", shipNowForm);
+    console.log("Ship Now form submitted:", shipNowForm);
       
       // Success notification
       addToast(toast.success(
@@ -454,50 +454,50 @@ function FreightBunnyHome() {
         6000
       ));
       
-      setIsShipNowModalOpen(false);
-      setCurrentStep(1);
+    setIsShipNowModalOpen(false);
+    setCurrentStep(1);
       
-      // Reset form
-      setShipNowForm({
-        // Shipping Direction
-        direction: "uk-nigeria",
+    // Reset form
+    setShipNowForm({
+      // Shipping Direction
+      direction: "uk-nigeria",
 
-        // Sender Information
-        senderName: "",
-        senderEmail: "",
-        senderPhone: "",
-        senderAddress: "",
-        senderCity: "",
-        senderPostcode: "",
-        senderState: "",
-        senderCountry: "United Kingdom",
+      // Sender Information
+      senderName: "",
+      senderEmail: "",
+      senderPhone: "",
+      senderAddress: "",
+      senderCity: "",
+      senderPostcode: "",
+      senderState: "",
+      senderCountry: "United Kingdom",
 
-        // Recipient Information
-        recipientName: "",
-        recipientEmail: "",
-        recipientPhone: "",
-        recipientAddress: "",
-        recipientCity: "",
-        recipientState: "",
-        recipientPostcode: "",
-        recipientCountry: "Nigeria",
+      // Recipient Information
+      recipientName: "",
+      recipientEmail: "",
+      recipientPhone: "",
+      recipientAddress: "",
+      recipientCity: "",
+      recipientState: "",
+      recipientPostcode: "",
+      recipientCountry: "Nigeria",
 
-        // Package Information
-        packageType: "",
-        weight: "",
-        length: "",
-        width: "",
-        height: "",
-        value: "",
-        description: "",
-        shippingService: "",
+      // Package Information
+      packageType: "",
+      weight: "",
+      length: "",
+      width: "",
+      height: "",
+      value: "",
+      description: "",
+      shippingService: "",
 
-        // Additional Options
-        insurance: true,
-        signature: false,
-        tracking: true,
-      });
-      setEstimatedCost(null);
+      // Additional Options
+      insurance: true,
+      signature: false,
+      tracking: true,
+    });
+    setEstimatedCost(null);
       
     } catch (error) {
       console.error('Error submitting shipping request:', error);
@@ -584,14 +584,14 @@ function FreightBunnyHome() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-[calc(100vh-64px)] flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-[95vh] lg:min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
         {/* Abstract Shape for Visual Interest */}
         <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
 
-        <div className="container mx-auto flex flex-col justify-start items-center h-full relative z-10 pt-8 pb-4 sm:py-8 md:py-12">
+        <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-4 sm:py-6 md:py-8 lg:py-12">
           {/* Badge */}
-          <div className="mb-6 sm:mb-7 md:mb-8">
+          <div className="mb-4 sm:mb-5 md:mb-6 lg:mb-8">
             <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
               <div className="bg-[#002147] p-1 rounded-full mr-3">
                 <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -604,7 +604,7 @@ function FreightBunnyHome() {
           <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-[1.1] px-2">
             UK ↔ Nigeria Shipping
           </h1>
-          <div className="relative flex justify-center mb-4 sm:mb-6">
+          <div className="relative flex justify-center mb-3 sm:mb-4 md:mb-6">
             <span className="block text-[#002147] text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative">
               Made Easy
               <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 rounded-full -translate-x-1/2 z-[-1] shadow-sm"></span>
@@ -615,12 +615,12 @@ function FreightBunnyHome() {
           <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-1 px-4 leading-tight">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-4 sm:mb-8 px-4 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-3 sm:mb-6 md:mb-8 px-4 leading-relaxed">
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
           {/* Pricing Card */}
-          <div className="mb-4 sm:mb-8 md:mb-10 flex justify-center w-full px-4">
+          <div className="mb-3 sm:mb-6 md:mb-8 lg:mb-10 flex justify-center w-full px-4">
             <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 flex flex-col items-center relative overflow-hidden backdrop-blur-sm">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
               <div className="relative z-10 flex items-center justify-center mb-2">
@@ -640,7 +640,7 @@ function FreightBunnyHome() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8 justify-center w-full max-w-lg sm:max-w-2xl md:max-w-3xl px-4">
+          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6 lg:mb-8 justify-center w-full max-w-lg sm:max-w-2xl md:max-w-3xl px-4">
             <Button
               size="lg"
               variant="outline"
@@ -671,30 +671,30 @@ function FreightBunnyHome() {
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-8 md:mb-10 mt-3 sm:mt-0 px-4 max-w-4xl mx-auto">
-            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm text-center justify-center">
-              <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
-                <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8 lg:mb-10 mt-2 sm:mt-0 md:mt-0 px-4 max-w-4xl mx-auto">
+            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-full border border-green-100/50 shadow-sm text-center justify-center hover-lift">
+              <div className="bg-green-500 p-0.5 sm:p-1 md:p-1.5 rounded-full">
+                <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white flex-shrink-0" />
               </div>
-              <span className="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
+              <span className="text-green-700 text-xs sm:text-sm md:text-base font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm text-center justify-center">
-              <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
-                <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-full border border-blue-100/50 shadow-sm text-center justify-center hover-lift">
+              <div className="bg-blue-500 p-0.5 sm:p-1 md:p-1.5 rounded-full">
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white flex-shrink-0" />
               </div>
-              <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
+              <span className="text-blue-700 text-xs sm:text-sm md:text-base font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm text-center justify-center">
-              <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full">
-                <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-full border border-yellow-100/50 shadow-sm text-center justify-center hover-lift">
+              <div className="bg-yellow-500 p-0.5 sm:p-1 md:p-1.5 rounded-full">
+                <Star className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white flex-shrink-0" />
               </div>
-              <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
+              <span className="text-yellow-700 text-xs sm:text-sm md:text-base font-semibold whitespace-nowrap">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm text-center justify-center">
-              <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full">
-                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-full border border-emerald-100/50 shadow-sm text-center justify-center hover-lift">
+              <div className="bg-emerald-500 p-0.5 sm:p-1 md:p-1.5 rounded-full">
+                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white flex-shrink-0" />
               </div>
-              <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">No Hidden Fees</span>
+              <span className="text-emerald-700 text-xs sm:text-sm md:text-base font-semibold whitespace-nowrap">No Hidden Fees</span>
             </div>
           </div>
         </div>
@@ -1103,7 +1103,18 @@ function FreightBunnyHome() {
 
       {/* Ship Now Modal */}
       {isShipNowModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" onClick={() => setIsShipNowModalOpen(false)}>
+        <div 
+          className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" 
+          style={{
+            backgroundImage: 'url(/images/Freight_Bunny_Hero_Image.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+          onClick={() => setIsShipNowModalOpen(false)}
+        >
+          {/* Subtle overlay for better text readability */}
+          <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm sm:max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto max-h-[98vh] md:max-h-[95vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header - Improved for mobile and tablet */}
             <div className="sticky top-0 bg-white p-3 sm:p-4 md:p-6 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
@@ -1734,10 +1745,21 @@ function FreightBunnyHome() {
 
       {/* Quote Calculator Modal - Improved for mobile and tablet */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" onClick={() => {
+        <div 
+          className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" 
+          style={{
+            backgroundImage: 'url(/images/Freight_Bunny_Hero_Image.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+          onClick={() => {
           resetQuoteForm();
           setIsQuoteModalOpen(false);
-        }}>
+          }}
+        >
+          {/* Subtle overlay for better text readability */}
+          <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm sm:max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto max-h-[98vh] md:max-h-[95vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header - Improved for mobile and tablet */}
             <div className="sticky top-0 bg-white p-3 sm:p-4 md:p-6 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
@@ -2103,8 +2125,8 @@ function FreightBunnyHome() {
                             className="w-full sm:w-auto mx-auto bg-[#002147] hover:bg-blue-900 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:scale-105 transition-all duration-200 hover-lift pulse-glow"
                             size="lg"
                           >
-                            <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                            📧 Submit My Quote
+                                <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                                📧 Submit My Quote
                           </Button>
                           {(!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)) && (
                             <p className="text-xs text-amber-600 text-center mt-2 font-medium">
@@ -2190,11 +2212,22 @@ function FreightBunnyHome() {
 
       {/* Quote Details Modal - Improved for mobile */}
       {quoteDetailsModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-2 sm:p-4" onClick={() => {
-          setQuoteDetailsModal(false);
-          setIsQuoteModalOpen(false);
-          resetQuoteForm();
-        }}>
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4" 
+          style={{
+            backgroundImage: 'url(/images/Freight_Bunny_Hero_Image.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+          onClick={() => {
+            setQuoteDetailsModal(false);
+            setIsQuoteModalOpen(false);
+            resetQuoteForm();
+          }}
+        >
+          {/* Subtle overlay for better text readability */}
+          <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
           <div 
             className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto max-h-[95vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
