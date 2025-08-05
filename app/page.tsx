@@ -43,7 +43,6 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useToast } from "../components/ui/toast"
 import { LoadingButton, LoadingSpinner } from "../components/ui/loading-spinner"
 import { validateForm, commonRules, validationPatterns } from "../lib/validation"
-import { PackageTracker } from "../components/ui/package-tracker"
 
 export default function FreightBunnyHome() {
   const pathname = usePathname()
@@ -62,8 +61,6 @@ export default function FreightBunnyHome() {
     { href: "#contact", label: "Contact Us" },
   ]
   const [trackingNumber, setTrackingNumber] = useState("")
-  const [showTrackingResult, setShowTrackingResult] = useState(false)
-  const [isTracking, setIsTracking] = useState(false)
   const [quoteForm, setQuoteForm] = useState({
     weight: "",
     dimensions: "",
@@ -488,44 +485,7 @@ export default function FreightBunnyHome() {
     setEstimatedCost(null);
   };
 
-  const handleTrackPackage = async () => {
-    if (!trackingNumber.trim()) {
-      addToast({
-        type: "error",
-        title: "Tracking Number Required",
-        description: "Please enter a tracking number to search for your package.",
-        duration: 4000
-      });
-      return;
-    }
 
-    setIsTracking(true);
-
-    // Simulate API call delay
-    setTimeout(() => {
-      setIsTracking(false);
-      
-      // Check if tracking number is valid format (FB followed by 9 digits)
-      const trackingPattern = /^FB\d{9}$/i;
-      if (trackingPattern.test(trackingNumber.trim())) {
-        setShowTrackingResult(true);
-        addToast({
-          type: "success",
-          title: "Package Found!",
-          description: "Your package tracking information is displayed below.",
-          duration: 4000
-        });
-      } else {
-        addToast({
-          type: "error",
-          title: "Package Not Found",
-          description: "Please check your tracking number and try again. Tracking numbers start with 'FB' followed by 9 digits.",
-          duration: 6000
-        });
-        setShowTrackingResult(false);
-      }
-    }, 1500);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -730,26 +690,18 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white/70 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-center sm:text-left placeholder:text-center sm:placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[44px] md:min-h-[48px]"
               />
-              <LoadingButton
-                loading={isTracking}
-                onClick={handleTrackPackage}
+              <Button 
+                variant="default"
                 className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[44px] md:min-h-[48px]"
-              >
+                style={{ backgroundColor: '#002147' }}>
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
-              </LoadingButton>
+              </Button>
             </div>
           </div>
         </div>
         
-        {/* Package Tracking Results */}
-        {showTrackingResult && (
-          <div className="container mx-auto px-4 sm:px-6 mt-8 animate-in fade-in duration-500">
-            <div className="max-w-2xl mx-auto">
-              <PackageTracker trackingNumber={trackingNumber} />
-            </div>
-          </div>
-        )}
+
       </section>
 
       {/* Our Shipping Services Section */}
