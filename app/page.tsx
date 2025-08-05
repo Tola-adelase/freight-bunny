@@ -413,11 +413,149 @@ export default function FreightBunnyHome() {
     setEstimatedCost(cost)
   }
 
+  // Validation functions for Ship Now form steps
+  const validateStep1 = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    if (!shipNowForm.direction) {
+      errors.direction = "Please select a shipping direction";
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateStep2 = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    if (!shipNowForm.senderName.trim()) {
+      errors.senderName = "Sender name is required";
+    }
+    
+    if (!shipNowForm.senderEmail.trim()) {
+      errors.senderEmail = "Sender email is required";
+    } else if (!validationPatterns.email.test(shipNowForm.senderEmail)) {
+      errors.senderEmail = "Please enter a valid email address";
+    }
+    
+    if (!shipNowForm.senderPhone.trim()) {
+      errors.senderPhone = "Sender phone number is required";
+    }
+    
+    if (!shipNowForm.senderAddress.trim()) {
+      errors.senderAddress = "Sender address is required";
+    }
+    
+    if (!shipNowForm.senderCity.trim()) {
+      errors.senderCity = "Sender city is required";
+    }
+    
+    if (!shipNowForm.senderPostcode.trim()) {
+      errors.senderPostcode = "Sender postcode is required";
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateStep3 = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    if (!shipNowForm.recipientName.trim()) {
+      errors.recipientName = "Recipient name is required";
+    }
+    
+    if (!shipNowForm.recipientPhone.trim()) {
+      errors.recipientPhone = "Recipient phone number is required";
+    }
+    
+    if (!shipNowForm.recipientAddress.trim()) {
+      errors.recipientAddress = "Recipient address is required";
+    }
+    
+    if (!shipNowForm.recipientCity.trim()) {
+      errors.recipientCity = "Recipient city is required";
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateStep4 = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    if (!shipNowForm.packageType) {
+      errors.packageType = "Package type is required";
+    }
+    
+    if (!shipNowForm.weight.trim()) {
+      errors.weight = "Package weight is required";
+    } else if (parseFloat(shipNowForm.weight) <= 0) {
+      errors.weight = "Weight must be greater than 0";
+    }
+    
+    if (!shipNowForm.length.trim()) {
+      errors.length = "Package length is required";
+    } else if (parseFloat(shipNowForm.length) <= 0) {
+      errors.length = "Length must be greater than 0";
+    }
+    
+    if (!shipNowForm.width.trim()) {
+      errors.width = "Package width is required";
+    } else if (parseFloat(shipNowForm.width) <= 0) {
+      errors.width = "Width must be greater than 0";
+    }
+    
+    if (!shipNowForm.height.trim()) {
+      errors.height = "Package height is required";
+    } else if (parseFloat(shipNowForm.height) <= 0) {
+      errors.height = "Height must be greater than 0";
+    }
+    
+    if (!shipNowForm.description.trim()) {
+      errors.description = "Package description is required";
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const nextStep = () => {
     if (currentStep < 4) {
-      setCurrentStep(currentStep + 1)
-      if (currentStep === 3) {
-        calculateEstimate()
+      let isValid = false;
+      
+      // Validate current step before proceeding
+      switch (currentStep) {
+        case 1:
+          isValid = validateStep1();
+          break;
+        case 2:
+          isValid = validateStep2();
+          break;
+        case 3:
+          isValid = validateStep3();
+          break;
+        case 4:
+          isValid = validateStep4();
+          break;
+        default:
+          isValid = true;
+      }
+      
+      if (isValid) {
+        setCurrentStep(currentStep + 1);
+        setFormErrors({}); // Clear errors when moving to next step
+        if (currentStep === 3) {
+          calculateEstimate();
+        }
+      } else {
+        // Show toast notification for validation errors
+        addToast({
+          type: "error",
+          title: "Missing Information",
+          description: "Please fill in all required fields before proceeding to the next step.",
+          duration: 4000
+        });
       }
     }
   }
@@ -1205,6 +1343,11 @@ export default function FreightBunnyHome() {
                         </div>
                       </label>
                     </div>
+                    {formErrors.direction && (
+                      <div className="mt-2 text-sm text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
+                        {formErrors.direction}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -1228,8 +1371,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.senderName}
                           onChange={(e) => handleShipNowFormChange("senderName", e.target.value)}
                           placeholder="John Smith"
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderName ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.senderName && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.senderName}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="senderEmail" className="text-sm font-medium text-gray-900">Email Address *</Label>
@@ -1239,8 +1385,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.senderEmail}
                           onChange={(e) => handleShipNowFormChange("senderEmail", e.target.value)}
                           placeholder="john@example.com"
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderEmail ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.senderEmail && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.senderEmail}</div>
+                        )}
                       </div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -1251,8 +1400,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.senderPhone}
                           onChange={(e) => handleShipNowFormChange("senderPhone", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "+44 20 1234 5678" : "+234 1 234 5678"}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderPhone ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.senderPhone && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.senderPhone}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="senderCountry" className="text-sm font-medium text-gray-900">Country</Label>
@@ -1274,8 +1426,11 @@ export default function FreightBunnyHome() {
                         value={shipNowForm.senderAddress}
                         onChange={(e) => handleShipNowFormChange("senderAddress", e.target.value)}
                         placeholder={shipNowForm.direction === "uk-nigeria" ? "123 High Street" : "15 Victoria Island Road"}
-                        className="mt-1 bg-white border-gray-300 text-gray-900"
+                        className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderAddress ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                       />
+                      {formErrors.senderAddress && (
+                        <div className="mt-1 text-sm text-red-600">{formErrors.senderAddress}</div>
+                      )}
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
@@ -1285,35 +1440,48 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.senderCity}
                           onChange={(e) => handleShipNowFormChange("senderCity", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "London" : "Lagos"}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderCity ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.senderCity && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.senderCity}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="senderPostcode" className="text-sm font-medium text-gray-900">
                           {shipNowForm.direction === "uk-nigeria" ? "Postcode *" : "State *"}
                         </Label>
                         {shipNowForm.direction === "uk-nigeria" ? (
-                          <Input
-                            id="senderPostcode"
-                            value={shipNowForm.senderPostcode}
-                            onChange={(e) => handleShipNowFormChange("senderPostcode", e.target.value)}
-                            placeholder="SW1A 1AA"
-                            className="mt-1 bg-white border-gray-300 text-gray-900"
-                          />
+                          <>
+                            <Input
+                              id="senderPostcode"
+                              value={shipNowForm.senderPostcode}
+                              onChange={(e) => handleShipNowFormChange("senderPostcode", e.target.value)}
+                              placeholder="SW1A 1AA"
+                              className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderPostcode ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
+                            />
+                            {formErrors.senderPostcode && (
+                              <div className="mt-1 text-sm text-red-600">{formErrors.senderPostcode}</div>
+                            )}
+                          </>
                         ) : (
-                          <SimpleSelect
-                            value={shipNowForm.senderState}
-                            onValueChange={(value) => handleShipNowFormChange("senderState", value)}
-                            className="mt-1 bg-white border-gray-300 text-gray-900"
-                          >
-                            <option value="">Select state</option>
-                            <option value="Lagos">Lagos</option>
-                            <option value="Abuja">Abuja (FCT)</option>
-                            <option value="Kano">Kano</option>
-                            <option value="Rivers">Rivers</option>
-                            <option value="Oyo">Oyo</option>
-                            <option value="Other">Other</option>
-                          </SimpleSelect>
+                          <>
+                            <SimpleSelect
+                              value={shipNowForm.senderState}
+                              onValueChange={(value) => handleShipNowFormChange("senderState", value)}
+                              className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.senderPostcode ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
+                            >
+                              <option value="">Select state</option>
+                              <option value="Lagos">Lagos</option>
+                              <option value="Abuja">Abuja (FCT)</option>
+                              <option value="Kano">Kano</option>
+                              <option value="Rivers">Rivers</option>
+                              <option value="Oyo">Oyo</option>
+                              <option value="Other">Other</option>
+                            </SimpleSelect>
+                            {formErrors.senderPostcode && (
+                              <div className="mt-1 text-sm text-red-600">{formErrors.senderPostcode}</div>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>
@@ -1342,8 +1510,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.recipientName}
                           onChange={(e) => handleShipNowFormChange("recipientName", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "Adebayo Johnson" : "John Smith"}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.recipientName ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.recipientName && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.recipientName}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="recipientEmail" className="text-sm font-medium text-gray-900">Email Address</Label>
@@ -1365,8 +1536,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.recipientPhone}
                           onChange={(e) => handleShipNowFormChange("recipientPhone", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "+234 1 234 5678" : "+44 20 1234 5678"}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.recipientPhone ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.recipientPhone && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.recipientPhone}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="recipientCountry" className="text-sm font-medium text-gray-900">Country</Label>
@@ -1388,8 +1562,11 @@ export default function FreightBunnyHome() {
                         value={shipNowForm.recipientAddress}
                         onChange={(e) => handleShipNowFormChange("recipientAddress", e.target.value)}
                         placeholder={shipNowForm.direction === "uk-nigeria" ? "15 Victoria Island Road" : "123 High Street"}
-                        className="mt-1 bg-white border-gray-300 text-gray-900"
+                        className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.recipientAddress ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                       />
+                      {formErrors.recipientAddress && (
+                        <div className="mt-1 text-sm text-red-600">{formErrors.recipientAddress}</div>
+                      )}
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
@@ -1399,8 +1576,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.recipientCity}
                           onChange={(e) => handleShipNowFormChange("recipientCity", e.target.value)}
                           placeholder={shipNowForm.direction === "uk-nigeria" ? "Lagos" : "London"}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.recipientCity ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.recipientCity && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.recipientCity}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="recipientState" className="text-sm font-medium text-gray-900">
@@ -1452,7 +1632,7 @@ export default function FreightBunnyHome() {
                         <SimpleSelect 
                           value={shipNowForm.packageType} 
                           onValueChange={(value) => handleShipNowFormChange("packageType", value)}
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.packageType ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         >
                           <option value="">Select package type</option>
                           <option value="documents">Documents</option>
@@ -1462,6 +1642,9 @@ export default function FreightBunnyHome() {
                           <option value="gifts">Gifts</option>
                           <option value="other">Other</option>
                         </SimpleSelect>
+                        {formErrors.packageType && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.packageType}</div>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="weight" className="text-sm font-medium text-gray-900">Weight (kg) *</Label>
@@ -1472,8 +1655,11 @@ export default function FreightBunnyHome() {
                           value={shipNowForm.weight}
                           onChange={(e) => handleShipNowFormChange("weight", e.target.value)}
                           placeholder="2.5"
-                          className="mt-1 bg-white border-gray-300 text-gray-900"
+                          className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.weight ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                         />
+                        {formErrors.weight && (
+                          <div className="mt-1 text-sm text-red-600">{formErrors.weight}</div>
+                        )}
                       </div>
                     </div>
 
@@ -1488,8 +1674,11 @@ export default function FreightBunnyHome() {
                             value={shipNowForm.length}
                             onChange={(e) => handleShipNowFormChange("length", e.target.value)}
                             placeholder="30"
-                            className="mt-1 bg-white border-gray-300 text-gray-900"
+                            className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.length ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                           />
+                          {formErrors.length && (
+                            <div className="mt-1 text-sm text-red-600">{formErrors.length}</div>
+                          )}
                         </div>
                         <div>
                           <Label htmlFor="width" className="text-sm text-gray-700">Width</Label>
@@ -1499,8 +1688,11 @@ export default function FreightBunnyHome() {
                             value={shipNowForm.width}
                             onChange={(e) => handleShipNowFormChange("width", e.target.value)}
                             placeholder="20"
-                            className="mt-1 bg-white border-gray-300 text-gray-900"
+                            className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.width ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                           />
+                          {formErrors.width && (
+                            <div className="mt-1 text-sm text-red-600">{formErrors.width}</div>
+                          )}
                         </div>
                         <div>
                           <Label htmlFor="height" className="text-sm text-gray-700">Height</Label>
@@ -1510,8 +1702,11 @@ export default function FreightBunnyHome() {
                             value={shipNowForm.height}
                             onChange={(e) => handleShipNowFormChange("height", e.target.value)}
                             placeholder="15"
-                            className="mt-1 bg-white border-gray-300 text-gray-900"
+                            className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.height ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                           />
+                          {formErrors.height && (
+                            <div className="mt-1 text-sm text-red-600">{formErrors.height}</div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1551,8 +1746,11 @@ export default function FreightBunnyHome() {
                         onChange={(e) => handleShipNowFormChange("description", e.target.value)}
                         placeholder="Describe the contents of your package in detail"
                         rows={3}
-                        className="mt-1 bg-white border-gray-300 text-gray-900"
+                        className={`mt-1 bg-white border-gray-300 text-gray-900 ${formErrors.description ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                       />
+                      {formErrors.description && (
+                        <div className="mt-1 text-sm text-red-600">{formErrors.description}</div>
+                      )}
                     </div>
 
                     <div className="space-y-3">
