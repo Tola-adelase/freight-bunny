@@ -569,21 +569,21 @@ export default function FreightBunnyHome() {
           {/* Badge */}
           <div className="mb-4 sm:mb-5 md:mb-4">
             <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
-              <div className="bg-[#002147] p-1 rounded-full mr-3">
-                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow">
+                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
               </div>
               Fast, Reliable Air Freight
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-[1.1] px-2">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-2 leading-[1.1] px-2 animate-pulse">
             UK ↔ Nigeria Shipping
           </h1>
           <div className="relative flex justify-center mb-3 sm:mb-4">
-            <span className="block text-[#002147] text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative">
+            <span className="block bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
               Made Easy
-              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 rounded-full -translate-x-1/2 z-[-1] shadow-sm"></span>
+              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
             </span>
           </div>
 
@@ -600,14 +600,14 @@ export default function FreightBunnyHome() {
             <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl hover:shadow-3xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 hover:border-blue-300/70 flex flex-col items-center relative overflow-hidden backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
               <div className="relative z-10 flex items-center justify-center mb-2">
-                <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg">
-                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg animate-pulse hover:animate-bounce group-hover:scale-110 transition-all duration-300">
+                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-pulse" />
                 </div>
                 <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
               </div>
               <div className="relative z-10 mb-1 flex items-baseline">
-                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm">£9</span>
-                <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1">/kg</span>
+                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm group-hover:text-blue-600 transition-colors duration-300 animate-pulse">£9</span>
+                <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1 group-hover:text-blue-500 transition-colors duration-300">/kg</span>
               </div>
               <div className="relative z-10 bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100">
                 <p className="text-sm sm:text-sm text-gray-700 text-center font-medium">Delivery: 7–10 days after shipment</p>
@@ -649,26 +649,26 @@ export default function FreightBunnyHome() {
           {/* Trust Indicators Row */}
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 px-4 max-w-4xl mx-auto">
             <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-green-100/90 hover:border-green-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.1s' }}>
-              <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
-                <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+              <div className="bg-green-500 p-0.5 sm:p-1 rounded-full animate-pulse group-hover:animate-bounce">
+                <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0 animate-pulse group-hover:animate-spin" />
               </div>
               <span className="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
             <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-blue-100/90 hover:border-blue-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
-                <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+              <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full animate-pulse group-hover:animate-bounce">
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0 animate-spin-slow group-hover:animate-bounce" />
               </div>
               <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
             <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-yellow-100/90 hover:border-yellow-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
-              <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full">
-                <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+              <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full animate-pulse group-hover:animate-bounce">
+                <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0 animate-pulse group-hover:animate-ping" />
               </div>
               <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
             </div>
             <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-emerald-100/90 hover:border-emerald-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.4s' }}>
-              <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full">
-                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
+              <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full animate-pulse group-hover:animate-bounce">
+                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0 animate-pulse group-hover:animate-ping" />
               </div>
               <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">No Hidden Fees</span>
             </div>
@@ -712,7 +712,12 @@ export default function FreightBunnyHome() {
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
           {/* Service 1 */}
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
-            <div className="flex-1 flex flex-col items-center justify-start pt-4">
+            <div className="mb-4">
+              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                <Plane className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow" />
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight UK → Nigeria</h3>
               <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
               <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
@@ -723,7 +728,12 @@ export default function FreightBunnyHome() {
           </div>
           {/* Service 2 */}
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
-            <div className="flex-1 flex flex-col items-center justify-start pt-4">
+            <div className="mb-4">
+              <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                <ArrowRight className="w-8 h-8 text-white animate-pulse group-hover:animate-ping transform rotate-180" />
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight Nigeria → UK</h3>
               <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
               <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
@@ -734,7 +744,12 @@ export default function FreightBunnyHome() {
           </div>
           {/* Service 3 */}
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
-            <div className="flex-1 flex flex-col items-center justify-start pt-4">
+            <div className="mb-4">
+              <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                <Shield className="w-8 h-8 text-white animate-pulse group-hover:animate-ping" />
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2">
               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Customs Clearance Support</h3>
               <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
             </div>
@@ -755,22 +770,30 @@ export default function FreightBunnyHome() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 justify-items-center">
               <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
-                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">🚚</span>
+                <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-3 rounded-full shadow-lg mb-3 group-hover:animate-bounce">
+                  <Package className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse group-hover:animate-ping" />
+                </div>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Fast Delivery</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
               </div>
               <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
-                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">💷</span>
+                <div className="bg-gradient-to-r from-green-500 to-green-600 p-3 rounded-full shadow-lg mb-3 group-hover:animate-bounce">
+                  <Calculator className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse group-hover:animate-spin" />
+                </div>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Transparent Pricing</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Just £9/kg, no hidden fees, and clear invoicing.</p>
               </div>
               <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
-                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">🤝</span>
+                <div className="bg-gradient-to-r from-pink-500 to-pink-600 p-3 rounded-full shadow-lg mb-3 group-hover:animate-bounce">
+                  <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse group-hover:animate-ping" />
+                </div>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Personal Service</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">We treat your packages like our own and keep you informed every step.</p>
               </div>
               <div className="flex flex-col items-center bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-blue-200 w-full max-w-xs sm:max-w-none md:max-w-[280px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
-                <span className="text-xl sm:text-2xl md:text-3xl mb-1 md:mb-2">📦</span>
+                <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 p-3 rounded-full shadow-lg mb-3 group-hover:animate-bounce">
+                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse group-hover:animate-ping" />
+                </div>
                 <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 text-[#002147] text-center">Flexible Delivery</h3>
                 <p className="text-gray-600 text-xs sm:text-sm md:text-sm text-center leading-snug md:leading-relaxed">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
               </div>
