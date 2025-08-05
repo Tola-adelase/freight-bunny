@@ -600,14 +600,14 @@ export default function FreightBunnyHome() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-[calc(100vh-64px)] flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-8 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
         {/* Abstract Shape for Visual Interest */}
         <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
 
-        <div className="container mx-auto flex flex-col justify-start items-center h-full relative z-10 pt-8 pb-4 sm:py-8 md:py-12">
+        <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-6 sm:py-8 md:py-8 animate-in fade-in duration-700">
           {/* Badge */}
-          <div className="mb-6 sm:mb-7 md:mb-8">
+          <div className="mb-4 sm:mb-5 md:mb-4">
             <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
               <div className="bg-[#002147] p-1 rounded-full mr-3">
                 <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -620,7 +620,7 @@ export default function FreightBunnyHome() {
           <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-[1.1] px-2">
             UK ↔ Nigeria Shipping
           </h1>
-          <div className="relative flex justify-center mb-4 sm:mb-6">
+          <div className="relative flex justify-center mb-3 sm:mb-4">
             <span className="block text-[#002147] text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative">
               Made Easy
               <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 rounded-full -translate-x-1/2 z-[-1] shadow-sm"></span>
@@ -631,12 +631,12 @@ export default function FreightBunnyHome() {
           <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-1 px-4 leading-tight">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-4 sm:mb-8 px-4 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-3 sm:mb-4 px-4 leading-relaxed">
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
           {/* Pricing Card */}
-          <div className="mb-4 sm:mb-8 md:mb-10 flex justify-center w-full px-4">
+          <div className="mb-3 sm:mb-4 md:mb-5 flex justify-center w-full px-4">
             <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl hover:shadow-3xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 hover:border-blue-300/70 flex flex-col items-center relative overflow-hidden backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
               <div className="relative z-10 flex items-center justify-center mb-2">
@@ -656,7 +656,7 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8 justify-center w-full max-w-lg sm:max-w-2xl md:max-w-3xl px-4">
+          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-lg sm:max-w-2xl md:max-w-3xl px-4">
             <Button
               size="lg"
               variant="outline"
@@ -687,26 +687,26 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-8 md:mb-10 mt-3 sm:mt-0 px-4 max-w-4xl mx-auto">
-            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm text-center justify-center">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 px-4 max-w-4xl mx-auto">
+            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-green-100/90 hover:border-green-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.1s' }}>
               <div className="bg-green-500 p-0.5 sm:p-1 rounded-full">
                 <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm text-center justify-center">
+            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-blue-100/90 hover:border-blue-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
               <div className="bg-blue-500 p-0.5 sm:p-1 rounded-full">
                 <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm text-center justify-center">
+            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-yellow-100/90 hover:border-yellow-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
               <div className="bg-yellow-500 p-0.5 sm:p-1 rounded-full">
                 <Star className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
               <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm text-center justify-center">
+            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-emerald-100/90 hover:border-emerald-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.4s' }}>
               <div className="bg-emerald-500 p-0.5 sm:p-1 rounded-full">
                 <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0" />
               </div>
