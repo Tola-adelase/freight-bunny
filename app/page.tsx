@@ -753,25 +753,26 @@ export default function FreightBunnyHome() {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-lg sm:max-w-2xl md:max-w-3xl px-4">
+          {/* Action Buttons - Improved responsive design */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-xs sm:max-w-2xl md:max-w-3xl px-4 mx-auto">
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 backdrop-blur-sm min-h-[44px] md:min-h-[48px]"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-4 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[50px] md:min-h-[52px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 resetQuoteForm(); // Reset form to fresh state
                 setIsQuoteModalOpen(true);
               }}
             >
-              <Calculator className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-[#002147] flex-shrink-0" />
-              <span className="hidden xs:inline">Get Free Quote</span>
-              <span className="xs:hidden">Get Quote</span>
+              <Calculator className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-[#002147] flex-shrink-0" />
+              <span className="sm:hidden">Get Free Quote</span>
+              <span className="hidden sm:inline md:hidden">Get Quote</span>
+              <span className="hidden md:inline">Get Free Quote</span>
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full max-w-[140px] sm:w-auto sm:max-w-none transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mx-auto sm:mx-0 min-h-[44px] md:min-h-[48px]"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-4 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -779,7 +780,7 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-1 h-4 w-4 sm:h-6 sm:w-6 text-white flex-shrink-0" />
+              <Package className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-white flex-shrink-0" />
               Ship Now
             </Button>
           </div>
@@ -820,21 +821,33 @@ export default function FreightBunnyHome() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-4">Track Your Package</h2>
             <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed">Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
+            <div className="flex flex-col gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white/70 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-center sm:text-left placeholder:text-center sm:placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[44px] md:min-h-[48px]"
+                className="w-full px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white/70 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-center sm:text-left placeholder:text-center sm:placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
               />
-              <Button 
-                variant="default"
-                className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[44px] md:min-h-[48px]"
-                style={{ backgroundColor: '#002147' }}>
-                <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
-                Track
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">
+                <Button 
+                  variant="default"
+                  className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[50px] md:min-h-[52px]"
+                  style={{ backgroundColor: '#002147' }}>
+                  <Search className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-white flex-shrink-0" />
+                  Track Package
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => {
+                    resetQuoteForm();
+                    setIsQuoteModalOpen(true);
+                  }}
+                  className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[50px] md:min-h-[52px] backdrop-blur-sm">
+                  <Calculator className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-[#002147] flex-shrink-0" />
+                  Get Quote
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -1210,7 +1223,26 @@ export default function FreightBunnyHome() {
 
       {/* Ship Now Modal */}
       {isShipNowModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" onClick={() => setIsShipNowModalOpen(false)}>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" onClick={(e) => {
+          // Prevent accidental closure when clicking modal content
+          if (e.target === e.currentTarget) {
+            const shouldClose = confirm("Are you sure you want to close the shipping form? All your information will be lost.");
+            if (shouldClose) {
+              setIsShipNowModalOpen(false);
+              setCurrentStep(1);
+              setFormErrors({});
+              setEstimatedCost(null);
+              // Reset form to initial state
+              setShipNowForm({
+                direction: "uk-nigeria",
+                senderName: "", senderEmail: "", senderPhone: "", senderAddress: "", senderCity: "", senderPostcode: "", senderState: "", senderCountry: "United Kingdom",
+                recipientName: "", recipientEmail: "", recipientPhone: "", recipientAddress: "", recipientCity: "", recipientState: "", recipientPostcode: "", recipientCountry: "Nigeria",
+                packageType: "", weight: "", length: "", width: "", height: "", value: "", description: "", shippingService: "",
+                insurance: true, signature: false, tracking: true,
+              });
+            }
+          }
+        }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm sm:max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto max-h-[98vh] md:max-h-[95vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header - Improved for mobile and tablet */}
             <div className="sticky top-0 bg-white p-3 sm:p-4 md:p-6 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
@@ -1222,14 +1254,37 @@ export default function FreightBunnyHome() {
               </button>
               <div className="text-center">
                 <div className="flex items-center justify-center">
-                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-blue-600" />
-                  <h2 className="text-base sm:text-lg md:text-xl font-bold text-[#111827]">Ship Your Package</h2>
+                  <Package className="mr-2 h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 text-blue-600" />
+                  <h2 className="text-lg sm:text-lg md:text-xl font-bold text-[#111827]">Ship Your Package</h2>
                 </div>
-                <p className="text-gray-600 mt-1 text-xs sm:text-sm">Complete the form below to ship your package</p>
+                <p className="text-gray-600 mt-1 text-sm sm:text-sm md:text-base">Complete the form below to ship your package</p>
+                {shipNowForm.senderName && shipNowForm.weight && (
+                  <div className="mt-2 inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full border border-green-200">
+                    <CheckCircle className="h-3 w-3 mr-1" />
+                    Quote information pre-filled ✓
+                  </div>
+                )}
               </div>
               <button
-                onClick={() => setIsShipNowModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                onClick={() => {
+                  const shouldClose = confirm("Are you sure you want to close the shipping form? All your information will be lost.");
+                  if (shouldClose) {
+                    setIsShipNowModalOpen(false);
+                    setCurrentStep(1);
+                    setFormErrors({});
+                    setEstimatedCost(null);
+                    // Reset form to initial state
+                    setShipNowForm({
+                      direction: "uk-nigeria",
+                      senderName: "", senderEmail: "", senderPhone: "", senderAddress: "", senderCity: "", senderPostcode: "", senderState: "", senderCountry: "United Kingdom",
+                      recipientName: "", recipientEmail: "", recipientPhone: "", recipientAddress: "", recipientCity: "", recipientState: "", recipientPostcode: "", recipientCountry: "Nigeria",
+                      packageType: "", weight: "", length: "", width: "", height: "", value: "", description: "", shippingService: "",
+                      insurance: true, signature: false, tracking: true,
+                    });
+                  }
+                }}
+                className="text-gray-400 hover:text-gray-600 transition-colors hover:bg-gray-100 p-2 rounded-full"
+                title="Close Shipping Form"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -1943,9 +1998,18 @@ export default function FreightBunnyHome() {
 
       {/* Quote Calculator Modal - Improved for mobile and tablet */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" onClick={() => {
-          resetQuoteForm();
-          setIsQuoteModalOpen(false);
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 md:p-6" onClick={(e) => {
+          // Prevent accidental closure when clicking modal content
+          if (e.target === e.currentTarget) {
+            const shouldClose = confirm("Are you sure you want to close the quote calculator? All your information will be lost.");
+            if (shouldClose) {
+              resetQuoteForm();
+              setIsQuoteModalOpen(false);
+              setCalculatedQuote(null);
+              setQuoteDetailsModal(false);
+              setIsSubmittingQuote(false);
+            }
+          }
         }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm sm:max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto max-h-[98vh] md:max-h-[95vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header - Improved for mobile and tablet */}
@@ -1958,17 +2022,30 @@ export default function FreightBunnyHome() {
               </button>
               <div className="text-center">
                 <div className="flex items-center justify-center">
-                  <Calculator className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-blue-600" />
-                  <h2 className="text-base sm:text-lg md:text-xl font-bold text-[#111827]">Get Shipping Quote</h2>
+                  <Calculator className="mr-2 h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 text-blue-600" />
+                  <h2 className="text-lg sm:text-lg md:text-xl font-bold text-[#111827]">Get Shipping Quote</h2>
                 </div>
-                <p className="text-gray-600 mt-1 text-xs sm:text-sm md:text-base">Calculate accurate shipping costs for your package</p>
+                <p className="text-gray-600 mt-1 text-sm sm:text-sm md:text-base">Calculate accurate shipping costs for your package</p>
+                {calculatedQuote && (
+                  <div className="mt-2 inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full border border-green-200">
+                    <CheckCircle className="h-3 w-3 mr-1" />
+                    Quote calculated: £{calculatedQuote.totalGBP.toFixed(2)}
+                  </div>
+                )}
               </div>
               <button
                 onClick={() => {
-                  resetQuoteForm();
-                  setIsQuoteModalOpen(false);
+                  const shouldClose = confirm("Are you sure you want to close the quote calculator? All your information will be lost.");
+                  if (shouldClose) {
+                    resetQuoteForm();
+                    setIsQuoteModalOpen(false);
+                    setCalculatedQuote(null);
+                    setQuoteDetailsModal(false);
+                    setIsSubmittingQuote(false);
+                  }
                 }}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors hover:bg-gray-100 p-2 rounded-full"
+                title="Close Quote Calculator"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -2320,24 +2397,43 @@ export default function FreightBunnyHome() {
                       </div>
 
                       <div className="space-y-3">
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4 flex flex-col items-center">
+                        <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 border-2 border-blue-200 rounded-xl p-4 sm:p-5 flex flex-col items-center shadow-lg">
                           <LoadingButton
                             loading={isSubmittingQuote}
                             onClick={handleQuoteSubmit}
                             disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)}
-                            className={`w-full sm:w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-sm sm:text-base shadow-lg min-h-[44px] ${
+                            className={`w-full max-w-sm mx-auto font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center text-sm sm:text-base shadow-xl min-h-[50px] transform ${
                               calculatedQuote && quoteCalculatorForm.senderName && quoteCalculatorForm.senderEmail && quoteCalculatorForm.senderPhone && (quoteCalculatorForm.packageType !== "other" || quoteCalculatorForm.customPackageType) && quoteCalculatorForm.deliveryLocation && (!quoteCalculatorForm.needsDelivery || quoteCalculatorForm.deliveryAddress) && !isSubmittingQuote
-                              ? "bg-[#002147] hover:bg-blue-900 text-white hover:scale-105"
-                              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                              ? "bg-gradient-to-r from-[#002147] via-blue-800 to-[#002147] hover:from-blue-900 hover:via-blue-700 hover:to-blue-900 text-white hover:scale-105 hover:shadow-2xl border-2 border-blue-600 hover:border-blue-400"
+                              : "bg-gradient-to-r from-gray-300 to-gray-400 text-gray-500 cursor-not-allowed border-2 border-gray-300"
                             }`}
                           >
-                            <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                            📧 Submit My Quote
+                            {isSubmittingQuote ? (
+                              <>
+                                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-3"></div>
+                                Submitting...
+                              </>
+                            ) : (
+                              <>
+                                <Mail className="mr-3 h-5 w-5 animate-pulse" />
+                                Submit My Quote
+                              </>
+                            )}
                           </LoadingButton>
                           {(!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)) && (
-                            <p className="text-xs text-amber-600 text-center mt-2 font-medium">
-                              Complete all fields above to submit your quote
-                            </p>
+                            <div className="mt-3 text-center">
+                              <p className="text-xs sm:text-sm text-amber-700 font-medium bg-amber-100 px-3 py-2 rounded-lg border border-amber-300">
+                                ⚠️ Please complete all required fields above to submit your quote
+                              </p>
+                            </div>
+                          )}
+                          {calculatedQuote && quoteCalculatorForm.senderName && quoteCalculatorForm.senderEmail && quoteCalculatorForm.senderPhone && (quoteCalculatorForm.packageType !== "other" || quoteCalculatorForm.customPackageType) && quoteCalculatorForm.deliveryLocation && (!quoteCalculatorForm.needsDelivery || quoteCalculatorForm.deliveryAddress) && (
+                            <div className="mt-3 text-center">
+                              <p className="text-xs sm:text-sm text-green-700 font-medium bg-green-100 px-3 py-2 rounded-lg border border-green-300 flex items-center justify-center">
+                                <CheckCircle className="h-4 w-4 mr-2" />
+                                Ready to submit! We'll email your quote within minutes.
+                              </p>
+                            </div>
                           )}
                         </div>
 
@@ -2345,12 +2441,88 @@ export default function FreightBunnyHome() {
                           <p className="text-xs sm:text-sm text-gray-600 text-center font-medium">Ready to proceed?</p>
                           <button 
                             onClick={() => {
+                              if (!calculatedQuote) {
+                                alert("⏳ Please wait for the quote to finish calculating before proceeding.");
+                                return;
+                              }
+
+                              // Show confirmation with pre-fill information
+                              const prefilledInfo = `✅ Your quote information will be transferred to the shipping form:\n\n📦 Package: ${quoteCalculatorForm.weight}kg ${quoteCalculatorForm.packageType === "other" ? quoteCalculatorForm.customPackageType : quoteCalculatorForm.packageType}\n🚚 Route: ${quoteCalculatorForm.from} → ${quoteCalculatorForm.to}\n📍 Destination: ${quoteCalculatorForm.deliveryLocation}\n👤 Contact: ${quoteCalculatorForm.senderName} (${quoteCalculatorForm.senderEmail})\n${quoteCalculatorForm.needsDelivery ? `🏠 Delivery: ${quoteCalculatorForm.deliveryAddress}` : '📍 Pickup: Customer arranges'}\n\n⚠️ Please verify all details and complete any missing information in the shipping form.`;
+                              
+                              const shouldProceed = confirm(prefilledInfo + "\n\nReady to proceed to shipping form?");
+                              if (!shouldProceed) return;
+
+                              // Pre-fill Ship Now form with comprehensive quote data
+                              const updatedShipNowForm = {
+                                // Shipping Direction from quote
+                                direction: quoteCalculatorForm.from === "UK" && quoteCalculatorForm.to === "Nigeria" ? "uk-nigeria" : "nigeria-uk",
+                                
+                                // Sender information from quote (will need completion)
+                                senderName: quoteCalculatorForm.senderName,
+                                senderEmail: quoteCalculatorForm.senderEmail,
+                                senderPhone: quoteCalculatorForm.senderPhone,
+                                senderCountry: quoteCalculatorForm.from === "UK" ? "United Kingdom" : "Nigeria",
+                                senderAddress: "", // User will need to complete this
+                                senderCity: "",
+                                senderPostcode: "",
+                                senderState: "",
+                                
+                                // Recipient information based on quote
+                                recipientName: "", // User will need to fill this
+                                recipientEmail: "", // User will need to fill this
+                                recipientPhone: "", // User will need to fill this
+                                recipientAddress: quoteCalculatorForm.needsDelivery ? quoteCalculatorForm.deliveryAddress : "",
+                                recipientCity: "", // Will be extracted from address if possible
+                                recipientState: quoteCalculatorForm.to === "Nigeria" ? quoteCalculatorForm.deliveryLocation : "",
+                                recipientPostcode: quoteCalculatorForm.to === "UK" ? "" : "",
+                                recipientCountry: quoteCalculatorForm.to === "Nigeria" ? "Nigeria" : "United Kingdom",
+                                
+                                // Package information from quote
+                                packageType: quoteCalculatorForm.packageType === "other" ? "other" : quoteCalculatorForm.packageType,
+                                weight: quoteCalculatorForm.weight,
+                                length: "", // User will specify dimensions
+                                width: "", // User will specify dimensions
+                                height: "", // User will specify dimensions
+                                value: "", // User will specify value
+                                description: quoteCalculatorForm.packageType === "other" 
+                                  ? `${quoteCalculatorForm.customPackageType} - ${quoteCalculatorForm.weight}kg package`
+                                  : `${quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)} package - ${quoteCalculatorForm.weight}kg`,
+                                
+                                // Shipping preferences based on quote calculation
+                                shippingService: "standard", // Based on £9/kg rate from quote
+                                insurance: true, // Recommended and free
+                                signature: false, // Optional £5 service
+                                tracking: true   // Free SMS updates
+                              };
+                              
+                              // Update the ship now form
+                              setShipNowForm(updatedShipNowForm);
+                              
+                              // Calculate initial estimate based on transferred data
+                              if (updatedShipNowForm.weight && updatedShipNowForm.shippingService) {
+                                const weight = parseFloat(updatedShipNowForm.weight);
+                                const baseRate = updatedShipNowForm.shippingService === "express" ? 15 : 9;
+                                const baseCost = weight * baseRate;
+                                const signatureCost = updatedShipNowForm.signature ? 5 : 0;
+                                setEstimatedCost(baseCost + signatureCost);
+                              }
+                              
+                              // Start from step 1 of shipping process
+                              setCurrentStep(1);
+                              setFormErrors({}); // Clear any previous errors
+                              
+                              // Close quote modal and open ship now modal
                               setIsQuoteModalOpen(false);
                               setIsShipNowModalOpen(true);
+                              
+                              // Show success message after a brief delay
+                              setTimeout(() => {
+                                alert("✅ Information transferred! Your quote details have been pre-filled. Please review and complete the remaining fields to finalize your booking.\n\n📝 Note: You'll need to complete sender/recipient addresses and package dimensions.");
+                              }, 500);
                             }}
-                            className="w-full sm:w-auto mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center hover:scale-105 shadow-lg text-sm sm:text-base"
+                            className="w-full sm:w-auto mx-auto bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 hover:from-blue-700 hover:via-blue-800 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center hover:scale-105 hover:shadow-2xl shadow-lg text-sm sm:text-base border-2 border-blue-500 hover:border-blue-400"
                           >
-                            <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                            <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
                             Proceed to Ship Package
                           </button>
                           <button 
@@ -2579,45 +2751,51 @@ export default function FreightBunnyHome() {
                       alert("⏳ Please wait for the quote to finish calculating before proceeding.");
                       return;
                     }
+
+                    // Show confirmation with pre-fill information
+                    const prefilledInfo = `✅ Your quote information will be transferred to the shipping form:\n\n📦 Package: ${quoteCalculatorForm.weight}kg ${quoteCalculatorForm.packageType === "other" ? quoteCalculatorForm.customPackageType : quoteCalculatorForm.packageType}\n🚚 Route: ${quoteCalculatorForm.from} → ${quoteCalculatorForm.to}\n📍 Destination: ${quoteCalculatorForm.deliveryLocation}\n👤 Contact: ${quoteCalculatorForm.senderName} (${quoteCalculatorForm.senderEmail})\n${quoteCalculatorForm.needsDelivery ? `🏠 Delivery: ${quoteCalculatorForm.deliveryAddress}` : '📍 Pickup: Customer arranges'}\n💰 Total Cost: £${calculatedQuote.totalGBP.toFixed(2)}\n\n⚠️ Please verify all details and complete any missing information in the shipping form.`;
+                    
+                    const shouldProceed = confirm(prefilledInfo + "\n\nReady to proceed to shipping form?");
+                    if (!shouldProceed) return;
                     
                     // Pre-fill Ship Now form with comprehensive quote data
                     const updatedShipNowForm = {
                       // Shipping Direction from quote
                       direction: quoteCalculatorForm.from === "UK" && quoteCalculatorForm.to === "Nigeria" ? "uk-nigeria" : "nigeria-uk",
                       
-                      // Sender information from quote
+                      // Sender information from quote (will need completion)
                       senderName: quoteCalculatorForm.senderName,
                       senderEmail: quoteCalculatorForm.senderEmail,
                       senderPhone: quoteCalculatorForm.senderPhone,
                       senderCountry: quoteCalculatorForm.from === "UK" ? "United Kingdom" : "Nigeria",
-                      senderAddress: "", // User will fill this
+                      senderAddress: "", // User will need to complete this
                       senderCity: "",
                       senderPostcode: "",
                       senderState: "",
                       
                       // Recipient information based on quote
-                      recipientName: "", // User will fill this
-                      recipientEmail: "", // User will fill this
-                      recipientPhone: "", // User will fill this
+                      recipientName: "", // User will need to fill this
+                      recipientEmail: "", // User will need to fill this
+                      recipientPhone: "", // User will need to fill this
                       recipientAddress: quoteCalculatorForm.needsDelivery ? quoteCalculatorForm.deliveryAddress : "",
                       recipientCity: "", // Will be extracted from address if possible
-                      recipientState: quoteCalculatorForm.deliveryLocation,
-                      recipientPostcode: "",
+                      recipientState: quoteCalculatorForm.to === "Nigeria" ? quoteCalculatorForm.deliveryLocation : "",
+                      recipientPostcode: quoteCalculatorForm.to === "UK" ? "" : "",
                       recipientCountry: quoteCalculatorForm.to === "Nigeria" ? "Nigeria" : "United Kingdom",
                       
                       // Package information from quote
                       packageType: quoteCalculatorForm.packageType === "other" ? "other" : quoteCalculatorForm.packageType,
                       weight: quoteCalculatorForm.weight,
-                      length: "", // User will specify
-                      width: "", // User will specify
-                      height: "", // User will specify
-                      value: "", // User will specify
+                      length: "", // User will specify dimensions
+                      width: "", // User will specify dimensions
+                      height: "", // User will specify dimensions
+                      value: "", // User will specify value
                       description: quoteCalculatorForm.packageType === "other" 
                         ? `${quoteCalculatorForm.customPackageType} - ${quoteCalculatorForm.weight}kg package`
                         : `${quoteCalculatorForm.packageType.charAt(0).toUpperCase() + quoteCalculatorForm.packageType.slice(1)} package - ${quoteCalculatorForm.weight}kg`,
                       
-                      // Shipping preferences
-                      shippingService: "standard", // Based on quote (standard = £9/kg)
+                      // Shipping preferences based on quote calculation
+                      shippingService: "standard", // Based on £9/kg rate from quote
                       insurance: true, // Recommended and free
                       signature: false, // Optional £5 service
                       tracking: true   // Free SMS updates
@@ -2637,33 +2815,40 @@ export default function FreightBunnyHome() {
                     
                     // Start from step 1 of shipping process
                     setCurrentStep(1);
+                    setFormErrors({}); // Clear any previous errors
                     
                     // Close quote modal and open ship now modal
                     setQuoteDetailsModal(false);
+                    setIsQuoteModalOpen(false); // Also close the main quote modal
                     setIsShipNowModalOpen(true);
                     
-                    // Show success message
+                    // Show success message after a brief delay
                     setTimeout(() => {
-                      alert("✅ Great! Your quote information has been transferred to the shipping form. Please review and complete the remaining details to finalize your booking.");
-                    }, 300);
+                      alert("✅ Information transferred! Your quote details have been pre-filled. Please review and complete the remaining fields to finalize your booking.\n\n📝 Note: You'll need to complete sender/recipient addresses and package dimensions.");
+                    }, 500);
                   }}
                   disabled={!calculatedQuote}
-                  className={`w-full font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center text-sm sm:text-base ${
+                  className={`w-full font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center text-sm sm:text-base shadow-xl transform ${
                     calculatedQuote 
-                      ? "bg-green-600 hover:bg-green-700 text-white" 
-                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      ? "bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 hover:from-green-700 hover:via-emerald-700 hover:to-green-700 text-white hover:scale-105 hover:shadow-2xl border-2 border-green-500 hover:border-green-400" 
+                      : "bg-gradient-to-r from-gray-300 to-gray-400 text-gray-500 cursor-not-allowed border-2 border-gray-300"
                   }`}
                 >
-                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
                   Proceed to Ship Package
                 </button>
                 <button
                   onClick={() => {
-                    setQuoteDetailsModal(false);
-                    setIsQuoteModalOpen(false);
-                    resetQuoteForm();
+                    const shouldClose = confirm("Are you sure you want to close? You can always return to get a new quote.");
+                    if (shouldClose) {
+                      setQuoteDetailsModal(false);
+                      setIsQuoteModalOpen(false);
+                      resetQuoteForm();
+                      setCalculatedQuote(null);
+                      setIsSubmittingQuote(false);
+                    }
                   }}
-                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors text-sm sm:text-base"
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors text-sm sm:text-base hover:shadow-lg"
                 >
                   Close Quote
                 </button>
