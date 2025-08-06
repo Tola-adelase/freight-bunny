@@ -1826,17 +1826,17 @@ export default function FreightBunnyHome() {
                         <p className="text-sm text-blue-700">10-15 days shipping + 3-5 days delivery</p>
                       </div>
 
-                                            <div className="space-y-3">
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex flex-col items-center">
+                      <div className="space-y-4">
+                        <div className="flex flex-col items-center space-y-3">
                           <button 
-                          onClick={handleQuoteSubmit}
-                          disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress) || isSubmittingQuote}
-                                                      className={`w-auto mx-auto font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center text-base shadow-lg ${
+                            onClick={handleQuoteSubmit}
+                            disabled={!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress) || isSubmittingQuote}
+                            className={`w-full max-w-sm font-semibold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center text-base shadow-lg ${
                               calculatedQuote && quoteCalculatorForm.senderName && quoteCalculatorForm.senderEmail && quoteCalculatorForm.senderPhone && (quoteCalculatorForm.packageType !== "other" || quoteCalculatorForm.customPackageType) && quoteCalculatorForm.deliveryLocation && (!quoteCalculatorForm.needsDelivery || quoteCalculatorForm.deliveryAddress) && !isSubmittingQuote
-                              ? "bg-[#002147] hover:bg-blue-900 text-white hover:scale-105"
+                              ? "bg-[#002147] hover:bg-[#001634] text-white hover:scale-105"
                               : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                          }`}
-                        >
+                            }`}
+                          >
                             {isSubmittingQuote ? (
                               <>
                                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
@@ -1845,23 +1845,26 @@ export default function FreightBunnyHome() {
                             ) : (
                               <>
                                 <Mail className="mr-2 h-5 w-5" />
-                                📧 Submit My Quote
+                                Submit My Quote
                               </>
                             )}
                           </button>
+                          
                           {(!calculatedQuote || !quoteCalculatorForm.senderName || !quoteCalculatorForm.senderEmail || !quoteCalculatorForm.senderPhone || (quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType) || !quoteCalculatorForm.deliveryLocation || (quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress)) && (
-                            <p className="text-xs text-amber-600 text-center mt-2 font-medium">
-                              Complete all fields above to submit your quote
-                              {quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType && (
-                                <span className="block">Please specify what item you're shipping</span>
-                              )}
-                              {!quoteCalculatorForm.deliveryLocation && (
-                                <span className="block">Please select destination state</span>
-                              )}
-                              {quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress && (
-                                <span className="block">Please enter delivery address</span>
-                              )}
-                            </p>
+                            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 w-full max-w-sm">
+                              <p className="text-xs text-amber-700 text-center font-medium">
+                                Complete all fields above to submit your quote
+                                {quoteCalculatorForm.packageType === "other" && !quoteCalculatorForm.customPackageType && (
+                                  <span className="block mt-1">Please specify what item you're shipping</span>
+                                )}
+                                {!quoteCalculatorForm.deliveryLocation && (
+                                  <span className="block mt-1">Please select destination state</span>
+                                )}
+                                {quoteCalculatorForm.needsDelivery && !quoteCalculatorForm.deliveryAddress && (
+                                  <span className="block mt-1">Please enter delivery address</span>
+                                )}
+                              </p>
+                            </div>
                           )}
                         </div>
 
