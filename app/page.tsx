@@ -46,6 +46,7 @@ export default function FreightBunnyHome() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isShipNowModalOpen, setIsShipNowModalOpen] = useState(false)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -121,6 +122,70 @@ export default function FreightBunnyHome() {
     setCalculatedQuote(null);
     setQuoteDetailsModal(false);
     setIsSubmittingQuote(false);
+  }
+
+  // Function to open quote modal and save scroll position
+  const openQuoteModal = () => {
+    setScrollPosition(window.scrollY);
+    resetQuoteForm();
+    setIsQuoteModalOpen(true);
+  }
+
+  // Function to close quote modal and restore scroll position
+  const closeQuoteModal = () => {
+    setIsQuoteModalOpen(false);
+    resetQuoteForm();
+    setTimeout(() => {
+      window.scrollTo(0, scrollPosition);
+    }, 100);
+  }
+
+  // Function to pre-fill ship now form with quote data
+  const prefillShipNowForm = () => {
+    const prefilledForm = {
+      // Sender Information (from quote form)
+      senderName: quoteCalculatorForm.senderName,
+      senderEmail: quoteCalculatorForm.senderEmail,
+      senderPhone: quoteCalculatorForm.senderPhone,
+      senderAddress: "",
+      senderCity: "",
+      senderPostcode: "",
+      senderCountry: "United Kingdom",
+
+      // Recipient Information (from quote form)
+      recipientName: "",
+      recipientEmail: "",
+      recipientPhone: "",
+      recipientAddress: quoteCalculatorForm.deliveryAddress,
+      recipientCity: "",
+      recipientState: quoteCalculatorForm.deliveryLocation,
+      recipientCountry: "Nigeria",
+
+      // Package Information (from quote form)
+      packageType: quoteCalculatorForm.packageType === "other" ? quoteCalculatorForm.customPackageType : quoteCalculatorForm.packageType,
+      weight: quoteCalculatorForm.weight,
+      length: "",
+      width: "",
+      height: "",
+      value: "",
+      description: "",
+      shippingService: "standard",
+
+      // Additional Options
+      insurance: true,
+      signature: false,
+      tracking: true,
+    };
+
+    setShipNowForm(prefilledForm);
+    setCurrentStep(1);
+    setIsQuoteModalOpen(false);
+    setIsShipNowModalOpen(true);
+    
+    // Show notice to customer
+    setTimeout(() => {
+      alert("📋 Your quote information has been pre-filled in the shipping form.\n\n⚠️ Please review and complete any missing information before proceeding.\n\n✅ All fields marked with * are required.");
+    }, 500);
   }
 
   const [calculatedQuote, setCalculatedQuote] = useState<{
@@ -569,10 +634,7 @@ export default function FreightBunnyHome() {
               variant="outline"
               className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
               style={{ cursor: 'pointer' }}
-              onClick={() => {
-                resetQuoteForm(); // Reset form to fresh state
-                setIsQuoteModalOpen(true);
-              }}
+              onClick={openQuoteModal}
             >
               <Calculator className="mr-2 h-6 w-6" />
               Get Free Quote
@@ -1469,14 +1531,11 @@ export default function FreightBunnyHome() {
 
       {/* Quote Calculator Modal */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2" onClick={() => {
-          resetQuoteForm();
-          setIsQuoteModalOpen(false);
-        }}>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2" onClick={closeQuoteModal}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-7xl mx-auto max-h-[98vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="sticky top-0 bg-white p-3 border-b border-gray-200 rounded-t-xl flex justify-between items-center">
+            <div className="sticky top-0 bg-white p-3 border-b border-gray-200 rounded-t-xl flex justify-between items-center z-10">
               <button
-                onClick={() => setIsQuoteModalOpen(false)}
+                onClick={closeQuoteModal}
                 className="text-gray-400 hover:text-gray-600 transition-colors opacity-0"
               >
                 <X className="h-5 w-5" />
@@ -1489,10 +1548,7 @@ export default function FreightBunnyHome() {
                 <p className="text-gray-600 mt-1 text-sm">Calculate accurate shipping costs for your package with our instant quote calculator</p>
               </div>
                               <button
-                  onClick={() => {
-                    resetQuoteForm();
-                    setIsQuoteModalOpen(false);
-                  }}
+                  onClick={closeQuoteModal}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
                 >
                 <X className="h-5 w-5" />
@@ -1844,8 +1900,8 @@ export default function FreightBunnyHome() {
                               </>
                             ) : (
                               <>
-                                <Mail className="mr-2 h-5 w-5" />
-                                Submit My Quote
+                                <Mail className="mr-2 h-5 w-5 flex-shrink-0" />
+                                <span>Submit My Quote</span>
                               </>
                             )}
                           </button>
@@ -1871,10 +1927,7 @@ export default function FreightBunnyHome() {
                         <div className="border-t border-gray-200 pt-3 flex flex-col items-center space-y-3">
                           <p className="text-sm text-gray-600 text-center font-medium">Ready to proceed?</p>
                           <button 
-                            onClick={() => {
-                              setIsQuoteModalOpen(false);
-                              setIsShipNowModalOpen(true);
-                            }}
+                            onClick={prefillShipNowForm}
                             className="w-auto mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center hover:scale-105 shadow-lg text-base"
                           >
                             <Package className="mr-2 h-5 w-5" />
