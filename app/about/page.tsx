@@ -440,12 +440,12 @@ export default function AboutPage() {
               Join thousands of satisfied customers who trust us with their precious packages
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#002147] hover:bg-gray-100 shadow-lg px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[56px] border-2 border-white cursor-pointer" onClick={() => setIsShipModalOpen(true)}>
-                <Package className="mr-2 h-6 w-6" />
+              <button className="bg-white text-[#002147] hover:bg-gray-100 shadow-lg px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[44px] border-2 border-white cursor-pointer" onClick={() => setIsShipModalOpen(true)}>
+                <Package className="mr-2 h-5 w-5" />
                 Start Shipping
               </button>
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002147] px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[56px] cursor-pointer">
-                <Phone className="mr-2 h-6 w-6" />
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002147] px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[44px] cursor-pointer">
+                <Phone className="mr-2 h-5 w-5" />
                 Contact Us
               </button>
             </div>
