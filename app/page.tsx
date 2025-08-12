@@ -584,64 +584,73 @@ export default function FreightBunnyHome() {
         <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
 
-        <div className="container mx-auto flex flex-col justify-center items-center h-full min-h-[60vh] relative z-10">
+        <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-6 sm:py-8 md:py-8 animate-in fade-in duration-700">
           {/* Badge */}
-          <div className="mb-7 mt-10">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-[#e0eaff] to-[#c7e0ff] text-[#002147] text-base font-semibold shadow-md">
-              <Plane className="w-5 h-5 mr-2 text-[#002147]" />
+          <div className="mb-4 sm:mb-5 md:mb-4">
+            <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
+              <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow">
+                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
+              </div>
               Fast, Reliable Air Freight
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl md:text-6xl font-extrabold text-[#111827] text-center mb-1 leading-tight">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-2 leading-[1.1] px-2 animate-pulse">
             UK ↔ Nigeria Shipping
           </h1>
-          <div className="relative flex justify-center mb-6">
-            <span className="block text-[#002147] text-5xl md:text-6xl font-extrabold text-center px-2 relative">
+          <div className="relative flex justify-center mb-3 sm:mb-4">
+            <span className="block bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
               Made Easy
-              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 bg-blue-100 rounded-full -translate-x-1/2 z-[-1]"></span>
+              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
             </span>
           </div>
 
           {/* Subheading */}
-          <p className="text-2xl md:text-3xl text-gray-700 font-medium text-center mb-2">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-1 px-4 leading-tight animate-fade-in-up">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-base md:text-lg text-gray-500 text-center mb-8">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-3 sm:mb-4 px-4 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             Transparent pricing, real-time updates, and a personal touch.
           </p>
 
           {/* Pricing Card */}
-          <div className="mb-8 flex justify-center w-full">
-            <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full border border-gray-100 flex flex-col items-center">
-              <div className="flex items-center justify-center mb-2">
-                <Package className="w-6 h-6 text-[#002147] mr-2" />
-                <p className="text-gray-500 font-semibold">Prices starting from</p>
+          <div className="mb-3 sm:mb-4 md:mb-5 flex justify-center w-full px-4">
+            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl hover:shadow-3xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 hover:border-blue-300/70 flex flex-col items-center relative overflow-hidden backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
+              <div className="relative z-10 flex items-center justify-center mb-2">
+                <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg animate-pulse hover:animate-bounce group-hover:scale-110 transition-all duration-300">
+                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-pulse" />
+                </div>
+                <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
               </div>
-              <div className="mb-1">
-                <span className="text-4xl font-extrabold text-[#002147]">£9</span>
-                <span className="text-lg font-medium text-gray-700">/kg</span>
+              <div className="relative z-10 mb-1 flex items-baseline">
+                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm group-hover:text-blue-600 transition-colors duration-300 animate-pulse">£9</span>
+                <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1 group-hover:text-blue-500 transition-colors duration-300">/kg</span>
               </div>
-              <p className="text-sm text-gray-500">Delivery: 7–10 days after shipment (may vary)</p>
+              <div className="relative z-10 bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100">
+                <p className="text-sm sm:text-sm text-gray-700 text-center font-medium">Delivery: 7–10 days after shipment</p>
+              </div>
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center w-full max-w-2xl">
+          {/* Action Buttons - Improved responsive design */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-xs sm:max-w-2xl md:max-w-3xl px-4 mx-auto">
             <Button
               size="lg"
               variant="outline"
-              className="bg-white hover:bg-[#f3f4f6] border-2 border-[#002147] text-[#002147] shadow-md px-6 py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-4 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[50px] md:min-h-[52px]"
               style={{ cursor: 'pointer' }}
               onClick={openQuoteModal}
             >
-              <Calculator className="mr-2 h-6 w-6" />
-              Get Free Quote
+              <Calculator className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-[#002147] flex-shrink-0" />
+              <span className="sm:hidden">Get Free Quote</span>
+              <span className="hidden sm:inline md:hidden">Get Quote</span>
+              <span className="hidden md:inline">Get Free Quote</span>
             </Button>
             <Button
               size="lg"
-              className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg border-0 px-6 py-3 text-base font-semibold rounded-lg flex items-center justify-center w-full sm:w-auto transition-transform duration-200 hover:scale-105"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-4 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -649,51 +658,53 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-2 h-6 w-6" />
+              <Package className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-white flex-shrink-0" />
               Ship Now
             </Button>
           </div>
 
           {/* Trust Indicators Row */}
-          <div className="flex flex-wrap justify-center items-center gap-6 mb-10">
-            <div className="flex items-center gap-2 text-gray-700 text-sm">
-              <ShieldCheck className="h-5 w-5 text-green-500" />
-              <span>Fully Insured</span>
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 px-4 max-w-4xl mx-auto">
+            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-green-100/90 hover:border-green-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.1s' }}>
+              <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 group-hover:text-green-700 transition-colors duration-300" />
+              <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 text-sm">
-              <Clock className="h-5 w-5 text-blue-500" />
-              <span>Real-time Tracking</span>
+            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-blue-100/90 hover:border-blue-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
+              <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
+              <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 text-sm">
-              <Star className="h-5 w-5 text-yellow-500" />
-              <span>5-Star Service</span>
+            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-yellow-100/90 hover:border-yellow-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
+              <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600 group-hover:text-yellow-700 transition-colors duration-300" />
+              <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 text-sm">
-              <CheckCircle className="h-5 w-5 text-green-400" />
-              <span>No Hidden Fees</span>
+            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-emerald-100/90 hover:border-emerald-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.4s' }}>
+              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-600 group-hover:text-emerald-700 transition-colors duration-300" />
+              <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">No Hidden Fees</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Quick Tracking */}
-      <section id="tracking" className="py-16 px-4 bg-white">
+      <section id="tracking" className="py-16 sm:py-16 px-4 bg-gradient-to-br from-gray-50 to-blue-50/20">
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Track Your Package</h2>
-            <p className="text-gray-600 mb-8">Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto w-full">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up">Track Your Package</h2>
+            <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
+            <div className="flex flex-col gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400"
+                className="w-full px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white/70 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-center sm:text-left placeholder:text-center sm:placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
               />
-              <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center h-full w-full sm:w-auto transition-transform duration-200 hover:scale-105 cursor-pointer">
-                <Search className="h-4 w-4 mr-2" />
-                Track
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-semibold px-6 py-4 sm:py-3 md:py-4 text-base sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center h-full w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px] cursor-pointer">
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-1 md:mr-2 text-white flex-shrink-0" />
+                  Track Package
+                </Button>
+              </div>
             </div>
           </div>
         </div>
