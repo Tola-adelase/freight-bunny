@@ -439,13 +439,13 @@ export default function AboutPage() {
             <p className="text-xl mb-8 opacity-90">
               Join thousands of satisfied customers who trust us with their precious packages
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#002147] hover:bg-gray-100 shadow-lg px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[44px] border-2 border-white cursor-pointer" onClick={() => setIsShipModalOpen(true)}>
-                <Package className="mr-2 h-5 w-5" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <button className="bg-white text-[#002147] hover:bg-gray-100 shadow-lg px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[40px] sm:min-h-[44px] border-2 border-white cursor-pointer" onClick={() => setIsShipModalOpen(true)}>
+                <Package className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Start Shipping
               </button>
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002147] px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[44px] cursor-pointer">
-                <Phone className="mr-2 h-5 w-5" />
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002147] px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[40px] sm:min-h-[44px] cursor-pointer">
+                <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Contact Us
               </button>
             </div>
