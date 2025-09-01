@@ -47,6 +47,7 @@ export default function FreightBunnyHome() {
   const [isShipNowModalOpen, setIsShipNowModalOpen] = useState(false)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0)
+  const [isDarkMode, setIsDarkMode] = useState(false)
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -650,8 +651,13 @@ export default function FreightBunnyHome() {
       </section>
 
       {/* Quick Tracking */}
-      <section id="tracking" className="py-16 sm:py-16 px-4 bg-gradient-to-br from-gray-50 to-blue-50/20">
-        <div className="container mx-auto">
+      <section id="tracking" className="py-16 sm:py-16 px-4 bg-gradient-to-br from-gray-50 to-blue-50/20 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Ccircle cx=\'11\' cy=\'11\' r=\'8\'/%3E%3Cpath d=\'m21 21-4.34-4.34\'/%3E%3C/svg%3E")' }}></div>
+          <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="container mx-auto relative z-10">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up">Track Your Package</h2>
             <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
@@ -729,8 +735,13 @@ export default function FreightBunnyHome() {
       </section>
 
       {/* Newsletter Signup Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#002147] to-[#003366]">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-16 px-4 bg-gradient-to-br from-[#002147] to-[#003366] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'1\'%3E%3Cpath d=\'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\'/%3E%3Cpolyline points=\'22,6 12,13 2,6\'/%3E%3C/svg%3E")' }}></div>
+          <div className="absolute bottom-1/3 right-1/3 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'1\'%3E%3Cpath d=\'M22 2H2v16h20V2zM6 10h12M6 14h12M6 6h12\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Stay Updated</h2>
             <p className="text-lg sm:text-xl text-blue-100 mb-6">Get shipping tips, updates, and exclusive offers delivered to your inbox</p>
@@ -754,8 +765,13 @@ export default function FreightBunnyHome() {
       </section>
 
       {/* Why Ship With Us Section */}
-      <section className="py-16 px-4 bg-[#f6faff]">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-16 px-4 bg-[#f6faff] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\'/%3E%3C/svg%3E")' }}></div>
+          <div className="absolute bottom-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">Why Ship With Us?</h2>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
