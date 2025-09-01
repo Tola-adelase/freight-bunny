@@ -589,7 +589,7 @@ export default function FreightBunnyHome() {
           <div className="mb-3 sm:mb-4 md:mb-5">
             <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
               <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow">
-                <Package className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
+                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
               </div>
               Premium Shipping Service
             </span>
@@ -616,7 +616,7 @@ export default function FreightBunnyHome() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
               style={{ cursor: 'pointer' }}
               onClick={openQuoteModal}
             >
@@ -627,7 +627,7 @@ export default function FreightBunnyHome() {
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
