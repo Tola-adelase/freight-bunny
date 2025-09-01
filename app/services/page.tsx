@@ -2,24 +2,24 @@
 
 import React, { useState } from "react"
 import { usePathname } from "next/navigation"
-import {
+import { 
   Phone,
   Mail,
-  Facebook,
-  Twitter,
+  Facebook, 
+  Twitter, 
   Linkedin,
-  Instagram,
-  MessageCircle,
+  Instagram, 
+  MessageCircle, 
   Music,
-  Plane,
-  Package,
-  Clock,
+  Plane, 
+  Package, 
+  Clock, 
   ArrowRight,
   Calculator,
-  Shield,
-  Star,
-  CheckCircle,
-  Menu,
+  Shield, 
+  Star, 
+  CheckCircle, 
+  Menu, 
   X,
   Search,
   ShieldCheck,
@@ -333,7 +333,7 @@ export default function ServicesPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section className={`relative py-20 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
@@ -349,8 +349,8 @@ export default function ServicesPage() {
               From air freight to customs clearance, we provide end-to-end shipping services between the UK and Nigeria.
             </p>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Main Services Grid */}
       <section className="py-16 px-4">
@@ -406,8 +406,8 @@ export default function ServicesPage() {
                         </p>
                         <p className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                           {service.pricing.additional}
-                        </p>
-                      </div>
+              </p>
+            </div>
                     </div>
                   )}
                   <div className="mt-4">
@@ -454,10 +454,10 @@ export default function ServicesPage() {
                   </ul>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Service Comparison */}
       <section className="py-16 px-4">
@@ -500,18 +500,18 @@ export default function ServicesPage() {
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
+        {/* CTA Section */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-[#002147] to-[#003366]' : 'bg-gradient-to-br from-[#002147] to-[#003366]'}`}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship?</h2>
           <p className="text-xl text-blue-100 mb-8">
             Get a personalized quote for your shipping needs. Our team is ready to help you choose the best service.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <Calculator className="mr-2 h-5 w-5" />
               Get a Quote
@@ -521,8 +521,8 @@ export default function ServicesPage() {
               Contact Us
             </Button>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Footer */}
       <footer className={`py-12 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'}`}>

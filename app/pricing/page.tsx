@@ -2,24 +2,24 @@
 
 import React, { useState } from "react"
 import { usePathname } from "next/navigation"
-import {
+import { 
   Phone,
   Mail,
-  Facebook,
-  Twitter,
+  Facebook, 
+  Twitter, 
   Linkedin,
-  Instagram,
-  MessageCircle,
+  Instagram, 
+  MessageCircle, 
   Music,
   Plane,
-  Package,
-  Clock,
+  Package, 
+  Clock, 
   ArrowRight,
   Calculator,
-  Shield,
-  Star,
-  CheckCircle,
-  Menu,
+  Shield, 
+  Star, 
+  CheckCircle, 
+  Menu, 
   X,
   Search,
   ShieldCheck,
@@ -281,13 +281,13 @@ export default function PricingPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section className={`relative py-20 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
             <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">
               <DollarSign className="w-4 h-4 mr-2" />
-              Transparent Pricing
+                Transparent Pricing
             </Badge>
             <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Simple, Transparent<br />
@@ -297,14 +297,14 @@ export default function PricingPage() {
               No hidden fees, no surprises. Just clear, competitive pricing for all your shipping needs.
             </p>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Pricing Plans */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Choose Your Plan</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
             {pricingPlans.map((plan) => (
               <Card 
                 key={plan.id}
@@ -312,12 +312,12 @@ export default function PricingPage() {
                 onClick={() => setSelectedPlan(selectedPlan === plan.id ? null : plan.id)}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <Badge className="bg-blue-600 text-white px-4 py-1">
-                      Most Popular
+                        Most Popular
                     </Badge>
-                  </div>
-                )}
+                    </div>
+                  )}
                 <CardHeader className="text-center">
                   <plan.icon className="w-12 h-12 mx-auto mb-4 text-blue-600" />
                   <CardTitle className={`text-2xl transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{plan.name}</CardTitle>
@@ -339,10 +339,10 @@ export default function PricingPage() {
                             <li key={index} className={`flex items-center text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                               <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
                               {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                       <div>
                         <h4 className={`font-semibold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Restrictions:</h4>
                         <ul className="space-y-1">
@@ -353,7 +353,7 @@ export default function PricingPage() {
                             </li>
                           ))}
                         </ul>
-                      </div>
+                        </div>
                     </div>
                   )}
                   <div className="mt-6">
@@ -370,17 +370,17 @@ export default function PricingPage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Additional Services */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Additional Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {additionalServices.map((service, index) => (
+              {additionalServices.map((service, index) => (
               <Card key={index} className={`text-center transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
                 <CardHeader>
                   <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{service.name}</CardTitle>
@@ -395,39 +395,39 @@ export default function PricingPage() {
                   </p>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Shipping Examples */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Shipping Examples</h2>
           <div className={`overflow-x-auto rounded-lg ${isDarkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
-            <table className="w-full">
+                <table className="w-full">
               <thead>
                 <tr className={`border-b transition-colors duration-300 ${isDarkMode ? 'border-gray-600' : 'border-gray-200'}`}>
                   <th className={`px-6 py-4 text-left font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Item</th>
                   <th className={`px-6 py-4 text-left font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Standard</th>
                   <th className={`px-6 py-4 text-left font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Express</th>
                   <th className={`px-6 py-4 text-left font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Delivery Time</th>
-                </tr>
-              </thead>
-              <tbody>
+                    </tr>
+                  </thead>
+                  <tbody>
                 {shippingExamples.map((example, index) => (
                   <tr key={index} className={`border-b transition-colors duration-300 ${isDarkMode ? 'border-gray-600' : 'border-gray-200'}`}>
                     <td className={`px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{example.item}</td>
                     <td className={`px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{example.standard}</td>
                     <td className={`px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{example.express}</td>
                     <td className={`px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{example.time}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Pricing FAQ */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
@@ -465,18 +465,18 @@ export default function PricingPage() {
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
+        {/* CTA Section */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-[#002147] to-[#003366]' : 'bg-gradient-to-br from-[#002147] to-[#003366]'}`}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship?</h2>
           <p className="text-xl text-blue-100 mb-8">
             Get a personalized quote based on your specific shipping needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <Calculator className="mr-2 h-5 w-5" />
               Get a Quote
@@ -486,8 +486,8 @@ export default function PricingPage() {
               Contact Us
             </Button>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Footer */}
       <footer className={`py-12 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'}`}>

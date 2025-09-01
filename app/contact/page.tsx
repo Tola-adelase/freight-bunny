@@ -279,7 +279,7 @@ export default function ContactPage() {
 
       {/* Contact Methods */}
       <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>How Can We Help?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {contactMethods.map((method, index) => (
@@ -304,12 +304,12 @@ export default function ContactPage() {
                         </a>
                       </div>
                     ))}
-                  </div>
+                    </div>
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
+                      </div>
+                    </div>
       </section>
 
       {/* Contact Form and Office Locations */}
@@ -323,7 +323,7 @@ export default function ContactPage() {
                 <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
                   <CheckCircle className="w-5 h-5 inline mr-2" />
                   Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
-                </div>
+                      </div>
               )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -350,8 +350,8 @@ export default function ContactPage() {
                       className={`mt-1 transition-colors duration-300 ${isDarkMode ? 'bg-gray-600 border-gray-500 text-white' : 'bg-white border-gray-300'}`}
                       placeholder="your@email.com"
                     />
-                  </div>
-                </div>
+                        </div>
+                      </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="phone" className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Phone Number</Label>
@@ -407,7 +407,7 @@ export default function ContactPage() {
                       <SelectItem value="emergency">Emergency - Immediate assistance needed</SelectItem>
                     </SelectContent>
                   </Select>
-                </div>
+              </div>
                 <div>
                   <Label htmlFor="message" className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Message *</Label>
                   <Textarea
@@ -511,8 +511,8 @@ export default function ContactPage() {
                 <social.icon className={`w-6 h-6 ${social.color}`} />
               </a>
             ))}
-          </div>
-        </div>
+            </div>
+            </div>
       </section>
 
       {/* FAQ Section */}

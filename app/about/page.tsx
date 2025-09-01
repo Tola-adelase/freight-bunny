@@ -204,9 +204,9 @@ export default function AboutPage() {
             <p className={`text-xl md:text-2xl mb-8 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               We're passionate about bridging the gap between the UK and Nigeria, making international shipping accessible, reliable, and personal.
             </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Our Story Section */}
       <section className="py-16 px-4">
@@ -233,23 +233,23 @@ export default function AboutPage() {
                     Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.
                   </p>
                   <div className="grid grid-cols-3 gap-4 text-center">
-                    <div>
+            <div>
                       <div className="text-2xl font-bold">7-10</div>
                       <div className="text-sm text-blue-100">Days Delivery</div>
-                    </div>
-                    <div>
+            </div>
+            <div>
                       <div className="text-2xl font-bold">24/7</div>
                       <div className="text-sm text-blue-100">Support</div>
-                    </div>
-                    <div>
+            </div>
+            <div>
                       <div className="text-2xl font-bold">100%</div>
                       <div className="text-sm text-blue-100">Insured</div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
         </div>
       </section>
 
@@ -311,8 +311,8 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
+                  </div>
+                </div>
       </section>
 
       {/* Team Section */}
@@ -340,8 +340,8 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
+                </div>
+            </div>
       </section>
 
       {/* CTA Section */}

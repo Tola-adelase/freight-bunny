@@ -2,24 +2,24 @@
 
 import React, { useState } from "react"
 import { usePathname } from "next/navigation"
-import {
+import { 
   Phone,
   Mail,
-  Facebook,
-  Twitter,
+  Facebook, 
+  Twitter, 
   Linkedin,
-  Instagram,
-  MessageCircle,
+  Instagram, 
+  MessageCircle, 
   Music,
   Plane,
-  Package,
-  Clock,
+  Package, 
+  Clock, 
   ArrowRight,
   Calculator,
-  Shield,
-  Star,
-  CheckCircle,
-  Menu,
+  Shield, 
+  Star, 
+  CheckCircle, 
+  Menu, 
   X,
   Search,
   ShieldCheck,
@@ -296,7 +296,7 @@ export default function BuyForMePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section className={`relative py-20 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
@@ -312,8 +312,8 @@ export default function BuyForMePage() {
               Let us handle your UK shopping and ship everything to Nigeria. From electronics to fashion, we've got you covered.
             </p>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* How It Works */}
       <section className="py-16 px-4">
@@ -330,11 +330,11 @@ export default function BuyForMePage() {
                   <div className="relative">
                     <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
                       <step.icon className="w-8 h-8 text-white" />
-                    </div>
+            </div>
                     <Badge className="absolute -top-2 -right-2 bg-blue-600 text-white">
                       {step.step}
                     </Badge>
-                  </div>
+                    </div>
                   <CardTitle className={`text-xl transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{step.title}</CardTitle>
                   <CardDescription className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     {step.description}
@@ -357,9 +357,9 @@ export default function BuyForMePage() {
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Popular Categories */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
@@ -380,15 +380,15 @@ export default function BuyForMePage() {
                     {category.items.map((item, itemIndex) => (
                       <div key={itemIndex} className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                         • {item}
-                      </div>
+            </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Pricing */}
       <section className="py-16 px-4">
@@ -420,10 +420,10 @@ export default function BuyForMePage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Benefits */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
@@ -442,9 +442,9 @@ export default function BuyForMePage() {
                   </p>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </div>
+              ))}
+            </div>
+                  </div>
       </section>
 
       {/* Example Request */}
@@ -462,7 +462,7 @@ export default function BuyForMePage() {
                   "I want to buy an iPhone 15 Pro, 256GB, Natural Titanium color. My budget is around £1,000. 
                   Please check Apple Store UK and other retailers for the best price."
                 </p>
-              </div>
+                  </div>
               <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-600' : 'bg-gray-50'}`}>
                 <h4 className={`font-semibold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Our Response:</h4>
                 <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -473,8 +473,8 @@ export default function BuyForMePage() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* FAQ */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
@@ -511,30 +511,30 @@ export default function BuyForMePage() {
                   <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{faq.answer}</p>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
+        {/* CTA Section */}
       <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-[#002147] to-[#003366]' : 'bg-gradient-to-br from-[#002147] to-[#003366]'}`}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Shopping?</h2>
           <p className="text-xl text-blue-100 mb-8">
             Tell us what you want, and we'll handle the rest. Get your UK items delivered to Nigeria hassle-free.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <ShoppingBag className="mr-2 h-5 w-5" />
-              Start Shopping
+                Start Shopping
             </Button>
             <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#002147] font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105">
               <Phone className="mr-2 h-5 w-5" />
-              Contact Us
+                Contact Us
             </Button>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Footer */}
       <footer className={`py-12 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'}`}>
