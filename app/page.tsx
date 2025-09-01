@@ -29,6 +29,8 @@ import {
   MapPin,
   CreditCard,
   ArrowLeft,
+  Sun,
+  Moon,
 } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Badge } from "../components/ui/badge"
@@ -100,6 +102,10 @@ export default function FreightBunnyHome() {
     tracking: true,
   })
   const [estimatedCost, setEstimatedCost] = useState<number | null>(null)
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+  }
 
   const initialQuoteForm = {
     weight: "",
@@ -507,9 +513,9 @@ export default function FreightBunnyHome() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-blue-50 to-white'}`}>
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className={`border-b backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900/80 border-gray-700' : 'bg-white/80 border-gray-200'}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-2">
@@ -549,6 +555,17 @@ export default function FreightBunnyHome() {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? (
+                  <Sun className="h-5 w-5 text-yellow-600" />
+                ) : (
+                  <Moon className="h-5 w-5 text-gray-600" />
+                )}
+              </button>
             </nav>
           </div>
 
@@ -580,7 +597,7 @@ export default function FreightBunnyHome() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[calc(70vh-64px)] flex flex-col justify-center items-center px-2 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+      <section className={`relative min-h-[calc(70vh-64px)] flex flex-col justify-center items-center px-2 overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10 z-0">
           <div className="absolute top-10 right-10 w-32 h-32 bg-contain bg-no-repeat opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\'/%3E%3C/svg%3E")' }}></div>
