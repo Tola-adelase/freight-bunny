@@ -604,25 +604,7 @@ export default function FreightBunnyHome() {
           </p>
 
 
-          {/* Pricing Card */}
-          <div className="mb-3 sm:mb-4 md:mb-5 flex justify-center w-full px-4">
-            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl shadow-2xl hover:shadow-3xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg w-full border border-blue-100/50 hover:border-blue-300/70 flex flex-col items-center relative overflow-hidden backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent rounded-3xl"></div>
-              <div className="relative z-10 flex items-center justify-center mb-2">
-                <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 shadow-lg animate-pulse hover:animate-bounce group-hover:scale-110 transition-all duration-300">
-                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-pulse" />
-                </div>
-                <p className="text-gray-600 font-semibold text-base sm:text-base">Prices starting from</p>
-              </div>
-              <div className="relative z-10 mb-1 flex items-baseline">
-                <span className="text-3xl sm:text-5xl font-black text-[#002147] drop-shadow-sm group-hover:text-blue-600 transition-colors duration-300 animate-pulse">£9</span>
-                <span className="text-base sm:text-xl font-semibold text-gray-600 ml-1 group-hover:text-blue-500 transition-colors duration-300">/kg</span>
-              </div>
-              <div className="relative z-10 bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100">
-                <p className="text-sm sm:text-sm text-gray-700 text-center font-medium">Delivery: 7–10 days after shipment</p>
-              </div>
-            </div>
-          </div>
+
 
           {/* Action Buttons - Improved responsive design */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-xs sm:max-w-2xl md:max-w-3xl px-4 mx-auto">
@@ -634,9 +616,9 @@ export default function FreightBunnyHome() {
               onClick={openQuoteModal}
             >
               <Calculator className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-[#002147] flex-shrink-0" />
-              <span className="sm:hidden">Get Free Quote</span>
+              <span className="sm:hidden">Get Quote</span>
               <span className="hidden sm:inline md:hidden">Get Quote</span>
-              <span className="hidden md:inline">Get Free Quote</span>
+              <span className="hidden md:inline">Get Quote</span>
             </Button>
             <Button
               size="lg"
@@ -653,25 +635,7 @@ export default function FreightBunnyHome() {
             </Button>
           </div>
 
-          {/* Trust Indicators Row */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap md:grid md:grid-cols-4 justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 px-4 max-w-4xl mx-auto">
-            <div className="flex items-center gap-1 bg-green-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-green-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-green-100/90 hover:border-green-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.1s' }}>
-              <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 group-hover:text-green-700 transition-colors duration-300" />
-              <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Fully Insured</span>
-            </div>
-            <div className="flex items-center gap-1 bg-blue-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-blue-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-blue-100/90 hover:border-blue-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
-              <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
-              <span className="text-blue-700 text-xs sm:text-sm font-semibold whitespace-nowrap">Real-time Tracking</span>
-            </div>
-            <div className="flex items-center gap-1 bg-yellow-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-yellow-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-yellow-100/90 hover:border-yellow-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
-              <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600 group-hover:text-yellow-700 transition-colors duration-300" />
-              <span className="text-yellow-700 text-xs sm:text-sm font-semibold whitespace-nowrap">5-Star Service</span>
-            </div>
-            <div className="flex items-center gap-1 bg-emerald-50/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-2 rounded-full border border-emerald-100/50 shadow-sm hover:shadow-lg text-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-emerald-100/90 hover:border-emerald-200 group cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.4s' }}>
-              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-600 group-hover:text-emerald-700 transition-colors duration-300" />
-              <span className="text-emerald-700 text-xs sm:text-sm font-semibold whitespace-nowrap">No Hidden Fees</span>
-            </div>
-          </div>
+
         </div>
       </section>
 
