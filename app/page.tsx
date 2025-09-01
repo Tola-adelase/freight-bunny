@@ -586,7 +586,7 @@ export default function FreightBunnyHome() {
 
         <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-2 sm:py-4 md:py-6 animate-in fade-in duration-700">
           {/* Badge */}
-          <div className="mb-3 sm:mb-4 md:mb-5">
+          <div className="mb-6 sm:mb-8 md:mb-10">
             <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
               <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow">
                 <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
@@ -596,10 +596,10 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-1 leading-[1.1] px-2 animate-pulse">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-2 leading-[1.1] px-2 animate-pulse">
             UK ↔ Nigeria Shipping
           </h1>
-          <div className="relative flex justify-center mb-2 sm:mb-3">
+          <div className="relative flex justify-center mb-3 sm:mb-4">
             <span className="block bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
               Made Easy
               <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
@@ -607,7 +607,7 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Subheading */}
-          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-4 sm:mb-6 md:mb-8 px-4 leading-tight animate-fade-in-up">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-8 sm:mb-10 md:mb-12 px-4 leading-tight animate-fade-in-up">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
 
@@ -650,20 +650,18 @@ export default function FreightBunnyHome() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up">Track Your Package</h2>
             <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className="w-full px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white/70 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-center sm:text-left placeholder:text-center sm:placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
+                className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
               />
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-semibold px-6 py-4 sm:py-3 md:py-4 text-base sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center h-full w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px] cursor-pointer">
-                  <Search className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-1 md:mr-2 text-white flex-shrink-0" />
-                  Track Package
-                </Button>
-              </div>
+              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-semibold px-6 py-4 sm:py-3 md:py-4 text-base sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center h-full w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px] cursor-pointer">
+                <Search className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-white flex-shrink-0" />
+                Track
+              </Button>
             </div>
           </div>
         </div>
