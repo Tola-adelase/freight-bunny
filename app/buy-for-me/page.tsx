@@ -1,210 +1,221 @@
 "use client"
 
-import React, { useState } from "react";
-import { usePathname } from "next/navigation";
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  MessageCircle, 
-  ShoppingCart, 
-  Package, 
-  Clock, 
-  Shield, 
-  Star, 
-  CheckCircle, 
-  Search, 
-  CreditCard, 
-  Phone, 
-  Mail, 
-  Calculator, 
-  Menu, 
-  X,
+import React, { useState } from "react"
+import { usePathname } from "next/navigation"
+import {
+  Phone,
+  Mail,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  MessageCircle,
+  Music,
+  Plane,
+  Package,
+  Clock,
   ArrowRight,
-  Users,
-  Globe,
-  DollarSign,
-  MapPin,
-  AlertCircle,
-  Headphones,
-  Eye,
+  Calculator,
+  Shield,
+  Star,
+  CheckCircle,
+  Menu,
+  X,
+  Search,
+  ShieldCheck,
+  Info,
+  User,
   Truck,
-  Gift,
-  Home,
+  MapPin,
+  CreditCard,
+  ArrowLeft,
+  Sun,
+  Moon,
+  Users,
+  Target,
   Heart,
-  ShoppingBag,
+  Award,
   Zap,
-  Award
-} from "lucide-react";
-import { Button } from "../../components/ui/button";
+  Globe,
+  TrendingUp,
+  FileText,
+  Box,
+  Palette,
+  Gift,
+  ShoppingBag,
+  Car,
+  Building,
+  Home,
+  DollarSign,
+  Percent,
+  Calendar,
+  Clock as ClockIcon,
+  ShoppingCart,
+  CreditCard as CreditCardIcon,
+  Eye,
+  Truck as TruckIcon,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react"
+import { Button } from "../../components/ui/button"
+import { Badge } from "../../components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
 
 export default function BuyForMePage() {
-  const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [selectedStep, setSelectedStep] = useState<number | null>(null)
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
     { href: "/buy-for-me", label: "Buy For Me" },
     { href: "/pricing", label: "Pricing" },
-    { href: "/contact", label: "Contact Us" },
-  ];
+    { href: "#contact", label: "Contact Us" },
+  ]
 
-  const process = [
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+  }
+
+  const processSteps = [
     {
-      step: "1",
+      step: 1,
       title: "Tell Us What You Want",
-      description: "Share the item details, store links, or product descriptions",
-      icon: Search
+      icon: ShoppingCart,
+      description: "Send us the details of what you want to buy",
+      details: [
+        "Product name and description",
+        "Preferred retailer or website",
+        "Size, color, or specific requirements",
+        "Your budget range"
+      ]
     },
     {
-      step: "2",
-      title: "We Find & Quote",
-      description: "Our team sources the item and provides you with a detailed quote",
-      icon: Eye
+      step: 2,
+      title: "We Source & Verify",
+      icon: Search,
+      description: "We find the best deals and verify product quality",
+      details: [
+        "Search multiple retailers",
+        "Compare prices and quality",
+        "Verify product authenticity",
+        "Check availability and stock"
+      ]
     },
     {
-      step: "3",
-      title: "You Approve & Pay",
-      description: "Review the quote and make payment through our secure system",
-      icon: CreditCard
+      step: 3,
+      title: "Purchase & Quality Check",
+      icon: CreditCardIcon,
+      description: "We buy the item and perform quality inspection",
+      details: [
+        "Secure payment processing",
+        "Quality inspection before shipping",
+        "Professional packaging",
+        "Documentation preparation"
+      ]
     },
     {
-      step: "4",
-      title: "We Purchase & Check",
-      description: "We buy the item and conduct quality checks before shipping",
-      icon: ShoppingCart
-    },
-    {
-      step: "5",
-      title: "We Ship to You",
-      description: "Your item is carefully packaged and shipped to Nigeria",
-      icon: Package
+      step: 4,
+      title: "Ship to Nigeria",
+      icon: TruckIcon,
+      description: "We ship your items safely to Nigeria",
+      details: [
+        "Air freight to Nigeria",
+        "Real-time tracking updates",
+        "Customs clearance support",
+        "Door-to-door delivery"
+      ]
     }
-  ];
+  ]
+
+  const popularCategories = [
+    {
+      name: "Electronics",
+      icon: Box,
+      items: ["Phones", "Laptops", "Tablets", "Accessories"],
+      description: "Latest gadgets and tech accessories"
+    },
+    {
+      name: "Fashion & Beauty",
+      icon: Palette,
+      items: ["Clothing", "Shoes", "Cosmetics", "Jewelry"],
+      description: "Trendy fashion items and beauty products"
+    },
+    {
+      name: "Home & Garden",
+      icon: Home,
+      items: ["Furniture", "Decor", "Kitchen", "Garden"],
+      description: "Home improvement and decoration items"
+    },
+    {
+      name: "Sports & Fitness",
+      icon: Car,
+      items: ["Equipment", "Clothing", "Supplements", "Accessories"],
+      description: "Sports gear and fitness equipment"
+    }
+  ]
+
+  const pricingTiers = [
+    {
+      range: "£0 - £100",
+      fee: "10%",
+      minimum: "£5",
+      description: "Perfect for small items and accessories",
+      examples: ["Phone cases", "Cosmetics", "Small accessories"]
+    },
+    {
+      range: "£101 - £500",
+      fee: "8%",
+      minimum: "£10",
+      description: "Great for electronics and fashion items",
+      examples: ["Phones", "Laptops", "Designer items"]
+    },
+    {
+      range: "£501 - £1000",
+      fee: "6%",
+      minimum: "£30",
+      description: "Ideal for high-value purchases",
+      examples: ["High-end electronics", "Luxury items"]
+    },
+    {
+      range: "£1000+",
+      fee: "5%",
+      minimum: "£50",
+      description: "Best rates for luxury items",
+      examples: ["Luxury goods", "Bulk orders"]
+    }
+  ]
 
   const benefits = [
     {
-      icon: Globe,
-      title: "Access Any UK Store",
-      description: "Shop from stores that don't ship to Nigeria or have restricted access"
-    },
-    {
-      icon: DollarSign,
-      title: "Transparent Pricing",
-      description: "Know exactly what you'll pay upfront with no hidden fees"
+      icon: Shield,
+      title: "Secure Shopping",
+      description: "Your payment is protected and items are insured"
     },
     {
       icon: Eye,
       title: "Quality Assurance",
-      description: "We inspect every item before shipping to ensure quality"
-    },
-    {
-      icon: Shield,
-      title: "Secure Transactions",
-      description: "Your payments are protected with our secure payment system"
-    },
-    {
-      icon: Users,
-      title: "Personal Service",
-      description: "Dedicated support throughout your shopping journey"
+      description: "We inspect every item before shipping"
     },
     {
       icon: Clock,
-      title: "Fast Processing",
-      description: "Quick turnaround from purchase to shipping"
+      title: "Fast Delivery",
+      description: "Get your items in 10-14 days"
+    },
+    {
+      icon: DollarSign,
+      title: "Best Prices",
+      description: "We find the best deals across multiple retailers"
     }
-  ];
-
-  const categories = [
-    {
-      icon: ShoppingBag,
-      title: "Fashion & Accessories",
-      description: "Clothing, shoes, jewelry, and designer items",
-      popular: ["Designer handbags", "UK fashion brands", "Luxury watches"]
-    },
-    {
-      icon: Zap,
-      title: "Electronics",
-      description: "Phones, laptops, gadgets, and accessories",
-      popular: ["Latest smartphones", "Gaming consoles", "Smart home devices"]
-    },
-    {
-      icon: Gift,
-      title: "Baby & Kids",
-      description: "Toys, clothing, strollers, and essentials",
-      popular: ["Educational toys", "Designer baby wear", "Safety products"]
-    },
-    {
-      icon: Home,
-      title: "Home & Garden",
-      description: "Furniture, decor, kitchen items, and tools",
-      popular: ["Kitchen appliances", "Home decor", "Garden tools"]
-    },
-    {
-      icon: Heart,
-      title: "Health & Beauty",
-      description: "Skincare, makeup, supplements, and wellness",
-      popular: ["Luxury skincare", "Organic products", "Beauty tools"]
-    },
-    {
-      icon: Award,
-      title: "Sports & Outdoors",
-      description: "Equipment, clothing, and accessories for sports",
-      popular: ["Fitness equipment", "Outdoor gear", "Sports wear"]
-    }
-  ];
-
-  const pricing = [
-    {
-      range: "£0 - £100",
-      fee: "5%",
-      minimum: "£5",
-      description: "Perfect for small items and accessories"
-    },
-    {
-      range: "£101 - £500",
-      fee: "4%",
-      minimum: "£15",
-      description: "Great for electronics and fashion items"
-    },
-    {
-      range: "£501 - £1000",
-      fee: "3%",
-      minimum: "£25",
-      description: "Ideal for high-value purchases"
-    },
-    {
-      range: "£1000+",
-      fee: "2%",
-      minimum: "£50",
-      description: "Best rates for luxury items"
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "How long does the Buy For Me service take?",
-      answer: "Typically 2-3 business days for sourcing and purchasing, plus our standard shipping time of 7-10 days."
-    },
-    {
-      question: "What if the item is out of stock?",
-      answer: "We'll notify you immediately and help find alternatives or refund your payment if no suitable replacement is available."
-    },
-    {
-      question: "Do you provide purchase receipts?",
-      answer: "Yes, we provide digital copies of all purchase receipts for your records and warranty purposes."
-    },
-    {
-      question: "Are there any items you can't buy?",
-      answer: "We follow all UK and Nigerian import regulations. Prohibited items include weapons, certain medications, and hazardous materials."
-    }
-  ];
+  ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-blue-50 to-white'}`}>
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className={`border-b backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900/80 border-gray-700' : 'bg-white/80 border-gray-200'}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-2">
@@ -213,12 +224,12 @@ export default function BuyForMePage() {
                 alt="FreightBunny Logo"
                 className="h-10 w-10 object-contain"
               />
-              <span className="text-xl font-bold text-blue-900">Freight Bunny</span>
+              <span className={`text-xl font-bold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-blue-900'}`}>Freight Bunny</span>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none cursor-pointer"
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -234,7 +245,7 @@ export default function BuyForMePage() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold transition-colors pb-1 flex items-center cursor-pointer ${
+                  className={`font-bold transition-colors pb-1 flex items-center ${
                     (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
                       ? "text-blue-900 border-b-2 border-blue-600"
                       : "text-gray-600 hover:text-blue-600"
@@ -244,6 +255,17 @@ export default function BuyForMePage() {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? (
+                  <Sun className="h-5 w-5 text-yellow-600" />
+                ) : (
+                  <Moon className="h-5 w-5 text-gray-600" />
+                )}
+              </button>
             </nav>
           </div>
 
@@ -258,7 +280,7 @@ export default function BuyForMePage() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold transition-colors pb-1 flex items-center cursor-pointer ${
+                  className={`font-bold transition-colors pb-1 flex items-center ${
                     (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
                       ? "text-blue-900 border-b-2 border-blue-600"
                       : "text-gray-600 hover:text-blue-600"
@@ -274,318 +296,254 @@ export default function BuyForMePage() {
         </div>
       </header>
 
-      <main>
-        {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
-          <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
-          <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
-          
-          <div className="container mx-auto text-center relative z-10">
-            <div className="mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#e0eaff] to-[#c7e0ff] text-[#002147] text-base font-semibold shadow-md">
-                <ShoppingCart className="w-5 h-5 mr-2 text-[#002147]" />
-                Personal Shopping Service
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold text-[#111827] mb-6 leading-tight">
-              We <span className="text-[#002147]">Buy For You</span>
+      {/* Hero Section */}
+      <section className={`relative py-20 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="mb-8">
+            <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">
+              <ShoppingBag className="w-4 h-4 mr-2" />
+              Shopping Service
+            </Badge>
+            <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              We Shop,<br />
+              <span className="text-blue-600">You Receive</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
-              Can't access UK stores? We'll shop for you! From fashion to electronics, we buy what you want and ship it straight to Nigeria.
+            <p className={`text-xl md:text-2xl mb-8 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              Let us handle your UK shopping and ship everything to Nigeria. From electronics to fashion, we've got you covered.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#002147] hover:bg-[#001634] text-white shadow-lg px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <ShoppingCart className="mr-2 h-6 w-6" />
-                Start Shopping
-              </button>
-              <button className="bg-white hover:bg-gray-100 border-2 border-[#002147] text-[#002147] shadow-lg px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <Calculator className="mr-2 h-6 w-6" />
-                Get Quote
-              </button>
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* How It Works Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">How It Works</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Simple steps to get any item from UK stores delivered to your door in Nigeria
-              </p>
-            </div>
-            <div className="relative">
-              <div className="hidden md:block absolute top-20 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-[#002147] via-[#002147] to-[#002147] opacity-20"></div>
-              <div className="grid md:grid-cols-5 gap-8 relative">
-                {process.map((step, index) => (
-                  <div key={index} className="text-center">
-                    <div className="bg-[#002147] text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">
+      {/* How It Works */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>How It Works</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {processSteps.map((step) => (
+              <Card 
+                key={step.step}
+                className={`relative transition-all duration-300 hover:scale-105 cursor-pointer ${isDarkMode ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}
+                onClick={() => setSelectedStep(selectedStep === step.step ? null : step.step)}
+              >
+                <CardHeader className="text-center">
+                  <div className="relative">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
+                      <step.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <Badge className="absolute -top-2 -right-2 bg-blue-600 text-white">
                       {step.step}
+                    </Badge>
+                  </div>
+                  <CardTitle className={`text-xl transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{step.title}</CardTitle>
+                  <CardDescription className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {step.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {selectedStep === step.step && (
+                    <div className="space-y-2">
+                      <h4 className={`font-semibold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>What we do:</h4>
+                      <ul className="space-y-1">
+                        {step.details.map((detail, index) => (
+                          <li key={index} className={`flex items-center text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                            <CheckCircle2 className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <div className="bg-gradient-to-r from-[#f6faff] to-[#eaf3fb] p-4 rounded-full mb-4 inline-block">
-                      <step.icon className="w-8 h-8 text-[#002147]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-[#111827] mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Categories */}
+      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Popular Categories</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {popularCategories.map((category, index) => (
+              <Card key={index} className={`text-center transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+                <CardHeader>
+                  <category.icon className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+                  <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{category.name}</CardTitle>
+                  <CardDescription className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {category.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {category.items.map((item, itemIndex) => (
+                      <div key={itemIndex} className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                        • {item}
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Service Fees</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {pricingTiers.map((tier, index) => (
+              <Card key={index} className={`text-center transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+                <CardHeader>
+                  <CardTitle className={`text-lg transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{tier.range}</CardTitle>
+                  <div className="flex items-baseline justify-center">
+                    <span className={`text-3xl font-bold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{tier.fee}</span>
+                    <span className={`text-lg ml-1 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>service fee</span>
+                  </div>
+                  <CardDescription className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    Minimum: {tier.minimum}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className={`text-sm mb-4 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {tier.description}
+                  </p>
+                  <div className="space-y-1">
+                    {tier.examples.map((example, exampleIndex) => (
+                      <div key={exampleIndex} className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                        • {example}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Why Choose Our Buy For Me Service?</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => (
+              <Card key={index} className={`text-center transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+                <CardHeader>
+                  <benefit.icon className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+                  <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{benefit.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {benefit.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Example Request */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Example Request</h2>
+          <Card className={`transition-all duration-300 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+            <CardHeader>
+              <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Sample Shopping Request</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-600' : 'bg-gray-50'}`}>
+                <h4 className={`font-semibold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Customer Request:</h4>
+                <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  "I want to buy an iPhone 15 Pro, 256GB, Natural Titanium color. My budget is around £1,000. 
+                  Please check Apple Store UK and other retailers for the best price."
+                </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-16 px-4 bg-gray-50">
-          <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">Why Use Our Buy For Me Service?</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Experience the convenience of having your own personal shopper in the UK
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-                  <div className="bg-gradient-to-r from-[#f6faff] to-[#eaf3fb] p-4 rounded-full mb-4 inline-block">
-                    <benefit.icon className="w-8 h-8 text-[#002147]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#111827] mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Categories Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">What Can We Buy For You?</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                From fashion to electronics, we can source almost anything from UK stores
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categories.map((category, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg border hover:shadow-xl transition-shadow p-6">
-                  <div className="bg-gradient-to-r from-[#f6faff] to-[#eaf3fb] p-4 rounded-full mb-4 inline-block">
-                    <category.icon className="w-8 h-8 text-[#002147]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#111827] mb-2">{category.title}</h3>
-                  <p className="text-gray-600 mb-4">{category.description}</p>
-                  <div className="border-t pt-4">
-                    <h4 className="text-sm font-semibold text-[#002147] mb-2">Popular Items:</h4>
-                    <ul className="space-y-1">
-                      {category.popular.map((item, idx) => (
-                        <li key={idx} className="text-sm text-gray-600 flex items-center">
-                          <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section className="py-16 px-4 bg-gray-50">
-          <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">Transparent Pricing</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Our service fee is based on the item value - the more you buy, the less you pay per item
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {pricing.map((tier, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg p-6 border hover:shadow-xl transition-shadow">
-                  <div className="text-center mb-4">
-                    <h3 className="text-xl font-bold text-[#111827] mb-2">{tier.range}</h3>
-                    <div className="text-3xl font-bold text-[#002147] mb-1">{tier.fee}</div>
-                    <div className="text-sm text-gray-600">Service Fee</div>
-                  </div>
-                  <div className="border-t pt-4">
-                    <div className="text-sm text-gray-600 mb-2">Minimum fee: <span className="font-semibold">{tier.minimum}</span></div>
-                    <p className="text-sm text-gray-600">{tier.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 text-center">
-              <div className="bg-blue-50 rounded-2xl p-6 max-w-3xl mx-auto">
-                <h3 className="text-lg font-bold text-[#111827] mb-2">What's Included:</h3>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Item sourcing and purchasing
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Quality inspection
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Secure packaging
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Purchase receipt
-                  </div>
-                </div>
+              <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-600' : 'bg-gray-50'}`}>
+                <h4 className={`font-semibold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Our Response:</h4>
+                <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  "We found the iPhone 15 Pro 256GB Natural Titanium for £999 at Apple Store UK. 
+                  Service fee: £60 (6% of £1,000). Total cost: £1,059 + shipping. 
+                  We'll purchase, inspect, and ship it to Nigeria within 10-14 days."
+                </p>
               </div>
-            </div>
-          </div>
-        </section>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#111827] mb-4">Frequently Asked Questions</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Get answers to common questions about our Buy For Me service
-              </p>
-            </div>
-            <div className="max-w-3xl mx-auto space-y-6">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-gray-50 rounded-2xl p-6">
-                  <h3 className="text-lg font-bold text-[#111827] mb-3">{faq.question}</h3>
-                  <p className="text-gray-700">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
+      {/* FAQ */}
+      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {[
+              {
+                question: "How do I place a Buy For Me request?",
+                answer: "Simply contact us via WhatsApp, email, or phone with the details of what you want to buy. Include product name, specifications, budget, and preferred retailer if any."
+              },
+              {
+                question: "What retailers do you shop from?",
+                answer: "We shop from major UK retailers including Amazon UK, Apple Store, John Lewis, Argos, Currys, and many more. We can also shop from specific retailers you prefer."
+              },
+              {
+                question: "How long does the entire process take?",
+                answer: "The complete process takes 10-14 days: 1-2 days for sourcing and purchase, 1-2 days for quality check, and 7-10 days for shipping to Nigeria."
+              },
+              {
+                question: "What if the item is out of stock or unavailable?",
+                answer: "We'll inform you immediately and suggest alternatives or wait for restocking. We never charge for items we can't source."
+              },
+              {
+                question: "Can I return items if I'm not satisfied?",
+                answer: "Returns are subject to the retailer's policy. We'll help you with the return process, but return shipping costs are your responsibility."
+              }
+            ].map((faq, index) => (
+              <Card key={index} className={`transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+                <CardHeader>
+                  <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{faq.question}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-16 px-4 bg-[#002147] text-white">
-          <div className="container mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-4">Ready to Start Shopping?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Tell us what you want and we'll handle the rest. Your personal UK shopping assistant is just a message away!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#002147] hover:bg-gray-100 shadow-lg px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <ShoppingCart className="mr-2 h-6 w-6" />
-                Start Shopping
-              </button>
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002147] px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <Phone className="mr-2 h-6 w-6" />
-                Contact Us
-              </button>
-            </div>
+      {/* CTA Section */}
+      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-[#002147] to-[#003366]' : 'bg-gradient-to-br from-[#002147] to-[#003366]'}`}>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Shopping?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Tell us what you want, and we'll handle the rest. Get your UK items delivered to Nigeria hassle-free.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <ShoppingBag className="mr-2 h-5 w-5" />
+              Start Shopping
+            </Button>
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#002147] font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105">
+              <Phone className="mr-2 h-5 w-5" />
+              Contact Us
+            </Button>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <img
-                  src="/images/Headerlogo.jpg"
-                  alt="FreightBunny - Fast Shipping"
-                  className="h-8 w-8 object-contain"
-                />
-                <span className="text-xl font-bold">FreightBunny</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Connecting UK and Nigeria through reliable, fast, and secure shipping services.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Services</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Express Shipping
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Standard Shipping
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Cargo Shipping
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Package Tracking
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Support</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Shipping Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors cursor-pointer">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Connect</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-white transition-colors cursor-pointer">
-                    <Facebook className="h-4 w-4 text-blue-600" />
-                    <span>Facebook</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/freightbunny" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-white transition-colors cursor-pointer">
-                    <Twitter className="h-4 w-4 text-blue-400" />
-                    <span>Twitter/X</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-white transition-colors cursor-pointer">
-                    <Instagram className="h-4 w-4 text-pink-600" />
-                    <span>Instagram</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-white transition-colors cursor-pointer">
-                    <MessageCircle className="h-4 w-4 text-green-600" />
-                    <span>WhatsApp</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <hr className="my-8 border-gray-800" />
-          <div className="text-center text-sm text-gray-400">
-            <p>&copy; 2024 FreightBunny. All rights reserved. | Connecting UK & Nigeria with reliable shipping.</p>
-          </div>
+      <footer className={`py-12 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'}`}>
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-gray-400">
+            © 2024 FreightBunny. All rights reserved. Connecting UK & Nigeria with reliable shipping.
+          </p>
         </div>
       </footer>
     </div>
-  );
+  )
 } 

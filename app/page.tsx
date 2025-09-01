@@ -668,23 +668,23 @@ export default function FreightBunnyHome() {
       </section>
 
       {/* Quick Tracking */}
-      <section id="tracking" className="py-16 sm:py-16 px-4 bg-gradient-to-br from-gray-50 to-blue-50/20 relative overflow-hidden">
+      <section id="tracking" className={`py-16 sm:py-16 px-4 relative overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 to-blue-50/20'}`}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Ccircle cx=\'11\' cy=\'11\' r=\'8\'/%3E%3Cpath d=\'m21 21-4.34-4.34\'/%3E%3C/svg%3E")' }}></div>
           <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\'/%3E%3C/svg%3E")' }}></div>
         </div>
         <div className="container mx-auto relative z-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up">Track Your Package</h2>
-            <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 max-w-2xl mx-auto w-full items-center">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className={`text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 animate-fade-in-up transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Track Your Package</h2>
+            <p className={`text-base sm:text-base mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 max-w-4xl mx-auto w-full items-center">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation"
+                className={`flex-1 px-4 py-4 sm:py-3 md:py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation ${isDarkMode ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-200 bg-white text-gray-900 placeholder-gray-500'}`}
               />
               <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 cursor-pointer min-h-[56px] md:min-h-[52px] touch-manipulation">
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
@@ -751,35 +751,7 @@ export default function FreightBunnyHome() {
         </div>
       </section>
 
-      {/* Newsletter Signup Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#002147] to-[#003366] relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'1\'%3E%3Cpath d=\'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\'/%3E%3Cpolyline points=\'22,6 12,13 2,6\'/%3E%3C/svg%3E")' }}></div>
-          <div className="absolute bottom-1/3 right-1/3 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'1\'%3E%3Cpath d=\'M22 2H2v16h20V2zM6 10h12M6 14h12M6 6h12\'/%3E%3C/svg%3E")' }}></div>
-        </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Stay Updated</h2>
-            <p className="text-lg sm:text-xl text-blue-100 mb-6">Get shipping tips, updates, and exclusive offers delivered to your inbox</p>
-          </div>
-          
-          <div className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-3 w-full">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-4 border border-blue-300 bg-white/90 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base shadow-lg transition-all duration-300 hover:shadow-xl focus:shadow-2xl min-h-[56px] touch-manipulation"
-              />
-              <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 min-h-[56px] touch-manipulation group">
-                <Mail className="h-5 w-5 mr-2 text-[#002147] flex-shrink-0 group-hover:animate-bounce transition-transform duration-300" />
-                Subscribe
-              </Button>
-            </div>
-            <p className="text-sm text-blue-200 mt-3">We respect your privacy. Unsubscribe at any time.</p>
-          </div>
-        </div>
-      </section>
+
 
       {/* Why Ship With Us Section */}
       <section className="py-16 px-4 bg-[#f6faff] relative overflow-hidden">
