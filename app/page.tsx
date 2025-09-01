@@ -580,6 +580,11 @@ export default function FreightBunnyHome() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(70vh-64px)] flex flex-col justify-center items-center px-2 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-10 z-0">
+          <div className="absolute top-10 right-10 w-32 h-32 bg-contain bg-no-repeat opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\'/%3E%3C/svg%3E")' }}></div>
+          <div className="absolute bottom-20 left-10 w-24 h-24 bg-contain bg-no-repeat opacity-15" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M20 7h-9m9 0v9m0-9L3 21\'/%3E%3C/svg%3E")' }}></div>
+        </div>
         {/* Abstract Shape for Visual Interest */}
         <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
