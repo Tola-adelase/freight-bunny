@@ -686,7 +686,7 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className={`w-full sm:flex-1 px-4 py-4 sm:py-3 md:py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation ${isDarkMode ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-200 bg-white text-gray-900 placeholder-gray-500'}`}
               />
-              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:px-6 sm:py-3 md:px-8 md:py-4 text-base sm:text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 cursor-pointer min-h-[56px] sm:min-h-[48px] md:min-h-[52px] touch-manipulation">
+              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
                 <Search className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 mr-2 text-white flex-shrink-0" />
                 Track
                 </Button>
@@ -926,9 +926,11 @@ export default function FreightBunnyHome() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center placeholder:text-center"
                         ></textarea>
                       </div>
-                                         <button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
-                        Send Message
-                      </button>
+                      <div className="flex justify-center">
+                        <button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
+                          Send Message
+                        </button>
+                      </div>
                   </form>
                 </div>
               </div>
