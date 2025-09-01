@@ -684,7 +684,7 @@ export default function FreightBunnyHome() {
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className={`flex-1 px-4 py-4 sm:py-3 md:py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation ${isDarkMode ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-200 bg-white text-gray-900 placeholder-gray-500'}`}
+                className={`w-full sm:flex-1 px-4 py-4 sm:py-3 md:py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation ${isDarkMode ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-200 bg-white text-gray-900 placeholder-gray-500'}`}
               />
               <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 cursor-pointer min-h-[56px] md:min-h-[52px] touch-manipulation">
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
@@ -807,35 +807,35 @@ export default function FreightBunnyHome() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b">
+                <div className="p-6 border-b text-center md:text-left">
                   <h3 className="text-xl font-extrabold text-gray-900">Contact Information</h3>
                 </div>
                 <div className="p-6 space-y-6">
                   <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <Phone className="h-5 w-5 text-blue-600" />
-                      <div>
+                    <div className="flex items-center space-x-3 justify-center md:justify-start">
+                      <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-semibold text-gray-900">UK Office</p>
                         <p className="text-base font-medium text-gray-800">+44 7392 171558</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Phone className="h-5 w-5 text-green-600" />
-                      <div>
+                    <div className="flex items-center space-x-3 justify-center md:justify-start">
+                      <Phone className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-semibold text-gray-900">Nigeria Office</p>
                         <p className="text-base font-medium text-gray-800">+234 1 234 5678</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Mail className="h-5 w-5 text-purple-600" />
-                      <div>
+                    <div className="flex items-center space-x-3 justify-center md:justify-start">
+                      <Mail className="h-5 w-5 text-purple-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-semibold text-gray-900">Email</p>
                         <p className="text-base font-medium text-gray-800">hello@freightbunny.com</p>
                       </div>
                     </div>
                   </div>
                   <hr className="my-4" />
-                  <div>
+                  <div className="text-center md:text-left">
                     <p className="font-semibold text-gray-900 mb-2">Business Hours</p>
                     <p className="text-sm text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM (GMT)</p>
                     <p className="text-sm text-gray-700">Saturday: 10:00 AM - 4:00 PM (GMT)</p>
@@ -844,49 +844,49 @@ export default function FreightBunnyHome() {
               </div>
 
               <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b">
+                <div className="p-6 border-b text-center md:text-left">
                   <h3 className="text-xl font-extrabold text-gray-900">Follow Us</h3>
                 </div>
                 <div className="p-6 space-y-4">
                   <div className="space-y-3">
-                    <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Facebook className="h-5 w-5 text-blue-600" />
-                      <div>
+                    <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                      <Facebook className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">Facebook</p>
                         <p className="text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
-                    <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Twitter className="h-5 w-5 text-blue-400" />
-                      <div>
+                    <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                      <Twitter className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">Twitter/X</p>
                         <p className="text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
-                    <a href="https://www.linkedin.com/company/freightbunny/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Linkedin className="h-5 w-5 text-blue-700" />
-                      <div>
+                    <a href="https://www.linkedin.com/company/freightbunny/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                      <Linkedin className="h-5 w-5 text-blue-700 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">LinkedIn</p>
                         <p className="text-sm text-gray-700">FreightBunny</p>
                       </div>
                     </a>
-                    <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Instagram className="h-5 w-5 text-pink-600" />
-                      <div>
+                    <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                      <Instagram className="h-5 w-5 text-pink-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">Instagram</p>
                         <p className="text-sm text-gray-700">@shipwithbunny</p>
                       </div>
                     </a>
-                    <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <MessageCircle className="h-5 w-5 text-green-600" />
-                      <div>
+                    <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                      <MessageCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">WhatsApp</p>
                         <p className="text-sm text-gray-700">+44 7392 171558</p>
                       </div>
                     </a>
-                    <a href="https://www.tiktok.com/@freightbunny?_t=ZN-8xI2uoApuII&_r=1" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                      <Music className="h-5 w-5 text-black" />
-                      <div>
+                    <a href="https://www.tiktok.com/@freightbunny?_t=ZN-8xI2uoApuII&_r=1" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                      <Music className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="text-center md:text-left">
                         <p className="font-medium text-gray-900">TikTok</p>
                         <p className="text-sm text-gray-700">@freightbunny</p>
                       </div>
@@ -896,13 +896,13 @@ export default function FreightBunnyHome() {
               </div>
 
               <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b">
+                <div className="p-6 border-b text-center md:text-left">
                   <h3 className="text-xl font-extrabold text-gray-900">Send us a Message</h3>
                 </div>
                 <div className="p-6">
                   <form className="space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">Full Name</label>
+                      <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Full Name</label>
                       <input
                         id="name"
                         placeholder="Your name"
@@ -910,7 +910,7 @@ export default function FreightBunnyHome() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Email</label>
                       <input
                         id="email"
                         type="email"
@@ -919,7 +919,7 @@ export default function FreightBunnyHome() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">Message</label>
+                      <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Message</label>
                       <textarea
                         id="message"
                         placeholder="How can we help you?"
