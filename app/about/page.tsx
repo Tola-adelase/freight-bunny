@@ -1,14 +1,15 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Facebook, Twitter, Instagram, MessageCircle, Package, Users, Globe, Award, Clock, Shield, Heart, Target, Zap, Star, CheckCircle, TrendingUp, MapPin, Phone, Mail, Menu, X, Plane, Calculator } from "lucide-react";
+import { Facebook, Twitter, Instagram, MessageCircle, Package, Users, Globe, Award, Clock, Shield, Heart, Target, Zap, Star, CheckCircle, TrendingUp, MapPin, Phone, Mail, Menu, X, Plane, Calculator, Truck, ArrowRight, ShieldCheck, Info, User, CreditCard, ArrowLeft } from "lucide-react";
 import { Button } from "../../components/ui/button";
 
 export default function AboutPage() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShipModalOpen, setIsShipModalOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -140,44 +141,44 @@ export default function AboutPage() {
           
           <div className="container mx-auto text-center relative z-10">
             {/* Badge */}
-            <div className="inline-flex items-center bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Plane className="w-4 h-4 mr-2" />
               Fast, Reliable Air Freight
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 animate-pulse">
               UK <span className="text-blue-600">↔</span> Nigeria Shipping
             </h1>
-            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 inline-block">
+            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 inline-block animate-pulse">
               Made Easy
             </div>
 
             {/* Subheading */}
-            <p className="text-lg md:text-xl text-gray-700 mb-4 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-700 mb-4 max-w-2xl mx-auto animate-fade-in-up">
               Fast, reliable, and affordable shipping between the UK and Nigeria
             </p>
-            <p className="text-base md:text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Transparent pricing, real-time updates, and a personal touch
             </p>
 
             {/* Pricing Card */}
-            <div className="bg-white rounded-2xl shadow-xl border border-blue-200 p-8 max-w-md mx-auto mb-8">
+            <div className="bg-white rounded-2xl shadow-xl border border-blue-200 p-8 max-w-md mx-auto mb-8 hover:shadow-2xl transition-all duration-500 hover:scale-105 group">
               <div className="flex items-center justify-center mb-4">
-                <Package className="w-6 h-6 text-blue-900 mr-2" />
+                <Package className="w-6 h-6 text-blue-900 mr-2 group-hover:scale-110 transition-transform duration-300" />
                 <span className="text-gray-700 font-medium">Prices starting from</span>
               </div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">£9/kg</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">£9/kg</div>
               <div className="text-gray-600 text-sm">Delivery: 7-10 days after shipment</div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Reduced length and changed title */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <button className="bg-white text-gray-800 hover:bg-gray-50 shadow-lg px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[36px] border border-gray-300 cursor-pointer">
+              <button className="bg-white text-gray-800 hover:bg-gray-50 shadow-lg px-6 py-3 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[44px] border border-gray-300 cursor-pointer w-auto">
                 <Calculator className="mr-2 h-4 w-4" />
                 Get Quote
               </button>
-              <button className="bg-blue-900 text-white hover:bg-blue-800 shadow-lg px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[36px] cursor-pointer" onClick={() => setIsShipModalOpen(true)}>
+              <button className="bg-blue-900 text-white hover:bg-blue-800 shadow-lg px-6 py-3 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center min-h-[44px] cursor-pointer w-auto" onClick={() => setIsShipModalOpen(true)}>
                 <Package className="mr-2 h-4 w-4" />
                 Ship Now
               </button>
@@ -185,22 +186,87 @@ export default function AboutPage() {
 
             {/* Feature Badges */}
             <div className="flex flex-wrap justify-center gap-3">
-              <div className="flex items-center bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-full text-xs font-medium">
+              <div className="flex items-center bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-green-100 transition-colors duration-300 hover:scale-105 cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.1s' }}>
                 <CheckCircle className="w-3 h-3 mr-1.5" />
                 Fully Insured
               </div>
-              <div className="flex items-center bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-full text-xs font-medium">
+              <div className="flex items-center bg-blue-50 border border-blue-200 text-blue-800 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-blue-100 transition-colors duration-300 hover:scale-105 cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
                 <Clock className="w-3 h-3 mr-1.5" />
                 Real-time Tracking
               </div>
-              <div className="flex items-center bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-full text-xs font-medium">
+              <div className="flex items-center bg-yellow-50 border border-yellow-200 text-yellow-800 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-yellow-100 transition-colors duration-300 hover:scale-105 cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
                 <Star className="w-3 h-3 mr-1.5 text-yellow-500" />
                 5-Star Service
               </div>
-              <div className="flex items-center bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-full text-xs font-medium">
+              <div className="flex items-center bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-green-100 transition-colors duration-300 hover:scale-105 cursor-pointer animate-in fade-in duration-500" style={{ animationDelay: '0.4s' }}>
                 <CheckCircle className="w-3 h-3 mr-1.5" />
                 No Hidden Fees
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Shipping Services Section */}
+        <section className="py-16 px-4 bg-[#f6faff]">
+          <div className="max-w-5xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4 animate-fade-in-up">Our Shipping Services</h2>
+          </div>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Service 1 */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.1s' }}>
+              <h3 className="text-xl font-bold text-[#002147] mb-2">Air Freight UK → Nigeria</h3>
+              <p className="text-gray-700 mb-2 text-center">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
+              <p className="text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
+              <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 mx-auto">Get a Quote</a>
+            </div>
+            {/* Service 2 */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
+              <h3 className="text-xl font-bold text-[#002147] mb-2">Air Freight Nigeria → UK</h3>
+              <p className="text-gray-700 mb-2 text-center">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
+              <p className="text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
+              <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 mx-auto">Get a Quote</a>
+            </div>
+            {/* Service 3 */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
+              <h3 className="text-xl font-bold text-[#002147] mb-2">Customs Clearance Support</h3>
+              <p className="text-gray-700 mb-2 text-center">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+              <div className="flex-1"></div>
+              <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 mx-auto">Learn More</a>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Ship With Us Section */}
+        <section className="py-16 px-4 bg-[#f6faff]">
+          <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4 animate-fade-in-up">Why Ship With Us?</h2>
+              <p className="text-lg md:text-xl text-gray-600 mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                We're passionate about connecting families and businesses across continents. With transparent pricing, real-time updates, and a personal touch, we make shipping easy and stress-free. Our team is dedicated to making international shipping simple, affordable, and reliable.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                <div className="flex flex-col items-center bg-[#f6faff] rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.2s' }}>
+                  <span className="text-3xl mb-2">🚚</span>
+                  <h3 className="font-bold text-lg mb-1 text-[#002147]">Fast Delivery</h3>
+                  <p className="text-gray-600 text-sm">Weekly shipments, 7–10 day delivery, and real-time updates.</p>
+                </div>
+                <div className="flex flex-col items-center bg-[#f6faff] rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.3s' }}>
+                  <span className="text-3xl mb-2">💷</span>
+                  <h3 className="font-bold text-lg mb-1 text-[#002147]">Transparent Pricing</h3>
+                  <p className="text-gray-600 text-sm">Just £9/kg, no hidden fees, and clear invoicing.</p>
+                </div>
+                <div className="flex flex-col items-center bg-[#f6faff] rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.4s' }}>
+                  <span className="text-3xl mb-2">🤝</span>
+                  <h3 className="font-bold text-lg mb-1 text-[#002147]">Personal Service</h3>
+                  <p className="text-gray-600 text-sm">We treat your packages like our own and keep you informed every step.</p>
+                </div>
+                <div className="flex flex-col items-center bg-[#f6faff] rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.5s' }}>
+                  <span className="text-3xl mb-2">📦</span>
+                  <h3 className="font-bold text-lg mb-1 text-[#002147]">Flexible Delivery</h3>
+                  <p className="text-gray-600 text-sm">Choose doorstep delivery or arrange your own pickup in Lagos.</p>
+                </div>
+              </div>
+              <a href="#contact" className="inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 animate-in fade-in duration-500" style={{ animationDelay: '0.6s' }}>Contact Us</a>
             </div>
           </div>
         </section>
