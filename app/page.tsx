@@ -658,8 +658,8 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
               />
-              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-semibold px-6 py-4 sm:py-3 md:py-4 text-base sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center h-full w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px] cursor-pointer">
-                <Search className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-white flex-shrink-0" />
+              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[44px] md:min-h-[48px]">
+                <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
               </Button>
             </div>
