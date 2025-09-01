@@ -599,19 +599,16 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Subheading */}
-          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-1 px-4 leading-tight animate-fade-in-up">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-8 sm:mb-10 md:mb-12 px-4 leading-tight animate-fade-in-up">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
 
-
-
-
           {/* Action Buttons - Improved responsive design */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-xs sm:max-w-2xl md:max-w-3xl px-4 mx-auto">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-xs sm:max-w-md md:max-w-lg px-4 mx-auto">
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-4 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[50px] md:min-h-[52px]"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[45px] md:min-h-[48px]"
               style={{ cursor: 'pointer' }}
               onClick={openQuoteModal}
             >
@@ -622,7 +619,7 @@ export default function FreightBunnyHome() {
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-4 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:flex-1 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[50px] md:min-h-[52px]"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[45px] md:min-h-[48px]"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
