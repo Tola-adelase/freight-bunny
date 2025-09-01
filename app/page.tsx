@@ -580,46 +580,88 @@ export default function FreightBunnyHome() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-2 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
-        {/* Abstract Shape for Visual Interest */}
-        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
+        {/* Enhanced Background Elements */}
+        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0 animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-4 h-4 bg-blue-300 rounded-full opacity-40 animate-bounce" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-40 right-20 w-6 h-6 bg-blue-200 rounded-full opacity-30 animate-bounce" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute bottom-40 left-20 w-3 h-3 bg-blue-400 rounded-full opacity-50 animate-bounce" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Decorative Lines */}
+        <div className="absolute top-1/4 left-0 w-32 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-30"></div>
+        <div className="absolute bottom-1/4 right-0 w-32 h-px bg-gradient-to-l from-transparent via-blue-300 to-transparent opacity-30"></div>
 
         <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-6 sm:py-8 md:py-8 animate-in fade-in duration-700">
-
-
-          {/* Heading */}
-          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-2 leading-[1.1] px-2 animate-pulse">
-            UK ↔ Nigeria Shipping
-          </h1>
-          <div className="relative flex justify-center mb-3 sm:mb-4">
-            <span className="block bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
-              Made Easy
-              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
-            </span>
+          
+          {/* Enhanced Badge */}
+          <div className="mb-6 sm:mb-8 md:mb-10">
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 md:px-8 rounded-full bg-gradient-to-r from-blue-50 via-white to-blue-50 border border-blue-200/50 shadow-lg backdrop-blur-sm animate-in fade-in duration-1000" style={{ animationDelay: '0.3s' }}>
+              <div className="bg-gradient-to-r from-[#002147] to-[#003366] p-2 rounded-full mr-3 animate-pulse">
+                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
+              </div>
+              <span className="text-[#002147] text-sm sm:text-base md:text-lg font-bold">Premium Shipping Service</span>
+            </div>
           </div>
 
-          {/* Subheading */}
-          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-8 sm:mb-10 md:mb-12 px-4 leading-tight animate-fade-in-up">
-            Fast, reliable, and affordable shipping between the UK and Nigeria.
-          </p>
+          {/* Enhanced Heading with Better Typography */}
+          <div className="text-center mb-4 sm:mb-6 md:mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-[#111827] via-[#002147] to-[#111827] bg-clip-text text-transparent leading-[0.9] px-2 animate-in fade-in duration-1000" style={{ animationDelay: '0.5s' }}>
+              UK ↔ Nigeria
+            </h1>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent leading-[0.9] px-2 animate-in fade-in duration-1000" style={{ animationDelay: '0.7s' }}>
+              Shipping
+            </h2>
+            <div className="relative flex justify-center mt-2 sm:mt-3 md:mt-4">
+              <span className="block bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center px-2 relative animate-in fade-in duration-1000" style={{ animationDelay: '0.9s' }}>
+                Made Easy
+                <span className="absolute left-1/2 -bottom-1 w-3/4 h-1 sm:h-1.5 md:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
+              </span>
+            </div>
+          </div>
 
-          {/* Action Buttons - Improved responsive design */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-5 justify-center w-full max-w-xs sm:max-w-md md:max-w-lg px-4 mx-auto">
+          {/* Enhanced Subheading with Better Styling */}
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 px-4 max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold leading-tight animate-in fade-in duration-1000" style={{ animationDelay: '1.1s' }}>
+              Fast, reliable, and affordable shipping between the UK and Nigeria.
+            </p>
+            <div className="mt-4 sm:mt-6 md:mt-8 flex justify-center">
+              <div className="flex items-center space-x-4 sm:space-x-6 md:space-x-8 text-sm sm:text-base text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span>7-10 Days Delivery</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <span>Real-time Tracking</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <span>Fully Insured</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Enhanced Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center w-full max-w-xs sm:max-w-md md:max-w-lg px-4 mx-auto animate-in fade-in duration-1000" style={{ animationDelay: '1.3s' }}>
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[45px] md:min-h-[48px]"
+              className="group bg-gradient-to-r from-white via-blue-50/50 to-white hover:from-blue-50 hover:via-blue-100/50 hover:to-blue-50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-2xl px-8 py-4 sm:px-10 sm:py-4 md:px-12 md:py-5 text-sm sm:text-base md:text-lg font-bold rounded-2xl flex items-center justify-center w-auto transition-all duration-500 hover:scale-110 hover:-translate-y-1 backdrop-blur-sm min-h-[50px] md:min-h-[56px] relative overflow-hidden"
               style={{ cursor: 'pointer' }}
               onClick={openQuoteModal}
             >
-              <Calculator className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-[#002147] flex-shrink-0" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50/0 via-blue-100/20 to-blue-50/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <Calculator className="mr-3 sm:mr-2 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-[#002147] flex-shrink-0 group-hover:rotate-12 transition-transform duration-300" />
               <span className="sm:hidden">Get Quote</span>
               <span className="hidden sm:inline md:hidden">Get Quote</span>
               <span className="hidden md:inline">Get Quote</span>
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[45px] md:min-h-[48px]"
+              className="group bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] hover:from-[#001634] hover:via-[#002147] hover:to-[#001634] text-white shadow-xl hover:shadow-2xl border-0 px-8 py-4 sm:px-10 sm:py-4 md:px-12 md:py-5 text-sm sm:text-base md:text-lg font-bold rounded-2xl flex items-center justify-center w-auto transition-all duration-500 hover:scale-110 hover:-translate-y-1 min-h-[50px] md:min-h-[56px] relative overflow-hidden"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -627,11 +669,18 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-2 sm:mr-1 h-5 w-5 sm:h-4 sm:w-4 md:h-6 md:w-6 text-white flex-shrink-0" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <Package className="mr-3 sm:mr-2 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white flex-shrink-0 group-hover:rotate-12 transition-transform duration-300" />
               Ship Now
             </Button>
           </div>
 
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
 
         </div>
       </section>
