@@ -650,7 +650,7 @@ export default function FreightBunnyHome() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up">Track Your Package</h2>
             <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-2xl mx-auto w-full">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-2xl mx-auto w-full items-center">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
@@ -658,7 +658,7 @@ export default function FreightBunnyHome() {
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
               />
-              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[44px] md:min-h-[48px]">
+              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[50px] md:min-h-[52px]">
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
               </Button>
@@ -668,31 +668,57 @@ export default function FreightBunnyHome() {
       </section>
 
       {/* Our Shipping Services Section */}
-      <section className="py-16 px-4 bg-[#f6faff]">
-        <div className="max-w-5xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">Our Shipping Services</h2>
+      <section className="py-12 sm:py-16 px-4 bg-[#f6faff]">
+        <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">Our Shipping Services</h2>
         </div>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
           {/* Service 1 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
-            <h3 className="text-xl font-bold text-[#002147] mb-2">Air Freight UK → Nigeria</h3>
-            <p className="text-gray-700 mb-2 text-center">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
-            <p className="text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
-            <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 mx-auto">Get a Quote</a>
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
+            <div className="mb-4">
+              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                <Plane className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow" />
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2">
+              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight UK → Nigeria</h3>
+              <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: 7–10 days after shipment (may vary). Customer can arrange their own delivery if preferred.</p>
+            </div>
+            <div className="w-full flex justify-center mt-auto">
+              <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Get a Quote</a>
+            </div>
           </div>
           {/* Service 2 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
-            <h3 className="text-xl font-bold text-[#002147] mb-2">Air Freight Nigeria → UK</h3>
-            <p className="text-gray-700 mb-2 text-center">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
-            <p className="text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
-            <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 mx-auto">Get a Quote</a>
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
+            <div className="mb-4">
+              <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                <ArrowRight className="w-8 h-8 text-white animate-pulse group-hover:animate-ping transform rotate-180" />
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2">
+              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight Nigeria → UK</h3>
+              <p className="text-gray-700 mb-2 text-center text-sm sm:text-base leading-relaxed">Secure, efficient, and hassle-free shipping from Nigeria to the UK. Customs support included.</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-4 text-center">Delivery: Will be determined when item arrives. Customer can arrange their own delivery if preferred.</p>
+            </div>
+            <div className="w-full flex justify-center mt-auto">
+              <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Get a Quote</a>
+            </div>
           </div>
           {/* Service 3 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
-            <h3 className="text-xl font-bold text-[#002147] mb-2">Customs Clearance Support</h3>
-            <p className="text-gray-700 mb-2 text-center">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
-            <div className="flex-1"></div>
-            <a href="#contact" className="mt-auto inline-block bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-base rounded-lg shadow-lg flex items-center justify-center transition-transform duration-200 hover:scale-105 mx-auto">Learn More</a>
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
+            <div className="mb-4">
+              <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                <Shield className="w-8 h-8 text-white animate-pulse group-hover:animate-ping" />
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2">
+              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Customs Clearance Support</h3>
+              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+            </div>
+            <div className="w-full flex justify-center mt-auto">
+              <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Learn More</a>
+            </div>
           </div>
         </div>
       </section>
