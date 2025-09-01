@@ -581,15 +581,15 @@ export default function FreightBunnyHome() {
       {/* Hero Section */}
       <section className="relative min-h-[calc(70vh-64px)] flex flex-col justify-center items-center px-2 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
         {/* Abstract Shape for Visual Interest */}
-        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
+        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
 
         <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-2 sm:py-4 md:py-6 animate-in fade-in duration-700">
           {/* Badge */}
           <div className="mb-6 sm:mb-8 md:mb-10">
-            <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
-              <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow">
-                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
+            <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer group">
+              <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow group-hover:animate-bounce">
+                <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:rotate-12 transition-transform duration-300" />
               </div>
               Premium Shipping Service
             </span>
@@ -674,22 +674,24 @@ export default function FreightBunnyHome() {
         </div>
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
           {/* Service 1 */}
-          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
-            <div className="mb-4">
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
-                <Plane className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow" />
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
+            <div className="mb-4 relative z-10">
+              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300">
+                <Plane className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
               </div>
             </div>
-            <div className="flex-1 flex flex-col items-center justify-start pt-2">
-              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Air Freight UK → Nigeria</h3>
-              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
+            <div className="flex-1 flex flex-col items-center justify-start pt-2 relative z-10">
+              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center group-hover:text-blue-600 transition-colors duration-300">Air Freight UK → Nigeria</h3>
+              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed group-hover:text-gray-800 transition-colors duration-300">Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.</p>
             </div>
             <div className="w-full flex justify-center mt-auto">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Get a Quote</a>
             </div>
           </div>
           {/* Service 2 */}
-          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/20 group-hover:via-emerald-50/10 group-hover:to-emerald-50/20 transition-all duration-500 rounded-2xl"></div>
             <div className="mb-4">
               <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
                 <ArrowRight className="w-8 h-8 text-white animate-pulse group-hover:animate-ping transform rotate-180" />
@@ -734,10 +736,10 @@ export default function FreightBunnyHome() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-4 border border-blue-300 bg-white/90 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base shadow-lg transition-all duration-200 min-h-[56px] touch-manipulation"
+                className="flex-1 px-4 py-4 border border-blue-300 bg-white/90 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base shadow-lg transition-all duration-300 hover:shadow-xl focus:shadow-2xl min-h-[56px] touch-manipulation"
               />
-              <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 min-h-[56px] touch-manipulation">
-                <Mail className="h-5 w-5 mr-2 text-[#002147] flex-shrink-0" />
+              <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 min-h-[56px] touch-manipulation group">
+                <Mail className="h-5 w-5 mr-2 text-[#002147] flex-shrink-0 group-hover:animate-bounce transition-transform duration-300" />
                 Subscribe
               </Button>
             </div>
