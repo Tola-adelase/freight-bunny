@@ -602,9 +602,7 @@ export default function FreightBunnyHome() {
           <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold text-center mb-1 px-4 leading-tight animate-fade-in-up">
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-3 sm:mb-4 px-4 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Transparent pricing, real-time updates, and a personal touch.
-          </p>
+
 
           {/* Pricing Card */}
           <div className="mb-3 sm:mb-4 md:mb-5 flex justify-center w-full px-4">
