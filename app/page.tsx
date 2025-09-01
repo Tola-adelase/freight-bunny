@@ -585,7 +585,15 @@ export default function FreightBunnyHome() {
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0"></div>
 
         <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-2 sm:py-4 md:py-6 animate-in fade-in duration-700">
-
+          {/* Badge */}
+          <div className="mb-3 sm:mb-4 md:mb-5">
+            <span className="inline-flex items-center px-4 py-2 sm:px-5 md:px-6 rounded-full bg-gradient-to-r from-[#e0eaff] via-[#d0ddff] to-[#c7e0ff] text-[#002147] text-base sm:text-base md:text-lg font-bold shadow-lg border border-blue-200/50 backdrop-blur-sm animate-pulse">
+              <div className="bg-[#002147] p-1 rounded-full mr-3 animate-spin-slow">
+                <Package className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce" />
+              </div>
+              Premium Shipping Service
+            </span>
+          </div>
 
           {/* Heading */}
           <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-1 leading-[1.1] px-2 animate-pulse">
