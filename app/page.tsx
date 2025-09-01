@@ -611,23 +611,23 @@ export default function FreightBunnyHome() {
             Fast, reliable, and affordable shipping between the UK and Nigeria.
           </p>
 
-          {/* Action Buttons - Compact design */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center w-full max-w-xs sm:max-w-md md:max-w-lg px-4 mx-auto">
+          {/* Action Buttons - Mobile Optimized */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 md:gap-6 justify-center w-full max-w-xs sm:max-w-md md:max-w-lg px-4 mx-auto">
             <Button
               size="lg"
               variant="outline"
-              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 backdrop-blur-sm min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
+              className="bg-gradient-to-r from-white to-blue-50/30 hover:from-blue-50 hover:to-blue-100/50 border-2 border-[#002147] text-[#002147] shadow-lg hover:shadow-xl px-6 py-4 sm:px-6 sm:py-3 md:px-8 md:py-4 text-base sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 backdrop-blur-sm min-h-[56px] sm:min-h-[48px] md:min-h-[52px] touch-manipulation"
               style={{ cursor: 'pointer' }}
               onClick={openQuoteModal}
             >
-              <Calculator className="mr-2 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#002147] flex-shrink-0" />
+              <Calculator className="mr-3 sm:mr-2 h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#002147] flex-shrink-0" />
               <span className="sm:hidden">Get Quote</span>
               <span className="hidden sm:inline md:hidden">Get Quote</span>
               <span className="hidden md:inline">Get Quote</span>
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-auto sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
+              className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white shadow-xl hover:shadow-2xl border-0 px-6 py-4 sm:px-6 sm:py-3 md:px-8 md:py-4 text-base sm:text-base md:text-lg font-bold rounded-xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 min-h-[56px] sm:min-h-[48px] md:min-h-[52px] touch-manipulation"
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 console.log("Main Ship Now button clicked");
@@ -635,7 +635,7 @@ export default function FreightBunnyHome() {
                 console.log("Ship Now modal state set to true");
               }}
             >
-              <Package className="mr-2 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white flex-shrink-0" />
+              <Package className="mr-3 sm:mr-2 h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white flex-shrink-0" />
               Ship Now
             </Button>
           </div>
@@ -650,15 +650,15 @@ export default function FreightBunnyHome() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up">Track Your Package</h2>
             <p className="text-base sm:text-base text-gray-600 mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-2xl mx-auto w-full items-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 max-w-2xl mx-auto w-full items-center">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[50px] md:min-h-[52px]"
+                className="flex-1 px-4 py-4 sm:py-3 md:py-4 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation"
               />
-              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full max-w-[180px] sm:w-auto sm:max-w-none mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer min-h-[50px] md:min-h-[52px]">
+              <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-bold px-6 py-4 sm:py-3 md:px-8 md:py-4 text-base md:text-lg rounded-xl shadow-xl hover:shadow-2xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 cursor-pointer min-h-[56px] md:min-h-[52px] touch-manipulation">
                 <Search className="h-6 w-6 mr-2 text-white flex-shrink-0" />
                 Track
               </Button>
@@ -717,6 +717,31 @@ export default function FreightBunnyHome() {
             <div className="w-full flex justify-center mt-auto">
               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Learn More</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-[#002147] to-[#003366]">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Stay Updated</h2>
+            <p className="text-lg sm:text-xl text-blue-100 mb-6">Get shipping tips, updates, and exclusive offers delivered to your inbox</p>
+          </div>
+          
+          <div className="max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 w-full">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="flex-1 px-4 py-4 border border-blue-300 bg-white/90 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-gray-900 placeholder-gray-500 text-base shadow-lg transition-all duration-200 min-h-[56px] touch-manipulation"
+              />
+              <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 min-h-[56px] touch-manipulation">
+                <Mail className="h-5 w-5 mr-2 text-[#002147] flex-shrink-0" />
+                Subscribe
+              </Button>
+            </div>
+            <p className="text-sm text-blue-200 mt-3">We respect your privacy. Unsubscribe at any time.</p>
           </div>
         </div>
       </section>
