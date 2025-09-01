@@ -625,7 +625,7 @@ export default function FreightBunnyHome() {
           <div className="relative flex justify-center mb-3 sm:mb-4">
             <span className="block bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
               Made Easy
-              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
+              <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse" style={{ zIndex: -1 }}></span>
             </span>
           </div>
 
@@ -757,7 +757,6 @@ export default function FreightBunnyHome() {
       <section className="py-16 px-4 bg-[#f6faff] relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\'/%3E%3C/svg%3E")' }}></div>
           <div className="absolute bottom-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/%3E%3C/svg%3E")' }}></div>
         </div>
         <div className="max-w-4xl mx-auto relative z-10">
