@@ -296,7 +296,7 @@ export default function PricingPage() {
             <p className={`text-xl md:text-2xl mb-8 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               No hidden fees, no surprises. Just clear, competitive pricing for all your shipping needs.
             </p>
-          </div>
+            </div>
           </div>
         </section>
 
@@ -464,7 +464,7 @@ export default function PricingPage() {
                   <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{faq.answer}</p>
                 </CardContent>
               </Card>
-            ))}
+              ))}
             </div>
           </div>
         </section>
@@ -485,7 +485,7 @@ export default function PricingPage() {
               <Phone className="mr-2 h-5 w-5" />
               Contact Us
             </Button>
-          </div>
+            </div>
           </div>
         </section>
 

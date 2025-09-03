@@ -348,7 +348,7 @@ export default function ServicesPage() {
             <p className={`text-xl md:text-2xl mb-8 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               From air freight to customs clearance, we provide end-to-end shipping services between the UK and Nigeria.
             </p>
-          </div>
+            </div>
           </div>
         </section>
 
@@ -520,7 +520,7 @@ export default function ServicesPage() {
               <Phone className="mr-2 h-5 w-5" />
               Contact Us
             </Button>
-          </div>
+            </div>
           </div>
         </section>
 

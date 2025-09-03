@@ -311,7 +311,7 @@ export default function BuyForMePage() {
             <p className={`text-xl md:text-2xl mb-8 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Let us handle your UK shopping and ship everything to Nigeria. From electronics to fashion, we've got you covered.
             </p>
-          </div>
+            </div>
           </div>
         </section>
 
@@ -532,7 +532,7 @@ export default function BuyForMePage() {
               <Phone className="mr-2 h-5 w-5" />
                 Contact Us
             </Button>
-          </div>
+            </div>
           </div>
         </section>
 

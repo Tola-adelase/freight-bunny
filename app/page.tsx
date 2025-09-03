@@ -607,7 +607,8 @@ export default function FreightBunnyHome() {
         <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
 
-        <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-2 sm:py-4 md:py-6 animate-in fade-in duration-700">
+                 <div className="container mx-auto flex flex-col justify-center items-center h-full relative z-10 py-2 sm:py-4 md:py-6 animate-in fade-in duration-700">
+
           {/* Heading */}
           <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-[1.1] px-2 animate-pulse">
             UK ↔ Nigeria Shipping
@@ -688,42 +689,57 @@ export default function FreightBunnyHome() {
       {/* Our Shipping Services Section */}
       <section className="py-12 sm:py-16 px-4 bg-[#f6faff]">
         <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">Our Services</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">Our Shipping Services</h2>
         </div>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-6 md:gap-8">
-          {/* Service 1 - Shipping */}
-          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
-            <div className="mb-4 relative z-10">
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300">
-                <Plane className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-start pt-2 relative z-10">
-              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center group-hover:text-blue-600 transition-colors duration-300">Shipping</h3>
-              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed group-hover:text-gray-800 transition-colors duration-300">Fast, reliable, and affordable shipping between the UK and Nigeria. Weekly shipments with real-time tracking and customs support.</p>
-            </div>
-            <div className="w-full flex justify-center mt-auto">
-              <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Get a Quote</a>
-            </div>
-          </div>
-          {/* Service 2 - Buy For Me */}
-          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/20 group-hover:via-emerald-50/10 group-hover:to-emerald-50/20 transition-all duration-500 rounded-2xl"></div>
-            <div className="mb-4">
-              <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
-                <ShoppingBag className="w-8 h-8 text-white animate-pulse group-hover:animate-ping" />
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-start pt-2">
-              <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Buy For Me</h3>
-              <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We shop for you in the UK and ship to Nigeria. From electronics to fashion, we handle everything and deliver to your doorstep.</p>
-            </div>
-            <div className="w-full flex justify-center mt-auto">
-              <a href="/buy-for-me" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Learn More</a>
-            </div>
-          </div>
-        </div>
+                 <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
+           {/* Service 1 - Air Freight */}
+           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
+             <div className="mb-4 relative z-10">
+               <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300">
+                 <Plane className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
+               </div>
+             </div>
+             <div className="flex-1 flex flex-col items-center justify-start pt-2 relative z-10">
+               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center group-hover:text-blue-600 transition-colors duration-300">Air Freight</h3>
+               <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed group-hover:text-gray-800 transition-colors duration-300">Fast and reliable air freight service between UK and Nigeria. Weekly shipments with real-time tracking.</p>
+             </div>
+             <div className="w-full flex justify-center mt-auto">
+               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Get a Quote</a>
+             </div>
+           </div>
+           {/* Service 2 - Buy For Me */}
+           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+             <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/20 group-hover:via-emerald-50/10 group-hover:to-emerald-50/20 transition-all duration-500 rounded-2xl"></div>
+             <div className="mb-4">
+               <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                 <Package className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
+               </div>
+             </div>
+             <div className="flex-1 flex flex-col items-center justify-start pt-2">
+               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Buy For Me</h3>
+               <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We shop for you in the UK and ship to Nigeria. From electronics to fashion, we handle everything.</p>
+             </div>
+             <div className="w-full flex justify-center mt-auto">
+               <a href="/buy-for-me" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Learn More</a>
+             </div>
+           </div>
+           {/* Service 3 - Customs Clearance */}
+           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
+             <div className="mb-4">
+               <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
+                 <Shield className="w-8 h-8 text-white animate-pulse group-hover:animate-ping" />
+               </div>
+             </div>
+             <div className="flex-1 flex flex-col items-center justify-start pt-2">
+               <h3 className="text-lg sm:text-xl font-bold text-[#002147] mb-3 text-center min-h-[3.5rem] flex items-center">Customs Clearance Support</h3>
+               <p className="text-gray-700 mb-4 text-center text-sm sm:text-base leading-relaxed">We help you with all paperwork and customs clearance, ensuring your shipments move smoothly and without delays.</p>
+             </div>
+             <div className="w-full flex justify-center mt-auto">
+               <a href="#contact" className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">Learn More</a>
+             </div>
+           </div>
+         </div>
       </section>
 
 
@@ -875,36 +891,36 @@ export default function FreightBunnyHome() {
                 </div>
                 <div className="p-6">
                   <form className="space-y-6">
-                                          <div>
+                    <div>
                         <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2 text-center">Full Name</label>
-                        <input
-                          id="name"
-                          placeholder="Your name"
+                      <input
+                        id="name"
+                        placeholder="Your name"
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center placeholder:text-center"
-                        />
-                      </div>
-                                          <div>
+                      />
+                    </div>
+                    <div>
                         <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2 text-center">Email</label>
-                        <input
-                          id="email"
-                          type="email"
-                          placeholder="your@email.com"
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="your@email.com"
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center placeholder:text-center"
-                        />
-                      </div>
-                                          <div>
+                      />
+                    </div>
+                    <div>
                         <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2 text-center">Message</label>
-                        <textarea
-                          id="message"
-                          placeholder="How can we help you?"
-                          rows={4}
+                      <textarea
+                        id="message"
+                        placeholder="How can we help you?"
+                        rows={4}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 text-center placeholder:text-center"
-                        ></textarea>
-                      </div>
+                      ></textarea>
+                    </div>
                       <div className="flex justify-center">
                         <button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
-                          Send Message
-                        </button>
+                      Send Message
+                    </button>
                       </div>
                   </form>
                 </div>
@@ -939,22 +955,12 @@ export default function FreightBunnyHome() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
-                    Express Shipping
+                    Shipping
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Standard Shipping
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Cargo Shipping
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Package Tracking
+                  <a href="/buy-for-me" className="hover:text-white transition-colors">
+                    Buy For Me
                   </a>
                 </li>
               </ul>
