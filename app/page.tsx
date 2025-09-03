@@ -806,35 +806,35 @@ export default function FreightBunnyHome() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b text-center md:text-left">
+                <div className="p-6 border-b text-center">
                   <h3 className="text-xl font-extrabold text-gray-900">Contact Information</h3>
                 </div>
                 <div className="p-6 space-y-6">
                   <div className="space-y-4">
-                    <div className="flex items-center space-x-3 justify-center md:justify-start">
+                    <div className="flex items-center space-x-3 justify-center">
                       <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-semibold text-gray-900">UK Office</p>
                         <p className="text-base font-medium text-gray-800">+44 7392 171558</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3 justify-center md:justify-start">
+                    <div className="flex items-center space-x-3 justify-center">
                       <Phone className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-semibold text-gray-900">Nigeria Office</p>
                         <p className="text-base font-medium text-gray-800">+234 1 234 5678</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3 justify-center md:justify-start">
+                    <div className="flex items-center space-x-3 justify-center">
                       <Mail className="h-5 w-5 text-purple-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-semibold text-gray-900">Email</p>
                         <p className="text-base font-medium text-gray-800">hello@freightbunny.com</p>
                       </div>
                     </div>
                   </div>
                   <hr className="my-4" />
-                  <div className="text-center md:text-left">
+                  <div className="text-center">
                     <p className="font-semibold text-gray-900 mb-2">Business Hours</p>
                     <p className="text-sm text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM (GMT)</p>
                     <p className="text-sm text-gray-700">Saturday: 10:00 AM - 4:00 PM (GMT)</p>
@@ -843,49 +843,49 @@ export default function FreightBunnyHome() {
               </div>
 
               <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b text-center md:text-left">
+                <div className="p-6 border-b text-center">
                   <h3 className="text-xl font-extrabold text-gray-900">Follow Us</h3>
                 </div>
                 <div className="p-6 space-y-4">
                   <div className="space-y-3">
-                    <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                    <a href="https://www.facebook.com/share/16Wjxof9Gd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center">
                       <Facebook className="h-5 w-5 text-blue-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-medium text-gray-900">Facebook</p>
                         <p className="text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
-                    <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                    <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center">
                       <Twitter className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-medium text-gray-900">Twitter/X</p>
                         <p className="text-sm text-gray-700">@freightbunny</p>
                       </div>
                     </a>
-                    <a href="https://www.linkedin.com/company/freightbunny/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                    <a href="https://www.linkedin.com/company/freightbunny/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center">
                       <Linkedin className="h-5 w-5 text-blue-700 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-medium text-gray-900">LinkedIn</p>
                         <p className="text-sm text-gray-700">FreightBunny</p>
                       </div>
                     </a>
-                    <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                    <a href="https://www.instagram.com/shipwithbunny?igsh=MXNpaGpwZnllbDg0ag==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center">
                       <Instagram className="h-5 w-5 text-pink-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-medium text-gray-900">Instagram</p>
                         <p className="text-sm text-gray-700">@shipwithbunny</p>
                       </div>
                     </a>
-                    <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                    <a href="https://wa.me/447392171558" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center">
                       <MessageCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-medium text-gray-900">WhatsApp</p>
                         <p className="text-sm text-gray-700">+44 7392 171558</p>
                       </div>
                     </a>
-                    <a href="https://www.tiktok.com/@freightbunny?_t=ZN-8xI2uoApuII&_r=1" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center md:justify-start">
+                    <a href="https://www.tiktok.com/@freightbunny?_t=ZN-8xI2uoApuII&_r=1" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors justify-center">
                       <Music className="h-5 w-5 text-black flex-shrink-0" />
-                      <div className="text-center md:text-left">
+                      <div className="text-center">
                         <p className="font-medium text-gray-900">TikTok</p>
                         <p className="text-sm text-gray-700">@freightbunny</p>
                       </div>
@@ -895,7 +895,7 @@ export default function FreightBunnyHome() {
               </div>
 
               <div className="bg-white rounded-lg border shadow-sm">
-                <div className="p-6 border-b text-center md:text-left">
+                <div className="p-6 border-b text-center">
                   <h3 className="text-xl font-extrabold text-gray-900">Send us a Message</h3>
                 </div>
                 <div className="p-6">
