@@ -623,7 +623,7 @@ export default function FreightBunnyHome() {
             UK ↔ Nigeria Shipping
           </h1>
           <div className="relative flex justify-center mb-3 sm:mb-4">
-            <span className="block bg-gradient-to-r from-[#002147] via-blue-600 to-[#002147] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
+            <span className="block text-[#002147] text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center px-2 relative animate-pulse">
               Made Easy
               <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 sm:h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse" style={{ zIndex: -1 }}></span>
             </span>
@@ -901,7 +901,7 @@ export default function FreightBunnyHome() {
                 <div className="p-6">
                   <form className="space-y-6">
                                           <div>
-                        <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Full Name</label>
+                        <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2 text-center">Full Name</label>
                         <input
                           id="name"
                           placeholder="Your name"
@@ -909,7 +909,7 @@ export default function FreightBunnyHome() {
                         />
                       </div>
                                           <div>
-                        <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Email</label>
+                        <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2 text-center">Email</label>
                         <input
                           id="email"
                           type="email"
@@ -918,7 +918,7 @@ export default function FreightBunnyHome() {
                         />
                       </div>
                                           <div>
-                        <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2 text-center md:text-left">Message</label>
+                        <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2 text-center">Message</label>
                         <textarea
                           id="message"
                           placeholder="How can we help you?"
