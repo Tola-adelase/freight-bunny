@@ -691,9 +691,9 @@ export default function FreightBunnyHome() {
         <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">Our Shipping Services</h2>
         </div>
-                 <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
+                 <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8 px-4">
            {/* Service 1 - Air Freight */}
-           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-4 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[250px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden max-w-xs mx-auto w-full">
              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
              <div className="mb-4 relative z-10">
                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300">
@@ -709,7 +709,7 @@ export default function FreightBunnyHome() {
              </div>
            </div>
            {/* Service 2 - Buy For Me */}
-           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-4 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[250px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden max-w-xs mx-auto w-full">
              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/20 group-hover:via-emerald-50/10 group-hover:to-emerald-50/20 transition-all duration-500 rounded-2xl"></div>
              <div className="mb-4">
                <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
@@ -725,7 +725,7 @@ export default function FreightBunnyHome() {
              </div>
            </div>
            {/* Service 3 - Customs Clearance */}
-           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-5 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[300px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group">
+           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-4 sm:p-6 md:p-6 lg:p-6 flex flex-col items-center min-h-[250px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[300px] transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-gray-100 hover:border-blue-200 group max-w-xs mx-auto w-full">
              <div className="mb-4">
                <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-full shadow-lg group-hover:animate-bounce">
                  <Shield className="w-8 h-8 text-white animate-pulse group-hover:animate-ping" />
