@@ -619,7 +619,7 @@ export default function FreightBunnyHome() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#111827] via-gray-700 to-[#111827] bg-clip-text text-transparent text-center mb-2 leading-[1.1] px-2 animate-pulse">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111827] text-center mb-2 leading-[1.1] px-2 animate-pulse">
             UK ↔ Nigeria Shipping
           </h1>
           <div className="relative flex justify-center mb-3 sm:mb-4">
