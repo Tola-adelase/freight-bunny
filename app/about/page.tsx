@@ -171,18 +171,30 @@ export default function AboutPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="relative py-20 px-4 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff] overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10 z-0">
+          <div className="absolute top-10 right-10 w-32 h-32 bg-contain bg-no-repeat opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\'/%3E%3C/svg%3E")' }}></div>
+          <div className="absolute bottom-20 left-10 w-24 h-24 bg-contain bg-no-repeat opacity-15" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M20 7h-9m9 0v9m0-9L3 21\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        {/* Abstract Shapes for Visual Interest */}
+        <div className="absolute -top-24 -left-32 w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl opacity-60 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100 via-blue-50 to-transparent rounded-full blur-2xl opacity-50 z-0 transform transition-transform duration-1000 hover:scale-110"></div>
+        
+        <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="mb-8">
-            <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">
+            <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200 animate-fade-in-up">
               <Plane className="w-4 h-4 mr-2" />
               About FreightBunny
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-[#111827] animate-fade-in-up">
               Connecting Continents,<br />
-              <span className="text-blue-600">One Package at a Time</span>
+              <span className="text-[#002147] relative">
+                One Package at a Time
+                <span className="absolute left-1/2 -bottom-1 w-3/4 h-2 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 rounded-full -translate-x-1/2 z-[-1] shadow-lg animate-pulse"></span>
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-600">
+            <p className="text-xl md:text-2xl mb-8 text-gray-700 font-semibold animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               We're passionate about bridging the gap between the UK and Nigeria, making international shipping accessible, reliable, and personal.
             </p>
             </div>
@@ -190,84 +202,103 @@ export default function AboutPage() {
         </section>
 
       {/* Our Story Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 px-4 bg-[#f6faff] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Our Story</h2>
-              <p className="text-lg mb-6 text-gray-600">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-[#111827] animate-fade-in-up">Our Story</h2>
+              <p className="text-lg mb-6 text-gray-700 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                 FreightBunny was born from a simple observation: shipping between the UK and Nigeria was unnecessarily complicated, expensive, and impersonal. We saw families struggling to send care packages, businesses facing logistical nightmares, and individuals paying exorbitant fees for basic shipping services.
               </p>
-              <p className="text-lg mb-6 text-gray-600">
+              <p className="text-lg mb-6 text-gray-700 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                 In 2020, we set out to change this. We built a service that combines the reliability of major carriers with the personal touch of a family business. Our mission is simple: make shipping between the UK and Nigeria as easy as sending a text message.
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-700 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                 Today, we've helped thousands of customers ship everything from personal care packages to business documents, always maintaining our commitment to transparency, reliability, and exceptional service.
               </p>
             </div>
             <div className="relative">
-              <div className={`bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-white shadow-2xl transition-all duration-300 hover:scale-105`}>
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2">
                 <div className="text-center">
-                  <Package className="w-16 h-16 mx-auto mb-4 text-white" />
+                  <div className="bg-white/20 p-4 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                    <Package className="w-10 h-10 text-white animate-pulse" />
+                  </div>
                   <h3 className="text-2xl font-bold mb-4">Fast, Reliable Air Freight</h3>
                   <p className="text-blue-100 mb-6">
                     Weekly shipments, safe handling, and fast delivery. We handle your cargo with care and keep you updated every step of the way.
                   </p>
                   <div className="grid grid-cols-3 gap-4 text-center">
-            <div>
+                    <div className="bg-white/10 rounded-lg p-3">
                       <div className="text-2xl font-bold">7-10</div>
                       <div className="text-sm text-blue-100">Days Delivery</div>
-            </div>
-            <div>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-3">
                       <div className="text-2xl font-bold">24/7</div>
                       <div className="text-sm text-blue-100">Support</div>
-            </div>
-            <div>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-3">
                       <div className="text-2xl font-bold">100%</div>
                       <div className="text-sm text-blue-100">Insured</div>
                     </div>
                   </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Our Mission Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">Our Mission</h2>
+      <section className="py-16 px-4 bg-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute bottom-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-[#111827] animate-fade-in-up">Our Mission</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-white border-gray-200">
-              <CardHeader>
-                <Target className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                <CardTitle className="text-gray-900">Simplify Shipping</CardTitle>
+            <Card className="bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 hover:border-blue-200 transition-all duration-500 hover:scale-105 hover:-translate-y-2 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
+              <CardHeader className="relative z-10">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-bounce">
+                  <Target className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
+                </div>
+                <CardTitle className="text-[#002147] group-hover:text-blue-600 transition-colors duration-300">Simplify Shipping</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
+              <CardContent className="relative z-10">
+                <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">
                   Make international shipping as simple and straightforward as possible, removing the complexity and confusion that often comes with cross-border logistics.
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white border-gray-200">
-              <CardHeader>
-                <Heart className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                <CardTitle className="text-gray-900">Personal Touch</CardTitle>
+            <Card className="bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 hover:border-blue-200 transition-all duration-500 hover:scale-105 hover:-translate-y-2 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/20 group-hover:via-emerald-50/10 group-hover:to-emerald-50/20 transition-all duration-500 rounded-2xl"></div>
+              <CardHeader className="relative z-10">
+                <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-3 rounded-full shadow-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-bounce">
+                  <Heart className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
+                </div>
+                <CardTitle className="text-[#002147] group-hover:text-blue-600 transition-colors duration-300">Personal Touch</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
+              <CardContent className="relative z-10">
+                <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">
                   Provide a personal, human touch to every shipment, treating each package as if it were our own and each customer as family.
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white border-gray-200">
-              <CardHeader>
-                <Award className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                <CardTitle className="text-gray-900">Excellence</CardTitle>
+            <Card className="bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 hover:border-blue-200 transition-all duration-500 hover:scale-105 hover:-translate-y-2 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 via-purple-50/0 to-purple-50/0 group-hover:from-purple-50/20 group-hover:via-purple-50/10 group-hover:to-purple-50/20 transition-all duration-500 rounded-2xl"></div>
+              <CardHeader className="relative z-10">
+                <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-full shadow-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-bounce">
+                  <Award className="w-8 h-8 text-white animate-pulse group-hover:animate-ping" />
+                </div>
+                <CardTitle className="text-[#002147] group-hover:text-blue-600 transition-colors duration-300">Excellence</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
+              <CardContent className="relative z-10">
+                <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">
                   Maintain the highest standards of service quality, reliability, and customer satisfaction in everything we do.
                 </p>
               </CardContent>
@@ -277,18 +308,25 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Our Values</h2>
+      <section className="py-16 px-4 bg-[#f6faff] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-[#111827] animate-fade-in-up">Our Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="text-center transition-all duration-300 hover:scale-105 bg-white border-gray-200">
-                <CardHeader>
-                  <value.icon className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                  <CardTitle className="text-gray-900">{value.title}</CardTitle>
+              <Card key={index} className="text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
+                <CardHeader className="relative z-10">
+                  <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full shadow-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-bounce">
+                    <value.icon className="w-8 h-8 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
+                  </div>
+                  <CardTitle className="text-[#002147] group-hover:text-blue-600 transition-colors duration-300">{value.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{value.description}</p>
+                <CardContent className="relative z-10">
+                  <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -297,24 +335,29 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Meet Our Team</h2>
+      <section className="py-16 px-4 bg-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute bottom-1/4 right-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/%3E%3C/svg%3E")' }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-[#111827] animate-fade-in-up">Meet Our Team</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center transition-all duration-300 hover:scale-105 bg-white border-gray-200">
-                <CardHeader>
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                    <User className="w-12 h-12 text-white" />
+              <Card key={index} className="text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 hover:border-blue-200 group cursor-pointer relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-50/0 to-blue-50/0 group-hover:from-blue-50/20 group-hover:via-blue-50/10 group-hover:to-blue-50/20 transition-all duration-500 rounded-2xl"></div>
+                <CardHeader className="relative z-10">
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300">
+                    <User className="w-12 h-12 text-white animate-pulse group-hover:animate-spin-slow group-hover:rotate-12 transition-transform duration-300" />
                   </div>
-                  <CardTitle className="text-gray-900">{member.name}</CardTitle>
-                  <CardDescription className="text-blue-600 font-semibold">{member.role}</CardDescription>
+                  <CardTitle className="text-[#002147] group-hover:text-blue-600 transition-colors duration-300">{member.name}</CardTitle>
+                  <CardDescription className="text-blue-600 font-semibold group-hover:text-blue-700 transition-colors duration-300">{member.role}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <p className="mb-4 text-gray-600">{member.bio}</p>
+                <CardContent className="relative z-10">
+                  <p className="mb-4 text-gray-700 group-hover:text-gray-800 transition-colors duration-300">{member.bio}</p>
                   <a 
                     href={`mailto:${member.email}`}
-                    className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+                    className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 group-hover:text-blue-800"
                   >
                     {member.email}
                   </a>
