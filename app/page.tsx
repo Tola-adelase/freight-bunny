@@ -29,8 +29,6 @@ import {
   MapPin,
   CreditCard,
   ArrowLeft,
-  Sun,
-  Moon,
 } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Badge } from "../components/ui/badge"
@@ -49,7 +47,6 @@ export default function FreightBunnyHome() {
   const [isShipNowModalOpen, setIsShipNowModalOpen] = useState(false)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0)
-  const [isDarkMode, setIsDarkMode] = useState(false)
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -102,10 +99,6 @@ export default function FreightBunnyHome() {
     tracking: true,
   })
   const [estimatedCost, setEstimatedCost] = useState<number | null>(null)
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
 
   const initialQuoteForm = {
     weight: "",
@@ -513,9 +506,9 @@ export default function FreightBunnyHome() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-blue-50 to-white'}`}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className={`border-b backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900/80 border-gray-700' : 'bg-white/80 border-gray-200'}`}>
+      <header className="border-b backdrop-blur-sm sticky top-0 z-50 bg-white/80 border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-2">
@@ -555,17 +548,6 @@ export default function FreightBunnyHome() {
                   {link.label}
                 </a>
               ))}
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
-                aria-label="Toggle dark mode"
-              >
-                {isDarkMode ? (
-                  <Sun className="h-5 w-5 text-yellow-600" />
-                ) : (
-                  <Moon className="h-5 w-5 text-gray-600" />
-                )}
-              </button>
             </nav>
           </div>
 
@@ -597,7 +579,7 @@ export default function FreightBunnyHome() {
       </header>
 
       {/* Hero Section */}
-      <section className={`relative min-h-[calc(70vh-64px)] flex flex-col justify-center items-center px-2 overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
+      <section className="relative min-h-[calc(70vh-64px)] flex flex-col justify-center items-center px-2 overflow-hidden bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10 z-0">
           <div className="absolute top-10 right-10 w-32 h-32 bg-contain bg-no-repeat opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Cpath d=\'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\'/%3E%3C/svg%3E")' }}></div>
@@ -658,7 +640,7 @@ export default function FreightBunnyHome() {
       </section>
 
       {/* Quick Tracking */}
-      <section id="tracking" className={`py-16 sm:py-16 px-4 relative overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 to-blue-50/20'}`}>
+      <section id="tracking" className="py-16 sm:py-16 px-4 relative overflow-hidden bg-gradient-to-br from-gray-50 to-blue-50/20">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-contain bg-no-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23002147\' stroke-width=\'1\'%3E%3Ccircle cx=\'11\' cy=\'11\' r=\'8\'/%3E%3Cpath d=\'m21 21-4.34-4.34\'/%3E%3C/svg%3E")' }}></div>
@@ -666,15 +648,15 @@ export default function FreightBunnyHome() {
         </div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className={`text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 animate-fade-in-up transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Track Your Package</h2>
-            <p className={`text-base sm:text-base mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 animate-fade-in-up text-gray-900">Track Your Package</h2>
+            <p className="text-base sm:text-base mb-8 sm:mb-8 px-2 leading-relaxed animate-fade-in-up text-gray-600" style={{ animationDelay: '0.1s' }}>Enter your tracking number to get real-time updates</p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 max-w-4xl mx-auto w-full items-center">
               <input
                 type="text"
                 placeholder="Enter tracking number (e.g., FB123456789)"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
-                className={`w-full sm:flex-1 px-4 py-4 sm:py-3 md:py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation ${isDarkMode ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-200 bg-white text-gray-900 placeholder-gray-500'}`}
+                className="w-full sm:flex-1 px-4 py-4 sm:py-3 md:py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 text-base sm:text-base md:text-lg text-left placeholder:text-left shadow-lg transition-all duration-200 hover:shadow-xl min-h-[56px] md:min-h-[52px] touch-manipulation border-gray-200 bg-white text-gray-900 placeholder-gray-500"
               />
               <Button className="bg-gradient-to-r from-[#002147] to-[#003366] hover:from-[#001634] hover:to-[#002147] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
                 <Search className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 mr-2 text-white flex-shrink-0" />

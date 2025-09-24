@@ -59,11 +59,11 @@ export default function AboutPage() {
       email: "oludayo@freightbunny.com"
     },
     {
-      name: "Subonmi Samuel",
+      name: "Subomi Samuel",
       role: "Operations Director",
-      image: "/images/team/subonmi.jpg",
-      bio: "Subonmi brings extensive experience in customs clearance and ensures smooth operations across all our shipping routes.",
-      email: "subonmi@freightbunny.com"
+      image: "/images/team/subomi.jpg",
+      bio: "Subomi brings extensive experience in customs clearance and ensures smooth operations across all our shipping routes.",
+      email: "subomi@freightbunny.com"
     },
     {
       name: "Busola Falaye",
@@ -333,11 +333,11 @@ export default function AboutPage() {
             Join thousands of satisfied customers who trust FreightBunny for their shipping needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white hover:bg-blue-50 text-[#002147] font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <Button className="bg-[#002147] hover:bg-[#001634] text-white font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
               <Calculator className="mr-2 h-5 w-5" />
               Get a Quote
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#002147] font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105">
+            <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002147] font-semibold px-6 py-3 text-sm sm:text-base md:px-8 md:py-4 lg:px-6 lg:py-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-105 w-full sm:w-auto md:w-full lg:w-auto max-w-[180px] sm:max-w-[200px] md:max-w-none text-center min-h-[44px] flex items-center justify-center">
               <Phone className="mr-2 h-5 w-5" />
               Contact Us
             </Button>
@@ -346,9 +346,9 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-gray-900 text-white">
+      <footer className="py-12 px-4 bg-gradient-to-br from-[#002147] to-[#003366] border-t border-blue-300/20">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-400">
+          <p className="text-blue-100">
             © 2024 FreightBunny. All rights reserved. Connecting UK & Nigeria with reliable shipping.
           </p>
         </div>
