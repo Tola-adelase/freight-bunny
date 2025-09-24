@@ -29,8 +29,6 @@ import {
   MapPin,
   CreditCard,
   ArrowLeft,
-  Sun,
-  Moon,
   Users,
   Target,
   Heart,
@@ -43,8 +41,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../..
 export default function AboutPage() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -54,31 +50,27 @@ export default function AboutPage() {
     { href: "#contact", label: "Contact Us" },
   ]
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
-
   const teamMembers = [
     {
-      name: "Sarah Johnson",
+      name: "Oludayo Obafunke",
       role: "Founder & CEO",
-      image: "/images/team/sarah.jpg",
-      bio: "With over 15 years in international logistics, Sarah founded FreightBunny to make shipping between the UK and Nigeria accessible to everyone.",
-      email: "sarah@freightbunny.com"
+      image: "/images/team/oludayo.jpg",
+      bio: "With over 15 years in international logistics, Oludayo founded FreightBunny to make shipping between the UK and Nigeria accessible to everyone.",
+      email: "oludayo@freightbunny.com"
     },
     {
-      name: "David Okafor",
+      name: "Subonmi Samuel",
       role: "Operations Director",
-      image: "/images/team/david.jpg",
-      bio: "David brings extensive experience in customs clearance and ensures smooth operations across all our shipping routes.",
-      email: "david@freightbunny.com"
+      image: "/images/team/subonmi.jpg",
+      bio: "Subonmi brings extensive experience in customs clearance and ensures smooth operations across all our shipping routes.",
+      email: "subonmi@freightbunny.com"
     },
     {
-      name: "Emma Thompson",
+      name: "Busola Falaye",
       role: "Customer Success Manager",
-      image: "/images/team/emma.jpg",
-      bio: "Emma is dedicated to providing exceptional customer service and ensuring every shipment meets our high standards.",
-      email: "emma@freightbunny.com"
+      image: "/images/team/busola.jpg",
+      bio: "Busola is dedicated to providing exceptional customer service and ensuring every shipment meets our high standards.",
+      email: "busola@freightbunny.com"
     }
   ]
 
@@ -106,9 +98,9 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-blue-50 to-white'}`}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className={`border-b backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900/80 border-gray-700' : 'bg-white/80 border-gray-200'}`}>
+      <header className="border-b backdrop-blur-sm sticky top-0 z-50 bg-white/80 border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-2">
@@ -117,7 +109,7 @@ export default function AboutPage() {
                 alt="FreightBunny Logo"
                 className="h-10 w-10 object-contain"
               />
-              <span className={`text-xl font-bold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-blue-900'}`}>Freight Bunny</span>
+              <span className="text-xl font-bold text-blue-900">Freight Bunny</span>
             </div>
 
             {/* Mobile Menu Button */}
@@ -148,17 +140,6 @@ export default function AboutPage() {
                   {link.label}
                 </a>
               ))}
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
-                aria-label="Toggle dark mode"
-              >
-                {isDarkMode ? (
-                  <Sun className="h-5 w-5 text-yellow-600" />
-                ) : (
-                  <Moon className="h-5 w-5 text-gray-600" />
-                )}
-              </button>
             </nav>
           </div>
 
@@ -190,18 +171,18 @@ export default function AboutPage() {
       </header>
 
       {/* Hero Section */}
-      <section className={`relative py-20 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]'}`}>
+      <section className="relative py-20 px-4 bg-gradient-to-br from-[#f6faff] via-[#eaf3fb] to-[#f6faff]">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
             <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">
               <Plane className="w-4 h-4 mr-2" />
               About FreightBunny
             </Badge>
-            <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
               Connecting Continents,<br />
               <span className="text-blue-600">One Package at a Time</span>
             </h1>
-            <p className={`text-xl md:text-2xl mb-8 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className="text-xl md:text-2xl mb-8 text-gray-600">
               We're passionate about bridging the gap between the UK and Nigeria, making international shipping accessible, reliable, and personal.
             </p>
             </div>
@@ -213,14 +194,14 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className={`text-3xl md:text-4xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Our Story</h2>
-              <p className={`text-lg mb-6 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Our Story</h2>
+              <p className="text-lg mb-6 text-gray-600">
                 FreightBunny was born from a simple observation: shipping between the UK and Nigeria was unnecessarily complicated, expensive, and impersonal. We saw families struggling to send care packages, businesses facing logistical nightmares, and individuals paying exorbitant fees for basic shipping services.
               </p>
-              <p className={`text-lg mb-6 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className="text-lg mb-6 text-gray-600">
                 In 2020, we set out to change this. We built a service that combines the reliability of major carriers with the personal touch of a family business. Our mission is simple: make shipping between the UK and Nigeria as easy as sending a text message.
               </p>
-              <p className={`text-lg transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className="text-lg text-gray-600">
                 Today, we've helped thousands of customers ship everything from personal care packages to business documents, always maintaining our commitment to transparency, reliability, and exceptional service.
               </p>
             </div>
@@ -254,39 +235,39 @@ export default function AboutPage() {
       </section>
 
       {/* Our Mission Section */}
-      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+      <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Our Mission</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">Our Mission</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className={`transition-colors duration-300 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <Target className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Simplify Shipping</CardTitle>
+                <CardTitle className="text-gray-900">Simplify Shipping</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="text-gray-600">
                   Make international shipping as simple and straightforward as possible, removing the complexity and confusion that often comes with cross-border logistics.
                 </p>
               </CardContent>
             </Card>
-            <Card className={`transition-colors duration-300 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <Heart className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Personal Touch</CardTitle>
+                <CardTitle className="text-gray-900">Personal Touch</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="text-gray-600">
                   Provide a personal, human touch to every shipment, treating each package as if it were our own and each customer as family.
                 </p>
               </CardContent>
             </Card>
-            <Card className={`transition-colors duration-300 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <Award className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Excellence</CardTitle>
+                <CardTitle className="text-gray-900">Excellence</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="text-gray-600">
                   Maintain the highest standards of service quality, reliability, and customer satisfaction in everything we do.
                 </p>
               </CardContent>
@@ -298,16 +279,16 @@ export default function AboutPage() {
       {/* Our Values Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Our Values</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Our Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className={`text-center transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+              <Card key={index} className="text-center transition-all duration-300 hover:scale-105 bg-white border-gray-200">
                 <CardHeader>
                   <value.icon className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                  <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{value.title}</CardTitle>
+                  <CardTitle className="text-gray-900">{value.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{value.description}</p>
+                  <p className="text-gray-600">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -316,21 +297,21 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+      <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Meet Our Team</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Meet Our Team</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className={`text-center transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+              <Card key={index} className="text-center transition-all duration-300 hover:scale-105 bg-white border-gray-200">
                 <CardHeader>
                   <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                     <User className="w-12 h-12 text-white" />
                   </div>
-                  <CardTitle className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{member.name}</CardTitle>
+                  <CardTitle className="text-gray-900">{member.name}</CardTitle>
                   <CardDescription className="text-blue-600 font-semibold">{member.role}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className={`mb-4 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{member.bio}</p>
+                  <p className="mb-4 text-gray-600">{member.bio}</p>
                   <a 
                     href={`mailto:${member.email}`}
                     className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
@@ -345,7 +326,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-16 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-[#002147] to-[#003366]' : 'bg-gradient-to-br from-[#002147] to-[#003366]'}`}>
+      <section className="py-16 px-4 bg-gradient-to-br from-[#002147] to-[#003366]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship with Us?</h2>
           <p className="text-xl text-blue-100 mb-8">
@@ -365,7 +346,7 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-12 px-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'}`}>
+      <footer className="py-12 px-4 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-400">
             © 2024 FreightBunny. All rights reserved. Connecting UK & Nigeria with reliable shipping.
